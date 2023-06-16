@@ -1,0 +1,87 @@
+<!DOCTYPE html><html lang="zh-CN" theme-mode="dark"><head><!-- hexo injector head_begin start -->
+<link rel="stylesheet" href="/css/bilicard.css">
+<!-- hexo injector head_begin end --><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>CTF简介 | Hack_Peony 黑牡丹结社</title><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"键入以继续","blurHolder":"数据检索","noResult":"无 $0 相关数据"},"code":{"codeInfo":"$0 - 共 $1 行","copy":"复制","copyFinish":"复制成功","expand":"展开"}}</script><script src="//unpkg.com/mermaid@9.2.2/dist/mermaid.min.js"></script><link rel="stylesheet" href="/css/arknights.css"><script>if (window.localStorage.getItem('theme-mode') === 'light') document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark') document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: BenderLight;
+ src: local('Bender'), url("/font/BenderLight.ttf");
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><meta name="generator" content="Hexo 6.3.0"></head><body><div class="loading" style="opacity: 0"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><nav><div class="navBtn hide"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="数据检索" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>CTF简介</h1><div id="post-info"><span>文章发布时间: <div class="control"><time datetime="2023-03-04T08:42:18.000Z" id="date"> 2023-03-04</time></div></span><br><span>最后更新时间: <div class="control"><time datetime="2023-05-22T10:34:10.856Z" id="updated"> 2023-05-22</time></div></span></div></div><hr><div id="post-content"><h3 id="你知道什么是CTF比赛吗？"><a href="#你知道什么是CTF比赛吗？" class="headerlink" title="你知道什么是CTF比赛吗？"></a>你知道什么是CTF比赛吗？</h3><p>CTF本来是西方的一种传统运动。在比赛上两军会互相争夺旗帜，当有一方的旗帜已被敌军夺取，就代表了那一方的战败。<br>我所说的CTF比赛即为黑客大赛，显而易见，此处所说的CTF是信息安全领域。</p>
+<p>本人就是一个菜鸟CTFer   (QAQ)</p>
+<p><img src="https://i.328888.xyz/2023/03/05/G6HbZ.gif"></p>
+<p>CTF比赛的必要条件就是有一台电脑</p>
+<h3 id="CTF比赛有哪些比赛模式？"><a href="#CTF比赛有哪些比赛模式？" class="headerlink" title="CTF比赛有哪些比赛模式？"></a><strong>CTF比赛有哪些比赛模式？</strong></h3><h4 id="解题模式（Jeopardy）"><a href="#解题模式（Jeopardy）" class="headerlink" title="解题模式（Jeopardy）"></a>解题模式（Jeopardy）</h4><p>在解题模式CTF赛制中，参赛队伍可以通过互联网或者现场网络参与，这种模式的CTF竞赛与ACM编程竞赛、信息学奥赛比较类似，以解决网络安全技术挑战题目的分值和时间来排名，通常用于在线选拔赛。题目主要包含逆向、漏洞挖掘与利用、Web渗透、密码、取证、隐写、安全编程等类别。</p>
+<h4 id="攻防模式（Attack-Defense）"><a href="#攻防模式（Attack-Defense）" class="headerlink" title="攻防模式（Attack-Defense）"></a>攻防模式（Attack-Defense）</h4><p>​		攻防模式CTF赛制中，参赛队伍在网络空间互相进行攻击和防守，挖掘网络服务漏洞并攻击对手服务来得分，修补自身服务漏洞进行防御来避免丢分。攻防模式CTF赛制可以实时通过得分反映出比赛情况，最终也以得分直接分出胜负，是一种竞争激烈，具有很强观赏性和高度透明性的网络安全赛制。在这种赛制中，不仅仅是比参赛队员的智力和技术，也比体力（因为比赛一般都会持续48小时及以上），同时也比团队之间的分工配合与合作。</p>
+<h4 id="混合模式（Mix）"><a href="#混合模式（Mix）" class="headerlink" title="混合模式（Mix）"></a>混合模式（Mix）</h4><p>​		结合了解题模式与攻防模式的CTF赛制，比如参赛队伍通过解题可以获取一些初始分数，然后通过攻防对抗进行得分增减的零和游戏，最终以得分高低分出胜负。采用混合模式CTF赛制的典型代表如iCTF国际CTF竞赛。</p>
+<h4 id="比赛类型："><a href="#比赛类型：" class="headerlink" title="比赛类型："></a>比赛类型：</h4><p>Web - 网络攻防<br>Reverse Engineering - 逆向工程<br>Crypto - 密码攻击<br>Mobile - 移动安全<br>Misc - 安全杂项</p>
+<p>具体内容网上的其他人比我写的详细，由于本文主要是让大家对CTF有个大概的了解，故不再阐述详细内容</p>
+<h4 id="CTF练习平台推荐"><a href="#CTF练习平台推荐" class="headerlink" title="CTF练习平台推荐"></a>CTF练习平台推荐</h4><p>1,<a target="_blank" rel="noopener" href="https://buuoj.cn/">BUUCTF</a> </p>
+<p>2,<a target="_blank" rel="noopener" href="https://adworld.xctf.org.cn/?rwNmOdr=1677981967929">攻防世界</a></p>
+<p>3,<a target="_blank" rel="noopener" href="https://ctf.bugku.com/">bugku</a></p>
+<p>4,<a target="_blank" rel="noopener" href="https://www.ctfer.vip/">NSSCTF</a> </p>
+<h4 id="个人建议"><a href="#个人建议" class="headerlink" title="个人建议"></a>个人建议</h4><p>如果你想体验当黑客的感觉，参加CTF比赛可以满足你的需求；</p>
+<p>如果你是信息工程专业相关的学生，CTF可以帮助你学到很多专业知识，让你更上一层楼；</p>
+<p>如果你觉得自己毅力或者耐心不足，不建议入门CTF；</p>
+<p>CTF上手可能比较困难，建议先自己到我上面推荐的练习平台先练一下，感受一下，再去网上找相关答案及解题步骤，照着答案做，然后尝试解类似题目，找到感觉后再解题进步就会非常快。</p>
+<p>如果你有任何问题，可以在我的邮箱（<a href="mailto:&#49;&#x32;&#48;&#54;&#x36;&#x36;&#x31;&#52;&#51;&#x34;&#x40;&#113;&#x71;&#x2e;&#x63;&#x6f;&#x6d;">&#49;&#x32;&#48;&#54;&#x36;&#x36;&#x31;&#52;&#51;&#x34;&#x40;&#113;&#x71;&#x2e;&#x63;&#x6f;&#x6d;</a>）评论留言，我这个菜鸟可以在自己能力范围之内为你提供帮助。</p>
+<h4 id="CTF俚语"><a href="#CTF俚语" class="headerlink" title="CTF俚语"></a>CTF俚语</h4><p>语言学家通常将非正式语言称为“俚语”，并为各种职业的技术词汇保留术语“行话”。然而，这个集合的祖先被称为“行话文件”，CTF俚语即为CTF界的“行话”。</p>
+<ol>
+<li><p>Flag：指比赛中需要寻找的答案或密码。</p>
+</li>
+<li><p>Pwn：指攻破或控制系统，常用于指攻击某个漏洞或服务，如pwn the server。</p>
+</li>
+<li><p>Shellcode：指在漏洞利用中需要注入的代码，用于获取系统权限。</p>
+</li>
+<li><p>Exploit：指利用系统漏洞的代码或技术。</p>
+</li>
+<li><p>Payload：指在攻击或利用漏洞时需要发送到目标系统的恶意代码或数据。</p>
+</li>
+<li><p>Reversing：指反汇编或逆向分析二进制程序。</p>
+</li>
+<li><p>Brute force：指暴力破解密码或密钥，常用于密码学挑战。</p>
+</li>
+<li><p>Steganography：指隐藏信息的技术，如在图片或音频文件中隐藏文本信息。</p>
+</li>
+<li><p>Cryptography：指加密和解密技术，常用于密码学挑战。</p>
+</li>
+<li><p>Cryptoanalysis：指破解加密算法或密文的技术，常用于密码学挑战。</p>
+</li>
+<li><p>Binary exploitation：指利用二进制程序中的漏洞攻击系统。</p>
+</li>
+<li><p>Web exploitation：指利用Web应用程序中的漏洞攻击系统。</p>
+</li>
+<li><p>Forensics：指数字取证技术，用于分析和恢复已删除的数据或系统日志。</p>
+</li>
+<li><p>OSINT：指开放源情报，指通过公开的信息源获取信息的技术。</p>
+</li>
+<li><p>Root：指获取系统管理员权限。</p>
+</li>
+<li><p>wp：指”Write-up”，意为“赛题分析和解答”。</p>
+</li>
+<li><p>Forensics：数字取证，是指在计算机系统和数字设备中收集、保护、分析和呈现与计算机相关的证据的科学。</p>
+</li>
+<li><p>Brute force：暴力破解，是指通过穷举法尝试所有可能的密码组合来破解密码。</p>
+</li>
+<li><p>Social engineering：社会工程学，是指利用心理学、人际关系和欺骗等手段来获取机密信息的技术。</p>
+</li>
+<li><p>靶场：“靶场”通常是指CTF练习平台，也被称为“训练营”，“实验室”等。</p>
+</li>
+</ol>
+<p>这些俚语在CTF界非常常见，熟悉这些术语对于参加CTF比赛或进行网络安全工作都是非常重要的。</p>
+<p><img src="https://i.328888.xyz/2023/03/05/G63DP.gif"></p>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages" style="justify-content: flex-start"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2023/03/04/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E8%AE%BE%E5%8E%86%E7%A8%8B/">← Next 关于此博客</a></div></div></div></div><div class="bottom-btn"><div><a id="to-top" onClick="scrolls.scrolltop();" title="回到顶部" style="opacity: 0; display: none;">∧</a><a id="to-index" href="#toc-div" title="文章目录">≡</a><a id="color-mode" onClick="colorMode.change()" title="切换主题"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://i.328888.xyz/2023/03/11/sI82d.png" alt="Logo"></a><h1 id="Dr"><a href="/">xuan tu</a></h1><div id="description"><p></p></div></div><div id="aside-block"><div id="toc-div"><h1>目录</h1><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%A0%E7%9F%A5%E9%81%93%E4%BB%80%E4%B9%88%E6%98%AFCTF%E6%AF%94%E8%B5%9B%E5%90%97%EF%BC%9F"><span class="toc-number">1.</span> <span class="toc-text">你知道什么是CTF比赛吗？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CTF%E6%AF%94%E8%B5%9B%E6%9C%89%E5%93%AA%E4%BA%9B%E6%AF%94%E8%B5%9B%E6%A8%A1%E5%BC%8F%EF%BC%9F"><span class="toc-number">2.</span> <span class="toc-text">CTF比赛有哪些比赛模式？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%A8%A1%E5%BC%8F%EF%BC%88Jeopardy%EF%BC%89"><span class="toc-number">2.1.</span> <span class="toc-text">解题模式（Jeopardy）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%94%BB%E9%98%B2%E6%A8%A1%E5%BC%8F%EF%BC%88Attack-Defense%EF%BC%89"><span class="toc-number">2.2.</span> <span class="toc-text">攻防模式（Attack-Defense）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B7%B7%E5%90%88%E6%A8%A1%E5%BC%8F%EF%BC%88Mix%EF%BC%89"><span class="toc-number">2.3.</span> <span class="toc-text">混合模式（Mix）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AF%94%E8%B5%9B%E7%B1%BB%E5%9E%8B%EF%BC%9A"><span class="toc-number">2.4.</span> <span class="toc-text">比赛类型：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CTF%E7%BB%83%E4%B9%A0%E5%B9%B3%E5%8F%B0%E6%8E%A8%E8%8D%90"><span class="toc-number">2.5.</span> <span class="toc-text">CTF练习平台推荐</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%AA%E4%BA%BA%E5%BB%BA%E8%AE%AE"><span class="toc-number">2.6.</span> <span class="toc-text">个人建议</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CTF%E4%BF%9A%E8%AF%AD"><span class="toc-number">2.7.</span> <span class="toc-text">CTF俚语</span></a></li></ol></li></ol></div></div><footer><nobr>构建自 <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> 使用主题 <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr>主题作者 <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas><script src="/js/search.js"></script><script class="pjax-js">reset=_=>{code.findCode();}</script><script src="/js/arknights.js"></script><script src="/js/pjax.js"></script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script></body></html>
