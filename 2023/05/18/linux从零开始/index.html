@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html>
+	<head><!-- hexo injector head_begin start -->
+<link rel="stylesheet" href="/css/bilicard.css">
+<!-- hexo injector head_begin end -->
+		
+<title>Linux学习 for 菜鸟-Quiet</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" type="image/x-icon" href="/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/index.css">
+
+
+
+<meta name="keywords" content="linux,新人入门,ubuntu,">
+<meta name="description" content="">
+
+
+<script src="/js/jquery.min.js"></script>
+
+
+<script src="/js/index.js"></script>
+
+
+<script src="/js/fancybox.umd.js"></script>
+
+
+<script src="/js/fancybox-images.js"></script>
+
+
+<script src="/js/gitalk.min.js"></script>
+
+
+<script src="/js/hljs.min.js"></script>
+ 
+<script>hljs.highlightAll();</script>
+
+	<meta name="generator" content="Hexo 6.3.0"></head>
+
+	<body>
+		
+	<div class="header">
+		<div class="header-top" id="header-top">
+			<div class="h-left">
+				<a href="/">
+					<img src="/image/logo.png" alt="Quiet">
+				</a>
+			</div>
+			<div class="h-right">
+				<ul>
+					
+						
+								<li>
+									<a href="/">
+										HOME
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/archives">
+										ARCHIVE
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/categories">
+										CATEGORIES
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/tags">
+										TAGS
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/links">
+										LINKS
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/about">
+										ABOUT
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+				</ul>
+			</div>
+			<div class="h-right-close">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+					<path fill="none" d="M0 0h24v24H0z" />
+					<path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z" fill="rgba(68,68,68,1)" />
+				</svg>
+			</div>
+		</div>
+	</div>
+	<div class="sidebar">
+    <div class="topo">
+        <h2>Joey</h2>
+    </div>
+    <ul>
+        
+        <li>
+            <a href="/">HOME</a>
+        </li>
+        
+        <li>
+            <a href="/archives">ARCHIVE</a>
+        </li>
+        
+        <li>
+            <a href="/categories">CATEGORIES</a>
+        </li>
+        
+        <li>
+            <a href="/tags">TAGS</a>
+        </li>
+        
+        <li>
+            <a href="/links">LINKS</a>
+        </li>
+        
+        <li>
+            <a href="/about">ABOUT</a>
+        </li>
+        
+    </ul>
+    <div class="my_foot">
+        
+        <a target="_blank" rel="noopener" href="https://github.com/79E/hexo-theme-quiet">
+            <img src="https://cdn.jsdelivr.net/gh/duogongneng/MyBlogImg/imggithub.png" alt="Quiet主题">
+        </a>
+        
+    </div>
+</div>
+<div class='shelter'>
+</div>
+<style>
+    .shelter{
+        background-color: #333;
+        opacity:0.5;
+        cursor: pointer;
+        display: none; 
+        position: fixed;
+        left: 0;
+        top: 0; 
+        right: 0;
+        bottom: 0;
+        z-index: 1998;
+    }
+    .sidebar {
+        width: 66%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        bottom: 0;
+        background: #fff;
+        z-index: 1999;
+        text-align: center;
+        box-shadow: -6px 0 20px rgba(98, 94, 94, .815);
+    }
+
+    .topo {
+        width: 100%;
+        height: 200px;
+        background: url(https://api.ixiaowai.cn/gqapi/gqapi.php) no-repeat;
+        background-size: 100% 100%;
+        position: relative;
+        display: flex;
+        align-items: flex-end
+    }
+
+    .topo h2 {
+        color: #fff;
+        z-index: 1;
+        position: relative;
+        margin: 0 0 10px 10px;
+        font-size: 1.2em;
+        box-sizing: border-box
+    }
+
+    .topo:before {
+        content: '';
+        background-image: url(/image/pattern.png);
+        background-repeat: repeat;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 1
+    }
+
+    .sidebar ul {
+        width: 100%;
+        margin-top: 50px
+    }
+
+    .sidebar ul li {
+        height: 50px;
+        list-style: none;
+        font-size: 1.2em;
+        text-align: right;
+        margin-right: 10px
+    }
+
+    .sidebar ul li a {
+        display: grid;
+        color: #5d606a;
+        text-overflow: ellipsis;
+        width: 100%;
+        text-decoration: none
+    }
+
+    .my_foot {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        position: absolute;
+        bottom: 0
+    }
+
+    .my_foot a {
+        text-decoration: none;
+        margin-right: 10px;
+        display: inline-block
+    }
+
+    .my_foot a img {
+        width: 30px;
+        height: 30px
+    }
+</style>
+
+<script>
+    $( function () {
+	$( '.h-right-close>svg' )
+		.click( function () {
+			$( '.sidebar' )
+				.animate( {
+					right: "0"
+				}, 500 );
+			$( '.shelter' )
+				.fadeIn( "slow" )
+		} );
+	$( '.shelter' )
+		.click( function ( e ) {
+			$( '.sidebar' )
+				.animate( {
+					right: "-100%"
+				}, 500 );
+			$( '.shelter' )
+				.fadeOut( "slow" )
+		} )
+} )
+
+</script>
+
+<div class="post">
+    <div class="post-header-background post-header-img"
+    style="background: url('https://api.ixiaowai.cn/gqapi/gqapi.php')" 
+>
+    <div class="post-header-background-content">
+        <ul class="post-header-tag">
+            
+            
+            <li><a href="/tags/linux">linux</a></li>
+            
+            <li><a href="/tags/新人入门">新人入门</a></li>
+            
+            <li><a href="/tags/ubuntu">ubuntu</a></li>
+            
+            
+        </ul>
+        
+        <h1>Linux学习 for 菜鸟</h1>
+        <div class="post-header-info">
+            <div class="post-header-info-author">
+                
+                    <svg t="1604839279282" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                        xmlns="http://www.w3.org/2000/svg" p-id="2901" width="20" height="20">
+                        <path
+                            d="M513 956.3c-247.7 0-448-200.3-448-448S265.3 66.2 513 66.2s448 200.3 448 448-200.3 442.1-448 442.1z m0-830.9c-212.2 0-388.8 170.7-388.8 388.8C124.2 726.3 294.9 903 513 903c212.2 0 388.8-170.7 388.8-388.8S725.2 125.4 513 125.4z m0 430.2c-94.2 0-170.7-76.5-170.7-170.7S418.8 207.8 513 207.8s170.7 76.5 170.7 170.7S607.2 555.6 513 555.6z m0-289.1c-64.6 0-112 52.8-112 112s47.4 117.9 112 117.9 112-52.8 112-112-47.4-117.9-112-117.9z m0 689.8c-135.7 0-259-58.7-341.9-158.9l-11.8-17.8 11.8-17.8c76.5-117.9 206.2-188.5 347.8-188.5 135.7 0 265 64.6 341.9 182.6l11.8 17.8-11.8 17.8C778 897.1 648.7 956.3 513 956.3zM230.3 773.2C300.9 849.7 406.9 897 513 897c112 0 218.1-47.4 288.6-129.8-70.5-88.2-170.7-135.6-282.7-135.6s-218.1 53.3-288.6 141.6z"
+                            p-id="2902" fill="#ffffff"></path>
+                    </svg>
+                    
+                <span class="post-header-info-author-text"> <a href="../../about">Joey</a></span>
+                <div class="post-header-info-author-categories">
+                    
+                         <a href="../../categories/入坑指南/" target="_blank" >入坑指南</a>
+                    
+                </div>
+                <p>2023-05-18 20:41:18</p>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="post-content" id="content">
+  
+  <div id="article" class="post-content-info">
+    
+
+    <p><em><strong>下面的文字较长，不喜欢看的也可以直接看&#x2F;&#x2F;斜体加粗大致了解一下</strong></em></p>
+<p><strong>#####    tips：网页端按 ctrl + f可以进行查找哦  #####</strong></p>
+<hr>
+<h1 id="一，什么是linux？"><a href="#一，什么是linux？" class="headerlink" title="一，什么是linux？"></a>一，什么是linux？</h1><p><strong>&#x2F;&#x2F;<em>是一种操作系统</em></strong></p>
+<p>Linux是一种自由和开放源码的类Unix<strong>操作系统</strong>，其内核由林纳斯·本纳第克特·托瓦兹于1991年10月5日首次发布。它主要受到Minix和Unix思想的启发，是一个基于POSIX的多用户、多任务、支持多线程和多CPU的操作系统。</p>
+<p>Linux具有丰富的内置功能和强大的社区支持，使其成为众多企业和个人用户的首选操作系统。它适用于几乎所有类型的计算机硬件，从手机、平板电脑到大型机和超级计算机。<strong>Linux还是免费使用和自由传播的，这使得它成为许多开发者和用户的首选</strong>，可以根据自己的需求和兴趣定制和修改。</p>
+<p>Linux的名字来源于计算机业余爱好者Linus Torvalds，他在1991年发布了第一个Linux内核。虽然当时Linux还没有完全成形，但Torvalds认为这个操作系统很“Linux-like”，因此就给它起了这个名字。</p>
+<hr>
+<h1 id="二，Linux的使用场景，为什么要学习linux？"><a href="#二，Linux的使用场景，为什么要学习linux？" class="headerlink" title="二，Linux的使用场景，为什么要学习linux？"></a>二，Linux的使用场景，为什么要学习linux？</h1><p><strong>&#x2F;&#x2F; <em>linux是网安学习的基础</em></strong></p>
+<p>Linux广泛用于以下场景：</p>
+<ol>
+<li>服务器操作系统：Linux可以<strong>用于构建高性能、可靠的服务器操作系统</strong>，如Apache、Nginx、MySQL、Redis等应用程序都可以在Linux上运行。</li>
+<li>嵌入式系统：Linux可以用于嵌入式系统，如智能电视、智能音箱、智能家居等。由于Linux具有<strong>小巧、低功耗、高可靠性</strong>等优点，因此在这些设备中得到广泛应用。</li>
+<li>桌面系统：Linux可以用于构建桌面操作系统，如<strong>Ubuntu、Debian、CentOS</strong>等。Linux的桌面环境提供了丰富的应用程序和用户界面，可以满足用户的需求。</li>
+<li>移动设备：Linux可以用于<strong>构建嵌入式设备和移动设备的操作系统</strong>，如Android、iOS、BlackBerry等。由于Linux具有开放源代码和广泛的社区支持，因此可以使用各种开源库和工具来构建这些设备的操作系统。</li>
+<li>开发环境：Linux可以用于搭<strong>建开发环境</strong>，如Code::Blocks、Eclipse、GitLab等开发工具。这些工具可以提供集成开发环境（IDE）和调试工具，帮助开发者更高效地进行开发。</li>
+<li>网络服务器：Linux可以<strong>用于构建网络服务器</strong>，如Apache、Nginx等。Linux具有高可用性和高性能等优点，因此在大型网络和企业级应用中得到广泛应用。</li>
+<li>高校计算机课程：Linux可以<strong>用于教育机构的计算机课程</strong>，如CS Courses 提供的Linux操作系统课程。学生可以通过学习Linux操作系统来<strong>了解计算机系统的工作原理</strong>，并学会使用各种基本的计算机软件和工具。</li>
+</ol>
+<hr>
+<h1 id="三，如何学习linux？"><a href="#三，如何学习linux？" class="headerlink" title="三，如何学习linux？"></a>三，如何学习linux？</h1><ol>
+<li>选择一个比较合适的Linux发行版：首先需要选择一个比较合适的Linux发行版，如Debian或Ubuntu。这些发行版具有广泛的社区支持和稳定性，可以满足大多数用户的需求。&#x2F;&#x2F;<em><strong>有图形化界面，适合萌新，类似Windows，自己电脑上学习linux一般是用vmware安装对应虚拟机进行学习</strong></em></li>
+<li>学习基础命令：学习Linux的基础命令是非常重要的，例如ls、cd、cp、mv等。你可以通过阅读Linux的文档或参考教程来学习这些命令。&#x2F;&#x2F;<em><strong>linux的操作都是可以靠指令完成的</strong></em></li>
+<li>学习操作系统基础概念：了解操作系统的基础概念，如进程、线程、文件系统、网络等，可以帮助你更好地理解Linux。你可以阅读Linux的文档或参考教程。&#x2F;&#x2F;<em><strong>小白暂时可以忽略，先学好最基础的只要入了门，也就知道如何自学了</strong></em></li>
+<li>学习代码规范和分布式管理代码：学习代码规范和分布式管理代码对于成为一个优秀的程序员非常重要。你可以参考Linux的代码规范或使用Git等工具来管理代码。</li>
+<li>学习高级命令和技巧：Linux提供了许多高级命令和技巧，如use grep、crontab等。你可以通过参考文档或参考教程来学习这些命令和技巧。</li>
+<li>实践：最后，你需要不断地实践，尝试使用Linux解决实际问题。你可以通过参加Linux的培训课程或使用Linux自带的练习工具来实践。***&#x2F;&#x2F;最重要的是实践，即使理论性的东西不是非常懂，只要多实践，自然会豁然开朗***</li>
+</ol>
+<hr>
+<h1 id="四，选择合适的linux发行版，在虚拟机中安装linux"><a href="#四，选择合适的linux发行版，在虚拟机中安装linux" class="headerlink" title="四，选择合适的linux发行版，在虚拟机中安装linux"></a>四，选择合适的linux发行版，在虚拟机中安装linux</h1><p><strong>推荐使用ubuntu（乌班图）</strong></p>
+<p>Ubuntu20.04版本镜像文件（ubuntu-20.04.6-desktop-amd64.iso）：链接：<a target="_blank" rel="noopener" href="https://share.weiyun.com/aMm2RiqF">https://share.weiyun.com/aMm2RiqF</a> 密码：ajrb8t</p>
+<p><strong>安装vmware：</strong></p>
+<p>官网版17版本：<a target="_blank" rel="noopener" href="https://download3.vmware.com/software/WKST-1700-WIN/VMware-workstation-full-17.0.0-20800274.exe">点击下载</a>，可以试用30天</p>
+<p>想要正版长期使用有俩途径，1，淘宝或并夕夕搜vmware激活码，大概三块钱一个，直接激活了，2，网上找破解版，这里主要是讲学习Linux，故不讨论破解的问题。</p>
+<p>安装完打开长这样：（我的是16版本）</p>
+<p><img src="https://i.328888.xyz/2023/05/18/VVulwy.png"></p>
+<p>因为要写的东西太多了，看这个吧：<a target="_blank" rel="noopener" href="https://blog.csdn.net/KRISNAT/article/details/124100113?ops_request_misc=%7B%22request_id%22:%22168441740816800186571303%22,%22scm%22:%2220140713.130102334..%22%7D&request_id=168441740816800186571303&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-124100113-null-null.142%5Ev87%5Econtrol_2,239%5Ev2%5Einsert_chatgpt&utm_term=ubuntu%E5%AE%89%E8%A3%85&spm=1018.2226.3001.4187"> 超详细VMware安装Ubuntu虚拟机步骤_ubuntu vmware-CSDN博客</a></p>
+<h3 id="我主要讲一下可能会遇到的问题："><a href="#我主要讲一下可能会遇到的问题：" class="headerlink" title="我主要讲一下可能会遇到的问题："></a>我主要讲一下可能会遇到的问题：</h3><p>1，<strong>如果你安装完，发现用着用着就就越来越卡，最后卡死</strong></p>
+<p>请检查c盘空间是否足够，最好还空闲20g以上。</p>
+<p>2.<strong>vmware打开虚拟机提示产品与此版本不兼容</strong>，或者<strong>发生错误，导致虚拟 CPU 进入关闭状态。如果虚拟机外部发生此错误，则可能已导致物理计算机重新启动……</strong></p>
+<p>确定你的vmware版本，假如是16，然后打开你的虚拟机安装目录：</p>
+<p><img src="https://i.328888.xyz/2023/05/18/VVuhPw.png"></p>
+<p>右键vmx文件，用记事本打开</p>
+<p><img src="https://i.328888.xyz/2023/05/18/VVu9yL.png"></p>
+<p>查看上面字段是否和自己的VMware版本号一致，若不一致，则改一致，重启即可</p>
+<p>3，<strong>安装时窗口太小，“下一步”按钮被挡住了：</strong></p>
+<p>按下Alt+F7，同时按下鼠标左键，然后拖动窗口</p>
+<p><strong>4，鼠标点进了虚拟机，出不来了。</strong></p>
+<p>按ctrl+alt</p>
+<hr>
+<h1 id="虚拟机安装就这样告一段落，接下来就可以学习Ubuntu了！"><a href="#虚拟机安装就这样告一段落，接下来就可以学习Ubuntu了！" class="headerlink" title="虚拟机安装就这样告一段落，接下来就可以学习Ubuntu了！"></a>虚拟机安装就这样告一段落，接下来就可以学习Ubuntu了！</h1><h1 id=""><a href="#" class="headerlink" title=""></a></h1><p>任何地方都可以“用终端打开”<img src="https://i.328888.xyz/2023/05/18/VVuqvF.png"></p>
+<p><strong>终端</strong> 就是输入命令的地方</p>
+<p>打开后长这个样</p>
+<p><img src="https://i.328888.xyz/2023/05/18/VfZZ4H.png"></p>
+<p>ubuntu@ 你的用户名：~&#x2F;地址$ </p>
+<p>为了方便，下面的命令统一不再配图，除非遇到特殊说明情况</p>
+<hr>
+<h1 id="一，命令"><a href="#一，命令" class="headerlink" title="一，命令"></a>一，命令</h1><p>下面来学习基础命令：</p>
+<h2 id="获取管理员权限-sudo-su"><a href="#获取管理员权限-sudo-su" class="headerlink" title="获取管理员权限 sudo su"></a>获取管理员权限 sudo su</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo su</span><br></pre></td></tr></table></figure>
+
+<p>需要输入账户的密码，输入时不显示，输完回车即可</p>
+<p>获取管理员权限的目的：管理员（root）权现是最高权现，获取后可以更改任意文件及设置</p>
+<h2 id="得知目前所在的路径-pwd"><a href="#得知目前所在的路径-pwd" class="headerlink" title="得知目前所在的路径 pwd"></a>得知目前所在的路径 pwd</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pwd</span><br></pre></td></tr></table></figure>
+
+<p>得到目前所在路径，用户的操作是有地址的，特定目录有特定的职能，因此在进行默某些特殊操作时你需要到特定的目录里面去，这个命令就是让你得知你目前在那个目录</p>
+<h2 id="列出当前目录下的文件夹-ls"><a href="#列出当前目录下的文件夹-ls" class="headerlink" title="列出当前目录下的文件夹  ls"></a>列出当前目录下的文件夹  ls</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls</span><br></pre></td></tr></table></figure>
+
+<p>例子：</p>
+<p>ls</p>
+<p>回显：music   photos</p>
+<p>则表明目前的目录下面有music和photos两个文件夹</p>
+<h2 id="读取文件-cat"><a href="#读取文件-cat" class="headerlink" title="读取文件 cat"></a>读取文件 cat</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat</span><br></pre></td></tr></table></figure>
+
+<p>用于查看文件的内容，而不需要在任何文本编辑器中打开它</p>
+<p><strong>读取一个名为flag.txt的文件</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat flag.txt</span><br></pre></td></tr></table></figure>
+
+<p>回显： ctf{you_ar4_righ4}</p>
+<p>表明你读取了一个名为flag.txt的文件，其内容是 ctf{you_ar4_righ4}</p>
+<p><strong>查看当前文件夹下所有的文件内容</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat *</span><br></pre></td></tr></table></figure>
+
+<h2 id="关机-shutdown"><a href="#关机-shutdown" class="headerlink" title="关机 shutdown"></a>关机 shutdown</h2><p>例子</p>
+<p>​	关机并重启：</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shutdown -r now</span><br></pre></td></tr></table></figure>
+
+<p>这将在当前用户下强制关闭系统，并在5秒后重启。</p>
+<p>​	关机但不重启：</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shutdown -h now</span><br></pre></td></tr></table></figure>
+
+<p>这将关闭系统，但不重启。</p>
+<p>​	关机后等待10分钟后重启：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shutdown -r +<span class="number">10</span> <span class="number">10</span>分钟后重启</span><br></pre></td></tr></table></figure>
+
+<p>这将在当前用户下强制关闭系统，并在10分钟后重启。</p>
+<p>关机后等待10点钟重启：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shutdown -h +<span class="number">10</span> <span class="number">10</span>点钟重启</span><br></pre></td></tr></table></figure>
+
+<p>这将关闭系统，并在10点钟时重启。</p>
+<p>仅发送警告信息而不关机：</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shutdown -k now</span><br></pre></td></tr></table></figure>
+
+<p>这将发送一条警告信息，但不会强制关闭系统。</p>
+<p>立即关机并切断电源：</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shutdown -P now</span><br></pre></td></tr></table></figure>
+
+<p>这将立即关闭系统并切断电源。</p>
+<h2 id="目录操作-cd"><a href="#目录操作-cd" class="headerlink" title="目录操作 cd"></a>目录操作 cd</h2><p>Linux中的cd命令用于在文件系统中切换目录。它的语法如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> [目录路径]</span><br></pre></td></tr></table></figure>
+
+<p>例如，要切换到根目录，可以使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /</span><br></pre></td></tr></table></figure>
+
+<p>要切换到上一级目录，可以使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ..</span><br></pre></td></tr></table></figure>
+
+<p>要切换到当前目录的子目录，可以使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /path/to/directory</span><br></pre></td></tr></table></figure>
+
+<p>要更改到特定目录，可以使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /tmp</span><br></pre></td></tr></table></figure>
+
+<p>要返回上一个目录，可以使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> -</span><br></pre></td></tr></table></figure>
+
+<h2 id="删除-rm"><a href="#删除-rm" class="headerlink" title="删除 rm"></a>删除 rm</h2><p>rm命令用于删除文件或目录。它的语法如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">rm</span> [选项] 文件或目录</span><br></pre></td></tr></table></figure>
+
+
+
+<p>例如，要删除当前目录下的test文件，可以使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">rm</span> <span class="built_in">test</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>要删除一个文件夹，可以使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">rm</span> -r directory/</span><br></pre></td></tr></table></figure>
+
+<p>其中，directory&#x2F;是要删除的文件夹路径。</p>
+<h2 id="解压-压缩-tar"><a href="#解压-压缩-tar" class="headerlink" title="解压 压缩  tar"></a>解压 压缩  tar</h2><p>tar命令用于将文件打包成归档文件，并且可以解包归档文件。它的语法如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar [选项] [文件或目录1] [文件或目录2] ... [文件或目录N]</span><br></pre></td></tr></table></figure>
+
+
+
+<p>例如，要将当前目录下的所有文件和目录打包成一个归档文件，并且命名为howtoing-16-apr-2013.tar.gz，可以使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xvf howtoing-16-apr-2013.tar.gz</span><br></pre></td></tr></table></figure>
+
+
+
+<p>要从归档文件中解包文件，可以使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xvf howtoing-16-apr-2013.tar</span><br></pre></td></tr></table></figure>
+
+<p>其中，howtoing-16-apr-2013.tar是要解包的归档文件名。</p>
+<h2 id="查找-find"><a href="#查找-find" class="headerlink" title="查找 find"></a>查找 find</h2><p><code>find</code>命令是一个用于在文件系统中查找文件和目录的常用工具。它的语法如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find [选项] 目录 -<span class="built_in">type</span> f -name [文件名]</span><br></pre></td></tr></table></figure>
+
+
+
+<p>例如，要在当前目录及其子目录中查找所有扩展名为.txt的文件，可以使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -<span class="built_in">type</span> f -name <span class="string">&quot;*.txt&quot;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>要在当前目录及其子目录中查找所有以”example”开头的文件，并且不包含”.txt”扩展名，可以使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -<span class="built_in">type</span> f -name <span class="string">&quot;example*&quot;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>要在当前目录及其子目录中查找所有大小大于100MB的文件，可以使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -<span class="built_in">type</span> f -size +100M</span><br></pre></td></tr></table></figure>
+
+<p>其中，+100M表示查找大小不超过100MB的文件。</p>
+<p>要递归搜索整个文件系统，可以使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find / -<span class="built_in">type</span> d -name <span class="string">&quot;*&quot;</span> -<span class="built_in">print</span></span><br></pre></td></tr></table></figure>
+
+<p>其中，&#x2F;&#96;表示搜索根目录。</p>
+<h2 id="复制-cp"><a href="#复制-cp" class="headerlink" title="复制 cp"></a>复制 cp</h2><p><code>cp</code>命令用于复制文件或目录。它的语法如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cp</span> [选项] 源文件 目标文件</span><br></pre></td></tr></table></figure>
+
+
+
+<p>例如，要将当前目录下的test文件复制到test_copy目录中，可以使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cp</span> <span class="built_in">test</span> test_copy</span><br></pre></td></tr></table></figure>
+
+
+
+<p>要将当前目录下的文件test复制到当前目录中，可以使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cp</span> <span class="built_in">test</span> .</span><br></pre></td></tr></table></figure>
+
+
+
+<p>要将当前目录下的文件test_copy复制到当前目录中，并且将test文件的权限更改为可读、可写和可执行，可以使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cp</span> test_copy ./test_copy</span><br></pre></td></tr></table></figure>
+
+<p>其中，.&#x2F;test_copy表示将test_copy文件移动到当前目录中。</p>
+<h2 id="移动-mv"><a href="#移动-mv" class="headerlink" title="移动 mv"></a>移动 mv</h2><p><code>mv</code>命令用于移动文件或目录。它的语法如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mv</span> [选项] 源文件 目标文件</span><br></pre></td></tr></table></figure>
+
+
+
+<p>例如，要将当前目录下的test文件移动到test_copy目录中，可以使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mv</span> <span class="built_in">test</span> test_copy</span><br></pre></td></tr></table></figure>
+
+
+
+<p>要将当前目录下的文件test移动到当前目录中，可以使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mv</span> <span class="built_in">test</span> .</span><br></pre></td></tr></table></figure>
+
+
+
+<p>要将当前目录下的文件test_copy移动到当前目录中，并且将test文件的权限更改为可读、可写和可执行，可以使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mv</span> test_copy ./test_copy</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="新建文件夹"><a href="#新建文件夹" class="headerlink" title="新建文件夹"></a>新建文件夹</h2><p><code>mkdir</code>是用于在文件系统中创建新目录的命令。它的语法如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> [选项] 目录名</span><br></pre></td></tr></table></figure>
+
+
+
+<p>例如，要在当前目录下创建一个名为test的新目录，可以使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> <span class="built_in">test</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>要在当前目录下创建一个名为test2的新目录，并且将用户具有写入权限，可以使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -m <span class="built_in">test</span></span><br></pre></td></tr></table></figure>
+
+<p>其中，-m选项表示创建一个具有管理员权限的目录。</p>
+<hr>
+<h1 id="二，python-for-linux"><a href="#二，python-for-linux" class="headerlink" title="二，python for linux"></a>二，python for linux</h1><p>python是一种解释型、高级和通用的编程语言。</p>
+<p>语法简洁易懂，具有丰富的内置函数和第三方库，因此被广泛应用于数据科学、Web开发、游戏开发、机器学习等领域。</p>
+<p>它可以帮助初学者快速入门编程，并且可以帮助他们逐步提高编程技能。</p>
+<p>默认情况下，<strong>Linux会自带安装Python</strong>，可以运行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python --version</span><br></pre></td></tr></table></figure>
+
+<p>命令查看</p>
+<p><strong>运行 Python 代码</strong></p>
+<p>在 Linux 中，可以使用以下命令来运行 Python 代码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 文件名.py</span><br></pre></td></tr></table></figure>
+
+<p>其中，文件名.py 是要运行的 Python 文件的名称。</p>
+<p><strong>编写 Python 代码</strong></p>
+<p>在 Linux 中，可以使用任何文本编辑器来编写 Python 代码。例如，可以使用 Vim 编辑器编写 Python 代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim 文件名.py</span><br></pre></td></tr></table></figure>
+
+
+
+<p>在编辑器中编写完代码后，可以使用以下命令来<strong>运行 Python 代码：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 文件名.py</span><br></pre></td></tr></table></figure>
+
+<p>其中，文件名.py 是要运行的 Python 文件的名称。</p>
+
+  </div>
+  <div id="gitalk-container"></div>
+</div>
+
+<script>
+  
+Fancybox.bind('[data-fancybox="fancybox-gallery-img"]', {
+  dragToClose: true,
+  Toolbar: true,
+  closeButton: "top",
+  Image: {
+    zoom: true,
+  },
+  on: {
+    initCarousel: (fancybox) => {
+      const slide = fancybox.Carousel.slides[fancybox.Carousel.page];
+      fancybox.$container.style.setProperty(
+        "--bg-image",
+        `url("${slide.$thumb.src}")`
+      );
+    },
+    "Carousel.change": (fancybox, carousel, to, from) => {
+      const slide = carousel.slides[to];
+      fancybox.$container.style.setProperty(
+        "--bg-image",
+        `url("${slide.$thumb.src}")`
+      );
+    },
+  },
+});
+</script>
+
+<style>
+    #noneimg img {
+        display: none;
+        z-index: 9999;
+        /* width: 600px !important; */
+        min-width: 0%;
+        max-width: 90%;
+        max-height: 80%;
+        border-radius: 0px;
+        position: fixed;
+        box-shadow: 0 0 0px #c3c3c300 !important;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto !important;
+    }
+
+    @media screen and (max-width:600px) {
+        #noneimg img {
+            max-width: 88%
+        }
+    }
+</style>
+
+    <div class="post-paging">
+    
+    <a href="/2023/05/22/%E7%BC%96%E7%A8%8B%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/">
+        <div class="post-paging-last">
+            <span>上一篇</span>
+            <p>编程问题汇总</p>
+        </div>
+    </a>
+    
+
+    
+    <a href="/2023/05/15/kali%E6%8A%98%E8%85%BE/">
+        <div class="post-paging-next">
+            <span>下一篇</span>
+            <p>kali 教程</p>
+        </div>
+    </a>
+    
+</div>
+</div>
+		
+<div class="footer">
+	<div class="Copyright">
+		©2023 By Joey. 主题：<a
+			style="text-decoration: none;display: contents; color: #898F9F;"
+			target="_blank" rel="noopener" href="https://github.com/79e/hexo-theme-quiet">Quiet</a>
+	</div>
+	<div class="contact">
+		
+		<a target="_blank" rel="noopener" href="https://github.com/79E/hexo-theme-quiet">
+			<img src="https://cdn.jsdelivr.net/gh/duogongneng/MyBlogImg/imggithub.png" alt="Quiet主题">
+		</a>
+		
+	</div>
+</div>
+
+<script src="/js/gotop.js"></script>
+
+
+<style type="text/css">
+    @media screen and (min-width: 600px) {
+        .goTop>span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            opacity: 0.8;
+            background: rgba(18, 24, 58, 0.06);
+            text-align: center;
+            transition: border .5s;
+            border: 1px solid rgba(18, 24, 58, 0.06);
+
+            -moz-transition: border .5s;
+            /* Firefox 4 */
+            -webkit-transition: border .5s;
+            /* Safari 和 Chrome */
+            -o-transition: border .5s;
+            /* Opera */
+        }
+
+        .goTop>span:hover {
+            border: 1px solid #6680B3;
+        }
+
+
+        .goTop {
+            position: fixed;
+            right: 30px;
+            bottom: 80px;
+        }
+
+        .goTop>span>svg {
+            width: 20px;
+            height: 20px;
+            opacity: 0.7;
+        }
+
+    }
+
+    @media screen and (max-width: 600px) {
+        .goTop {
+            display: none;
+        }
+    }
+</style>
+<div class="goTop" id="js-go_top">
+    <span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <g>
+                <path d="M13 12v8h-2v-8H4l8-8 8 8z"></path>
+            </g>
+        </svg>
+    </span>
+</div>
+<script>
+    $( '#js-go_top' )
+	.gotoTop( {
+		offset: 500,
+		speed: 300,
+		animationShow: {
+			'transform': 'translate(0,0)',
+			'transition': 'transform .5s ease-in-out'
+		},
+		animationHide: {
+			'transform': 'translate(100px,0)',
+			'transition': 'transform .5s ease-in-out'
+		}
+	} );
+</script>
+
+
+    <!-- Gitalk -->
+    <script>
+        const data = '{"clientID":"02b3c","clientSecret":"adfc7b4","repo":"gimment","owner":"duneng","admin":"duneng"}'
+        const gitalk = new Gitalk({
+            ...JSON.parse( data),
+            id:location.pathname,
+            distractionFreeMode:false
+        })
+        
+        if(Boolean('true')){
+            gitalk.render('gitalk-container')
+        }
+    </script>
+
+<script>
+	console.log('\n %c Hexo-Quiet 主题 %c https://github.com/79e/hexo-theme-quiet \n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;')
+</script>
+	</body>
+</html>
+
