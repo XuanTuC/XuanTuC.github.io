@@ -87,12 +87,6 @@
               </li> 
                    
           
-            
-              <li class="menu-item">
-                <a href="/categories/gallery/">精选</a>
-              </li> 
-                   
-          
           
         </ul>
       </nav>
@@ -129,7 +123,23 @@
     </div>
 </div>
     <div class="post-content">
-    
+    <p>要将 Kali Linux 的软件源切换为阿里云的镜像源，请按照以下步骤操作：</p>
+<p>1，打开终端并以管理员身份运行。</p>
+<p>2，编辑 <code>/etc/apt/sources.list</code> 文件。你可以使用 nano 编辑器或任何其他编辑器打开该文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Copy Codesudo nano /etc/apt/sources.list</span><br></pre></td></tr></table></figure>
+
+<p>3，备份默认的 sources.list 文件，以便在需要时可以恢复：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Copy Codesudo cp /etc/apt/sources.list /etc/apt/sources.list.bak</span><br></pre></td></tr></table></figure>
+
+<p>4，在编辑器中将 <code>https://http.kali.org/kali</code> 和 <code>https://security.kali.org/kali</code> 替换为下面的阿里云镜像源地址：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> Codedeb https://mirrors.aliyun.com/kali kali-rolling main non-free contrib</span><br><span class="line">deb-src https://mirrors.aliyun.com/kali kali-rolling main non-free contrib</span><br><span class="line"></span><br><span class="line">deb https://mirrors.aliyun.com/kali-security/ kali-security main non-free contrib</span><br><span class="line">deb-src https://mirrors.aliyun.com/kali-security/ kali-security main non-free contrib</span><br></pre></td></tr></table></figure>
+
+<p>5，保存并关闭文件。</p>
+<p>6，运行以下命令更新软件包列表和已安装软件包：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Copy Codesudo apt update &amp;&amp; sudo apt upgrade</span><br></pre></td></tr></table></figure>
+
+<p>现在，Kali Linux 软件源已被替换为阿里云的镜像源。</p>
+
 </div> 
 
 <script>
