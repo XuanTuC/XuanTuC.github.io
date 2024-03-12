@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head><!-- hexo injector head_begin start -->
+<link rel="stylesheet" href="/css/bilicard.css">
+<!-- hexo injector head_begin end -->
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="xuan tu">
+
+
+
+
+
+
+
+<title>Linux学习 for 菜鸟 | 曲径通幽处.</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/frame.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 6.3.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            ヾ(^_^) back Home.!!
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">主页</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">文章</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a target="_blank" rel="noopener" href="https://drive.google.com/drive/folders/1a-OiD9e0tEgNmWDoR0RGkhBtp-v8TQq8?usp=drive_link">书阁(M)</a>
+              </li> 
+                   
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+                
+                    <span class="post-tag">
+                        <a href="/tags/linux/">
+                            linux
+                        </a>
+                    </span>    
+                
+                    <span class="post-tag">
+                        <a href="/tags/%E6%96%B0%E4%BA%BA%E5%85%A5%E9%97%A8/">
+                            新人入门
+                        </a>
+                    </span>    
+                
+                    <span class="post-tag">
+                        <a href="/tags/ubuntu/">
+                            ubuntu
+                        </a>
+                    </span>    
+                           
+            
+        </div>
+        <div class="post-title">
+            
+            
+                Linux学习 for 菜鸟
+            
+            
+        </div>
+        <span class="post-date">
+            5月 18, 2023
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <p><em><strong>下面的文字较长，不喜欢看的也可以直接看&#x2F;&#x2F;斜体加粗大致了解一下</strong></em></p>
+<p><strong>#####    tips：网页端按 ctrl + f可以进行查找哦  #####</strong></p>
+<hr>
+<h1 id="一，什么是linux？"><a href="#一，什么是linux？" class="headerlink" title="一，什么是linux？"></a>一，什么是linux？</h1><p><strong>&#x2F;&#x2F;<em>是一种操作系统</em></strong></p>
+<p>Linux是一种自由和开放源码的类Unix<strong>操作系统</strong>，其内核由林纳斯·本纳第克特·托瓦兹于1991年10月5日首次发布。它主要受到Minix和Unix思想的启发，是一个基于POSIX的多用户、多任务、支持多线程和多CPU的操作系统。</p>
+<p>Linux具有丰富的内置功能和强大的社区支持，使其成为众多企业和个人用户的首选操作系统。它适用于几乎所有类型的计算机硬件，从手机、平板电脑到大型机和超级计算机。<strong>Linux还是免费使用和自由传播的，这使得它成为许多开发者和用户的首选</strong>，可以根据自己的需求和兴趣定制和修改。</p>
+<p>Linux的名字来源于计算机业余爱好者Linus Torvalds，他在1991年发布了第一个Linux内核。虽然当时Linux还没有完全成形，但Torvalds认为这个操作系统很“Linux-like”，因此就给它起了这个名字。</p>
+<hr>
+<h1 id="二，Linux的使用场景，为什么要学习linux？"><a href="#二，Linux的使用场景，为什么要学习linux？" class="headerlink" title="二，Linux的使用场景，为什么要学习linux？"></a>二，Linux的使用场景，为什么要学习linux？</h1><p><strong>&#x2F;&#x2F; <em>linux是网安学习的基础</em></strong></p>
+<p>Linux广泛用于以下场景：</p>
+<ol>
+<li>服务器操作系统：Linux可以<strong>用于构建高性能、可靠的服务器操作系统</strong>，如Apache、Nginx、MySQL、Redis等应用程序都可以在Linux上运行。</li>
+<li>嵌入式系统：Linux可以用于嵌入式系统，如智能电视、智能音箱、智能家居等。由于Linux具有<strong>小巧、低功耗、高可靠性</strong>等优点，因此在这些设备中得到广泛应用。</li>
+<li>桌面系统：Linux可以用于构建桌面操作系统，如<strong>Ubuntu、Debian、CentOS</strong>等。Linux的桌面环境提供了丰富的应用程序和用户界面，可以满足用户的需求。</li>
+<li>移动设备：Linux可以用于<strong>构建嵌入式设备和移动设备的操作系统</strong>，如Android、iOS、BlackBerry等。由于Linux具有开放源代码和广泛的社区支持，因此可以使用各种开源库和工具来构建这些设备的操作系统。</li>
+<li>开发环境：Linux可以用于搭<strong>建开发环境</strong>，如Code::Blocks、Eclipse、GitLab等开发工具。这些工具可以提供集成开发环境（IDE）和调试工具，帮助开发者更高效地进行开发。</li>
+<li>网络服务器：Linux可以<strong>用于构建网络服务器</strong>，如Apache、Nginx等。Linux具有高可用性和高性能等优点，因此在大型网络和企业级应用中得到广泛应用。</li>
+<li>高校计算机课程：Linux可以<strong>用于教育机构的计算机课程</strong>，如CS Courses 提供的Linux操作系统课程。学生可以通过学习Linux操作系统来<strong>了解计算机系统的工作原理</strong>，并学会使用各种基本的计算机软件和工具。</li>
+</ol>
+<hr>
+<h1 id="三，如何学习linux？"><a href="#三，如何学习linux？" class="headerlink" title="三，如何学习linux？"></a>三，如何学习linux？</h1><ol>
+<li>选择一个比较合适的Linux发行版：首先需要选择一个比较合适的Linux发行版，如Debian或Ubuntu。这些发行版具有广泛的社区支持和稳定性，可以满足大多数用户的需求。&#x2F;&#x2F;<em><strong>有图形化界面，适合萌新，类似Windows，自己电脑上学习linux一般是用vmware安装对应虚拟机进行学习</strong></em></li>
+<li>学习基础命令：学习Linux的基础命令是非常重要的，例如ls、cd、cp、mv等。你可以通过阅读Linux的文档或参考教程来学习这些命令。&#x2F;&#x2F;<em><strong>linux的操作都是可以靠指令完成的</strong></em></li>
+<li>学习操作系统基础概念：了解操作系统的基础概念，如进程、线程、文件系统、网络等，可以帮助你更好地理解Linux。你可以阅读Linux的文档或参考教程。&#x2F;&#x2F;<em><strong>小白暂时可以忽略，先学好最基础的只要入了门，也就知道如何自学了</strong></em></li>
+<li>学习代码规范和分布式管理代码：学习代码规范和分布式管理代码对于成为一个优秀的程序员非常重要。你可以参考Linux的代码规范或使用Git等工具来管理代码。</li>
+<li>学习高级命令和技巧：Linux提供了许多高级命令和技巧，如use grep、crontab等。你可以通过参考文档或参考教程来学习这些命令和技巧。</li>
+<li>实践：最后，你需要不断地实践，尝试使用Linux解决实际问题。你可以通过参加Linux的培训课程或使用Linux自带的练习工具来实践。***&#x2F;&#x2F;最重要的是实践，即使理论性的东西不是非常懂，只要多实践，自然会豁然开朗***</li>
+</ol>
+<hr>
+<h1 id="四，选择合适的linux发行版，在虚拟机中安装linux"><a href="#四，选择合适的linux发行版，在虚拟机中安装linux" class="headerlink" title="四，选择合适的linux发行版，在虚拟机中安装linux"></a>四，选择合适的linux发行版，在虚拟机中安装linux</h1><p><strong>推荐使用ubuntu（乌班图）</strong></p>
+<p>Ubuntu20.04版本镜像文件（ubuntu-20.04.6-desktop-amd64.iso）：链接：<a target="_blank" rel="noopener" href="https://share.weiyun.com/aMm2RiqF">https://share.weiyun.com/aMm2RiqF</a> 密码：ajrb8t</p>
+<p><strong>安装vmware：</strong></p>
+<p>官网版17版本：<a target="_blank" rel="noopener" href="https://download3.vmware.com/software/WKST-1700-WIN/VMware-workstation-full-17.0.0-20800274.exe">点击下载</a>，可以试用30天</p>
+<p>想要正版长期使用有俩途径，1，淘宝或并夕夕搜vmware激活码，大概三块钱一个，直接激活了，2，网上找破解版，这里主要是讲学习Linux，故不讨论破解的问题。</p>
+<p>安装完打开长这样：（我的是16版本）</p>
+<p><img src="https://i.328888.xyz/2023/05/18/VVulwy.png"></p>
+<p>因为要写的东西太多了，看这个吧：<a target="_blank" rel="noopener" href="https://blog.csdn.net/KRISNAT/article/details/124100113?ops_request_misc=%7B%22request_id%22:%22168441740816800186571303%22,%22scm%22:%2220140713.130102334..%22%7D&request_id=168441740816800186571303&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-124100113-null-null.142%5Ev87%5Econtrol_2,239%5Ev2%5Einsert_chatgpt&utm_term=ubuntu%E5%AE%89%E8%A3%85&spm=1018.2226.3001.4187"> 超详细VMware安装Ubuntu虚拟机步骤_ubuntu vmware-CSDN博客</a></p>
+<h3 id="我主要讲一下可能会遇到的问题："><a href="#我主要讲一下可能会遇到的问题：" class="headerlink" title="我主要讲一下可能会遇到的问题："></a>我主要讲一下可能会遇到的问题：</h3><p>1，<strong>如果你安装完，发现用着用着就就越来越卡，最后卡死</strong></p>
+<p>请检查c盘空间是否足够，最好还空闲20g以上。</p>
+<p>2.<strong>vmware打开虚拟机提示产品与此版本不兼容</strong>，或者<strong>发生错误，导致虚拟 CPU 进入关闭状态。如果虚拟机外部发生此错误，则可能已导致物理计算机重新启动……</strong></p>
+<p>确定你的vmware版本，假如是16，然后打开你的虚拟机安装目录：</p>
+<p><img src="https://i.328888.xyz/2023/05/18/VVuhPw.png"></p>
+<p>右键vmx文件，用记事本打开</p>
+<p><img src="https://i.328888.xyz/2023/05/18/VVu9yL.png"></p>
+<p>查看上面字段是否和自己的VMware版本号一致，若不一致，则改一致，重启即可</p>
+<p>3，<strong>安装时窗口太小，“下一步”按钮被挡住了：</strong></p>
+<p>按下Alt+F7，同时按下鼠标左键，然后拖动窗口</p>
+<p><strong>4，鼠标点进了虚拟机，出不来了。</strong></p>
+<p>按ctrl+alt</p>
+<hr>
+<h1 id="虚拟机安装就这样告一段落，接下来就可以学习Ubuntu了！"><a href="#虚拟机安装就这样告一段落，接下来就可以学习Ubuntu了！" class="headerlink" title="虚拟机安装就这样告一段落，接下来就可以学习Ubuntu了！"></a>虚拟机安装就这样告一段落，接下来就可以学习Ubuntu了！</h1><h1 id=""><a href="#" class="headerlink" title=""></a></h1><p>任何地方都可以“用终端打开”<img src="https://i.328888.xyz/2023/05/18/VVuqvF.png"></p>
+<p><strong>终端</strong> 就是输入命令的地方</p>
+<p>打开后长这个样</p>
+<p><img src="https://i.328888.xyz/2023/05/18/VfZZ4H.png"></p>
+<p>ubuntu@ 你的用户名：~&#x2F;地址$ </p>
+<p>为了方便，下面的命令统一不再配图，除非遇到特殊说明情况</p>
+<hr>
+<h1 id="一，命令"><a href="#一，命令" class="headerlink" title="一，命令"></a>一，命令</h1><p>下面来学习基础命令：</p>
+<h2 id="获取管理员权限-sudo-su"><a href="#获取管理员权限-sudo-su" class="headerlink" title="获取管理员权限 sudo su"></a>获取管理员权限 sudo su</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo su</span><br></pre></td></tr></table></figure>
+
+<p>需要输入账户的密码，输入时不显示，输完回车即可</p>
+<p>获取管理员权限的目的：管理员（root）权现是最高权现，获取后可以更改任意文件及设置</p>
+<h2 id="得知目前所在的路径-pwd"><a href="#得知目前所在的路径-pwd" class="headerlink" title="得知目前所在的路径 pwd"></a>得知目前所在的路径 pwd</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pwd</span><br></pre></td></tr></table></figure>
+
+<p>得到目前所在路径，用户的操作是有地址的，特定目录有特定的职能，因此在进行默某些特殊操作时你需要到特定的目录里面去，这个命令就是让你得知你目前在那个目录</p>
+<h2 id="列出当前目录下的文件夹-ls"><a href="#列出当前目录下的文件夹-ls" class="headerlink" title="列出当前目录下的文件夹  ls"></a>列出当前目录下的文件夹  ls</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls</span><br></pre></td></tr></table></figure>
+
+<p>例子：</p>
+<p>ls</p>
+<p>回显：music   photos</p>
+<p>则表明目前的目录下面有music和photos两个文件夹</p>
+<h2 id="读取文件-cat"><a href="#读取文件-cat" class="headerlink" title="读取文件 cat"></a>读取文件 cat</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat</span><br></pre></td></tr></table></figure>
+
+<p>用于查看文件的内容，而不需要在任何文本编辑器中打开它</p>
+<p><strong>读取一个名为flag.txt的文件</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat flag.txt</span><br></pre></td></tr></table></figure>
+
+<p>回显： ctf{you_ar4_righ4}</p>
+<p>表明你读取了一个名为flag.txt的文件，其内容是 ctf{you_ar4_righ4}</p>
+<p><strong>查看当前文件夹下所有的文件内容</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat *</span><br></pre></td></tr></table></figure>
+
+<h2 id="关机-shutdown"><a href="#关机-shutdown" class="headerlink" title="关机 shutdown"></a>关机 shutdown</h2><p>例子</p>
+<p>​	关机并重启：</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shutdown -r now</span><br></pre></td></tr></table></figure>
+
+<p>这将在当前用户下强制关闭系统，并在5秒后重启。</p>
+<p>​	关机但不重启：</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shutdown -h now</span><br></pre></td></tr></table></figure>
+
+<p>这将关闭系统，但不重启。</p>
+<p>​	关机后等待10分钟后重启：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shutdown -r +<span class="number">10</span> <span class="number">10</span>分钟后重启</span><br></pre></td></tr></table></figure>
+
+<p>这将在当前用户下强制关闭系统，并在10分钟后重启。</p>
+<p>关机后等待10点钟重启：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shutdown -h +<span class="number">10</span> <span class="number">10</span>点钟重启</span><br></pre></td></tr></table></figure>
+
+<p>这将关闭系统，并在10点钟时重启。</p>
+<p>仅发送警告信息而不关机：</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shutdown -k now</span><br></pre></td></tr></table></figure>
+
+<p>这将发送一条警告信息，但不会强制关闭系统。</p>
+<p>立即关机并切断电源：</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shutdown -P now</span><br></pre></td></tr></table></figure>
+
+<p>这将立即关闭系统并切断电源。</p>
+<h2 id="目录操作-cd"><a href="#目录操作-cd" class="headerlink" title="目录操作 cd"></a>目录操作 cd</h2><p>Linux中的cd命令用于在文件系统中切换目录。它的语法如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> [目录路径]</span><br></pre></td></tr></table></figure>
+
+<p>例如，要切换到根目录，可以使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /</span><br></pre></td></tr></table></figure>
+
+<p>要切换到上一级目录，可以使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ..</span><br></pre></td></tr></table></figure>
+
+<p>要切换到当前目录的子目录，可以使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /path/to/directory</span><br></pre></td></tr></table></figure>
+
+<p>要更改到特定目录，可以使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /tmp</span><br></pre></td></tr></table></figure>
+
+<p>要返回上一个目录，可以使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> -</span><br></pre></td></tr></table></figure>
+
+<h2 id="删除-rm"><a href="#删除-rm" class="headerlink" title="删除 rm"></a>删除 rm</h2><p>rm命令用于删除文件或目录。它的语法如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">rm</span> [选项] 文件或目录</span><br></pre></td></tr></table></figure>
+
+
+
+<p>例如，要删除当前目录下的test文件，可以使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">rm</span> <span class="built_in">test</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>要删除一个文件夹，可以使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">rm</span> -r directory/</span><br></pre></td></tr></table></figure>
+
+<p>其中，directory&#x2F;是要删除的文件夹路径。</p>
+<h2 id="解压-压缩-tar"><a href="#解压-压缩-tar" class="headerlink" title="解压 压缩  tar"></a>解压 压缩  tar</h2><p>tar命令用于将文件打包成归档文件，并且可以解包归档文件。它的语法如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar [选项] [文件或目录1] [文件或目录2] ... [文件或目录N]</span><br></pre></td></tr></table></figure>
+
+
+
+<p>例如，要将当前目录下的所有文件和目录打包成一个归档文件，并且命名为howtoing-16-apr-2013.tar.gz，可以使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xvf howtoing-16-apr-2013.tar.gz</span><br></pre></td></tr></table></figure>
+
+
+
+<p>要从归档文件中解包文件，可以使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xvf howtoing-16-apr-2013.tar</span><br></pre></td></tr></table></figure>
+
+<p>其中，howtoing-16-apr-2013.tar是要解包的归档文件名。</p>
+<h2 id="查找-find"><a href="#查找-find" class="headerlink" title="查找 find"></a>查找 find</h2><p><code>find</code>命令是一个用于在文件系统中查找文件和目录的常用工具。它的语法如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find [选项] 目录 -<span class="built_in">type</span> f -name [文件名]</span><br></pre></td></tr></table></figure>
+
+
+
+<p>例如，要在当前目录及其子目录中查找所有扩展名为.txt的文件，可以使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -<span class="built_in">type</span> f -name <span class="string">&quot;*.txt&quot;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>要在当前目录及其子目录中查找所有以”example”开头的文件，并且不包含”.txt”扩展名，可以使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -<span class="built_in">type</span> f -name <span class="string">&quot;example*&quot;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>要在当前目录及其子目录中查找所有大小大于100MB的文件，可以使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -<span class="built_in">type</span> f -size +100M</span><br></pre></td></tr></table></figure>
+
+<p>其中，+100M表示查找大小不超过100MB的文件。</p>
+<p>要递归搜索整个文件系统，可以使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find / -<span class="built_in">type</span> d -name <span class="string">&quot;*&quot;</span> -<span class="built_in">print</span></span><br></pre></td></tr></table></figure>
+
+<p>其中，&#x2F;&#96;表示搜索根目录。</p>
+<h2 id="复制-cp"><a href="#复制-cp" class="headerlink" title="复制 cp"></a>复制 cp</h2><p><code>cp</code>命令用于复制文件或目录。它的语法如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cp</span> [选项] 源文件 目标文件</span><br></pre></td></tr></table></figure>
+
+
+
+<p>例如，要将当前目录下的test文件复制到test_copy目录中，可以使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cp</span> <span class="built_in">test</span> test_copy</span><br></pre></td></tr></table></figure>
+
+
+
+<p>要将当前目录下的文件test复制到当前目录中，可以使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cp</span> <span class="built_in">test</span> .</span><br></pre></td></tr></table></figure>
+
+
+
+<p>要将当前目录下的文件test_copy复制到当前目录中，并且将test文件的权限更改为可读、可写和可执行，可以使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cp</span> test_copy ./test_copy</span><br></pre></td></tr></table></figure>
+
+<p>其中，.&#x2F;test_copy表示将test_copy文件移动到当前目录中。</p>
+<h2 id="移动-mv"><a href="#移动-mv" class="headerlink" title="移动 mv"></a>移动 mv</h2><p><code>mv</code>命令用于移动文件或目录。它的语法如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mv</span> [选项] 源文件 目标文件</span><br></pre></td></tr></table></figure>
+
+
+
+<p>例如，要将当前目录下的test文件移动到test_copy目录中，可以使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mv</span> <span class="built_in">test</span> test_copy</span><br></pre></td></tr></table></figure>
+
+
+
+<p>要将当前目录下的文件test移动到当前目录中，可以使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mv</span> <span class="built_in">test</span> .</span><br></pre></td></tr></table></figure>
+
+
+
+<p>要将当前目录下的文件test_copy移动到当前目录中，并且将test文件的权限更改为可读、可写和可执行，可以使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mv</span> test_copy ./test_copy</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="新建文件夹"><a href="#新建文件夹" class="headerlink" title="新建文件夹"></a>新建文件夹</h2><p><code>mkdir</code>是用于在文件系统中创建新目录的命令。它的语法如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> [选项] 目录名</span><br></pre></td></tr></table></figure>
+
+
+
+<p>例如，要在当前目录下创建一个名为test的新目录，可以使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> <span class="built_in">test</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>要在当前目录下创建一个名为test2的新目录，并且将用户具有写入权限，可以使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -m <span class="built_in">test</span></span><br></pre></td></tr></table></figure>
+
+<p>其中，-m选项表示创建一个具有管理员权限的目录。</p>
+<hr>
+<h1 id="二，python-for-linux"><a href="#二，python-for-linux" class="headerlink" title="二，python for linux"></a>二，python for linux</h1><p>python是一种解释型、高级和通用的编程语言。</p>
+<p>语法简洁易懂，具有丰富的内置函数和第三方库，因此被广泛应用于数据科学、Web开发、游戏开发、机器学习等领域。</p>
+<p>它可以帮助初学者快速入门编程，并且可以帮助他们逐步提高编程技能。</p>
+<p>默认情况下，<strong>Linux会自带安装Python</strong>，可以运行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python --version</span><br></pre></td></tr></table></figure>
+
+<p>命令查看</p>
+<p><strong>运行 Python 代码</strong></p>
+<p>在 Linux 中，可以使用以下命令来运行 Python 代码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 文件名.py</span><br></pre></td></tr></table></figure>
+
+<p>其中，文件名.py 是要运行的 Python 文件的名称。</p>
+<p><strong>编写 Python 代码</strong></p>
+<p>在 Linux 中，可以使用任何文本编辑器来编写 Python 代码。例如，可以使用 Vim 编辑器编写 Python 代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim 文件名.py</span><br></pre></td></tr></table></figure>
+
+
+
+<p>在编辑器中编写完代码后，可以使用以下命令来<strong>运行 Python 代码：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 文件名.py</span><br></pre></td></tr></table></figure>
+
+<p>其中，文件名.py 是要运行的 Python 文件的名称。</p>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2023/05/22/learn_bugs/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2023/05/01/syber_S_learn/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+
+
+    
+       <!--PC版-->
+        <div id="SOHUCS" ></div>
+        <script charset="utf-8" type="text/javascript" src="https://cy-cdn.kuaizhan.com/upload/changyan.js" ></script>
+        <script type="text/javascript">
+        window.changyan.api.config({
+            appid: 'cywJvGKKO',
+            conf: 'prod_dfd0ec91693832034dcc62943592b045'
+        });
+        </script>   
+     
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+                
+                <br>
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+    
+
+  </body>
+</html>

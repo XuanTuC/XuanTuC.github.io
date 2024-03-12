@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head><!-- hexo injector head_begin start -->
+<link rel="stylesheet" href="/css/bilicard.css">
+<!-- hexo injector head_begin end -->
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="xuan tu">
+
+
+
+
+
+
+
+<title>CTF简介 | 曲径通幽处.</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/frame.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 6.3.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            ヾ(^_^) back Home.!!
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">主页</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">文章</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a target="_blank" rel="noopener" href="https://drive.google.com/drive/folders/1a-OiD9e0tEgNmWDoR0RGkhBtp-v8TQq8?usp=drive_link">书阁(M)</a>
+              </li> 
+                   
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+                
+                    <span class="post-tag">
+                        <a href="/tags/CTF/">
+                            CTF
+                        </a>
+                    </span>    
+                
+                    <span class="post-tag">
+                        <a href="/tags/%E9%BB%91%E5%AE%A2/">
+                            黑客
+                        </a>
+                    </span>    
+                
+                    <span class="post-tag">
+                        <a href="/tags/%E5%A4%A7%E8%87%B4%E4%BA%86%E8%A7%A3/">
+                            大致了解
+                        </a>
+                    </span>    
+                           
+            
+        </div>
+        <div class="post-title">
+            
+            
+                CTF简介
+            
+            
+        </div>
+        <span class="post-date">
+            3月 4, 2023
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <h3 id="你知道什么是CTF？"><a href="#你知道什么是CTF？" class="headerlink" title="你知道什么是CTF？"></a>你知道什么是CTF？</h3><p>CTF本来是西方的一种传统运动。在比赛上两军会互相争夺旗帜，当有一方的旗帜已被敌军夺取，就代表了那一方的战败。<br>我所说的CTF比赛即为黑客大赛，显而易见，此处所说的CTF是信息安全领域。</p>
+<p>本人就是一个菜鸟CTFer   (QAQ)</p>
+<p>CTF比赛的必要条件就是有一台电脑</p>
+<h3 id="CTF比赛有哪些比赛模式？"><a href="#CTF比赛有哪些比赛模式？" class="headerlink" title="CTF比赛有哪些比赛模式？"></a><strong>CTF比赛有哪些比赛模式？</strong></h3><h4 id="解题模式（Jeopardy）"><a href="#解题模式（Jeopardy）" class="headerlink" title="解题模式（Jeopardy）"></a>解题模式（Jeopardy）</h4><p>在解题模式CTF赛制中，参赛队伍可以通过互联网或者现场网络参与，这种模式的CTF竞赛与ACM编程竞赛、信息学奥赛比较类似，以解决网络安全技术挑战题目的分值和时间来排名，通常用于在线选拔赛。题目主要包含逆向、漏洞挖掘与利用、Web渗透、密码、取证、隐写、安全编程等类别。</p>
+<h4 id="攻防模式（Attack-Defense）"><a href="#攻防模式（Attack-Defense）" class="headerlink" title="攻防模式（Attack-Defense）"></a>攻防模式（Attack-Defense）</h4><p>​		攻防模式CTF赛制中，参赛队伍在网络空间互相进行攻击和防守，挖掘网络服务漏洞并攻击对手服务来得分，修补自身服务漏洞进行防御来避免丢分。攻防模式CTF赛制可以实时通过得分反映出比赛情况，最终也以得分直接分出胜负，是一种竞争激烈，具有很强观赏性和高度透明性的网络安全赛制。在这种赛制中，不仅仅是比参赛队员的智力和技术，也比体力（因为比赛一般都会持续48小时及以上），同时也比团队之间的分工配合与合作。</p>
+<h4 id="混合模式（Mix）"><a href="#混合模式（Mix）" class="headerlink" title="混合模式（Mix）"></a>混合模式（Mix）</h4><p>​		结合了解题模式与攻防模式的CTF赛制，比如参赛队伍通过解题可以获取一些初始分数，然后通过攻防对抗进行得分增减的零和游戏，最终以得分高低分出胜负。采用混合模式CTF赛制的典型代表如iCTF国际CTF竞赛。</p>
+<h4 id="比赛类型："><a href="#比赛类型：" class="headerlink" title="比赛类型："></a>比赛类型：</h4><p>Web - 网络攻防<br>Reverse Engineering - 逆向工程<br>Crypto - 密码攻击<br>Mobile - 移动安全<br>Misc - 安全杂项</p>
+<p>具体内容网上的其他人比我写的详细，由于本文主要是让大家对CTF有个大概的了解，故不再阐述详细内容</p>
+<h4 id="CTF练习平台推荐"><a href="#CTF练习平台推荐" class="headerlink" title="CTF练习平台推荐"></a>CTF练习平台推荐</h4><p>1,<a target="_blank" rel="noopener" href="https://buuoj.cn/">BUUCTF</a> </p>
+<p>2,<a target="_blank" rel="noopener" href="https://adworld.xctf.org.cn/?rwNmOdr=1677981967929">攻防世界</a></p>
+<p>3,<a target="_blank" rel="noopener" href="https://ctf.bugku.com/">bugku</a></p>
+<p>4,<a target="_blank" rel="noopener" href="https://www.ctfer.vip/">NSSCTF</a> </p>
+<h4 id="个人建议"><a href="#个人建议" class="headerlink" title="个人建议"></a>个人建议</h4><p>如果你想体验当黑客的感觉，参加CTF比赛可以满足你的需求；</p>
+<p>如果你是信息工程专业相关的学生，CTF可以帮助你学到很多专业知识，让你更上一层楼；</p>
+<p>如果你觉得自己毅力或者耐心不足，不建议入门CTF；</p>
+<p>CTF上手可能比较困难，建议先自己到我上面推荐的练习平台先练一下，感受一下，再去网上找相关答案及解题步骤，照着答案做，然后尝试解类似题目，找到感觉后再解题进步就会非常快。</p>
+<p>如果你有任何问题，可以在我的邮箱（<a href="mailto:&#x31;&#x32;&#x30;&#54;&#x36;&#54;&#x31;&#x34;&#x33;&#52;&#x40;&#x71;&#113;&#46;&#x63;&#x6f;&#x6d;">&#x31;&#x32;&#x30;&#54;&#x36;&#54;&#x31;&#x34;&#x33;&#52;&#x40;&#x71;&#113;&#46;&#x63;&#x6f;&#x6d;</a>）评论留言，我这个菜鸟可以在自己能力范围之内为你提供帮助。</p>
+<h4 id="CTF俚语"><a href="#CTF俚语" class="headerlink" title="CTF俚语"></a>CTF俚语</h4><p>语言学家通常将非正式语言称为“俚语”，并为各种职业的技术词汇保留术语“行话”。然而，这个集合的祖先被称为“行话文件”，CTF俚语即为CTF界的“行话”。</p>
+<ol>
+<li><p>Flag：指比赛中需要寻找的答案或密码。</p>
+</li>
+<li><p>Pwn：指攻破或控制系统，常用于指攻击某个漏洞或服务，如pwn the server。</p>
+</li>
+<li><p>Shellcode：指在漏洞利用中需要注入的代码，用于获取系统权限。</p>
+</li>
+<li><p>Exploit：指利用系统漏洞的代码或技术。</p>
+</li>
+<li><p>Payload：指在攻击或利用漏洞时需要发送到目标系统的恶意代码或数据。</p>
+</li>
+<li><p>Reversing：指反汇编或逆向分析二进制程序。</p>
+</li>
+<li><p>Brute force：指暴力破解密码或密钥，常用于密码学挑战。</p>
+</li>
+<li><p>Steganography：指隐藏信息的技术，如在图片或音频文件中隐藏文本信息。</p>
+</li>
+<li><p>Cryptography：指加密和解密技术，常用于密码学挑战。</p>
+</li>
+<li><p>Cryptoanalysis：指破解加密算法或密文的技术，常用于密码学挑战。</p>
+</li>
+<li><p>Binary exploitation：指利用二进制程序中的漏洞攻击系统。</p>
+</li>
+<li><p>Web exploitation：指利用Web应用程序中的漏洞攻击系统。</p>
+</li>
+<li><p>Forensics：指数字取证技术，用于分析和恢复已删除的数据或系统日志。</p>
+</li>
+<li><p>OSINT：指开放源情报，指通过公开的信息源获取信息的技术。</p>
+</li>
+<li><p>Root：指获取系统管理员权限。</p>
+</li>
+<li><p>wp：指”Write-up”，意为“赛题分析和解答”。</p>
+</li>
+<li><p>Forensics：数字取证，是指在计算机系统和数字设备中收集、保护、分析和呈现与计算机相关的证据的科学。</p>
+</li>
+<li><p>Brute force：暴力破解，是指通过穷举法尝试所有可能的密码组合来破解密码。</p>
+</li>
+<li><p>Social engineering：社会工程学，是指利用心理学、人际关系和欺骗等手段来获取机密信息的技术。</p>
+</li>
+<li><p>靶场：“靶场”通常是指CTF练习平台，也被称为“训练营”，“实验室”等。</p>
+</li>
+</ol>
+<p>这些俚语在CTF界非常常见，熟悉这些术语对于参加CTF比赛或进行网络安全工作都是非常重要的。</p>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2023/03/05/data_structure_algorithm/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+
+
+    
+       <!--PC版-->
+        <div id="SOHUCS" ></div>
+        <script charset="utf-8" type="text/javascript" src="https://cy-cdn.kuaizhan.com/upload/changyan.js" ></script>
+        <script type="text/javascript">
+        window.changyan.api.config({
+            appid: 'cywJvGKKO',
+            conf: 'prod_dfd0ec91693832034dcc62943592b045'
+        });
+        </script>   
+     
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+                
+                <br>
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+    
+
+  </body>
+</html>
