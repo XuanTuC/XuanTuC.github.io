@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head><!-- hexo injector head_begin start -->
+<link rel="stylesheet" href="/css/bilicard.css">
+<!-- hexo injector head_begin end -->
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="xuan tu">
+
+
+
+
+
+
+
+<title>小学生都能成功的sui move环境搭建教学、sui使用说明 | 曲径通幽处.</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/frame.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 6.3.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            ヾ(^_^) back Home.!!
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">主页</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">文章</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a target="_blank" rel="noopener" href="https://drive.google.com/drive/folders/1a-OiD9e0tEgNmWDoR0RGkhBtp-v8TQq8?usp=drive_link">书阁(M)</a>
+              </li> 
+                   
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                小学生都能成功的sui move环境搭建教学、sui使用说明
+            
+            
+        </div>
+        <span class="post-date">
+            4月 11, 2024
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <h1 id="step0，先决条件"><a href="#step0，先决条件" class="headerlink" title="step0，先决条件"></a>step0，先决条件</h1><blockquote>
+<p>声明：move语言更新快，本文具有时效性，一切以<a target="_blank" rel="noopener" href="https://docs.sui.io/guides/developer/getting-started">官方文档</a>为准</p>
+</blockquote>
+<h2 id="0-1操作系统"><a href="#0-1操作系统" class="headerlink" title="0.1操作系统"></a>0.1操作系统</h2><blockquote>
+<p><strong>支持的操作系统：</strong></p>
+<p>macOS</p>
+<p>windows</p>
+<p>linux</p>
+</blockquote>
+<p><strong>本文以ubuntu linux为例</strong></p>
+<h2 id="0-0网络环境"><a href="#0-0网络环境" class="headerlink" title="0.0网络环境"></a>0.0网络环境</h2><p>科学上网</p>
+<blockquote>
+<p><strong>特别强调</strong>：如果你没有软路由等网络层代理工具，而是用软件代理，你的终端是不走软件的代理的（大多数情况）</p>
+</blockquote>
+<p>因此你要通过<strong>终端代理工具+软件代理工具</strong>的方式实现终端代理</p>
+<p>介绍一个方案：**<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/2288071">ProxyChains</a>** + <strong><a target="_blank" rel="noopener" href="https://einverne.github.io/post/2021/10/linux-use-clash-for-windows.html">cfw</a></strong></p>
+<p><strong>示例</strong>：假设你现在已经安装好了上述两个工具，并配置且运行了<code>cfw</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/proxychains.conf</span><br></pre></td></tr></table></figure>
+
+<p>在打开的文件里面最后添加一行（7890 是cfw的默认代理端口），注释掉socks</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http 127.0.0.1 7890</span><br></pre></td></tr></table></figure>
+
+<p>然后~保存，<code>ctrl+x</code>关闭</p>
+<h2 id="0-2依赖（linux）"><a href="#0-2依赖（linux）" class="headerlink" title="0.2依赖（linux）"></a>0.2依赖（linux）</h2><p>linux平台下需要的依赖</p>
+<h3 id="0-2-1-系统软件"><a href="#0-2-1-系统软件" class="headerlink" title="0.2.1 系统软件"></a>0.2.1 系统软件</h3><blockquote>
+<p>Linux 操作系统所需的先决条件包括：</p>
+<p>cURL </p>
+<p>Rust and Cargo </p>
+<p>Git CLI Git </p>
+<p>CMake</p>
+<p>GCC</p>
+<p>libssl-dev libssl </p>
+<p>libclang-dev</p>
+<p>libpq-dev libpq </p>
+<p>build-essential </p>
+</blockquote>
+<p><strong>安装本节中列出的先决条件。</strong></p>
+<p><strong>使用以下命令更新 <code>apt-get</code> ：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
+
+<p><strong>运行以下命令来一次安装它们</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install curl git-all cmake gcc libssl-dev pkg-config libclang-dev libpq-dev build-essential</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="0-2-2-安装-cargo-和-rust"><a href="#0-2-2-安装-cargo-和-rust" class="headerlink" title="0.2.2 安装 cargo 和 rust"></a>0.2.2 安装 cargo 和 rust</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl --proto &#x27;=https&#x27; --tlsv1.2 -sSf https://sh.rustup.rs | sh</span><br></pre></td></tr></table></figure>
+
+<p>如果不成功，请确保终端已经实现科学上网</p>
+<p>Sui 使用最新版本的 Cargo 来构建和管理依赖项。有关更多信息，请参阅 Rust 网站上的<a target="_blank" rel="noopener" href="https://doc.rust-lang.org/cargo/getting-started/installation.html">Cargo installation</a>页面。</p>
+<p>使用以下命令将 Rust 更新为 <code>rustup</code> ：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rustup update stable</span><br></pre></td></tr></table></figure>
+
+<h1 id="step1，Install-Sui-move-环境"><a href="#step1，Install-Sui-move-环境" class="headerlink" title="step1，Install Sui move 环境"></a>step1，Install Sui move 环境</h1><p>官网提供了</p>
+<h2 id="我建议使用“从二进制文件安装”"><a href="#我建议使用“从二进制文件安装”" class="headerlink" title="我建议使用“从二进制文件安装”"></a>我建议使用“从二进制文件安装”</h2><p>访问 <a target="_blank" rel="noopener" href="https://github.com/MystenLabs/sui%E3%80%82">https://github.com/MystenLabs/sui。</a></p>
+<p>在右侧窗格中，找到“<strong>Releases</strong>”部分。</p>
+<p><img src="https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/releases-508571c4e1b0f73222ac83d4bb30a4c2.png" alt="Sui releases in GitHub"></p>
+<p>单击标记为“<strong>Latest</strong> ”的版本以打开该版本的页面。</p>
+<p>在版本的“<strong>Assets</strong>”部分中，选择与您的操作系统对应的 .tgz 压缩文件（以ubuntu22.04为例，如果你是x86架构，选择[sui-mainnet-v1.22.0-ubuntu-x86_64.tgz](<a target="_blank" rel="noopener" href="https://github.com/MystenLabs/sui/releases/download/mainnet-v1.22.0/sui-mainnet-v1.22.0-ubuntu-x86_64.tgz">https://github.com/MystenLabs/sui/releases/download/mainnet-v1.22.0/sui-mainnet-v1.22.0-ubuntu-x86_64.tgz</a></p>
+<h2 id="1-1用命令行下载（以v1-22-0为例子，wget后面的链接以最新版本为准）："><a href="#1-1用命令行下载（以v1-22-0为例子，wget后面的链接以最新版本为准）：" class="headerlink" title="1.1用命令行下载（以v1.22.0为例子，wget后面的链接以最新版本为准）："></a>1.1用命令行下载（以v1.22.0为例子，wget后面的链接以最新版本为准）：</h2> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd ~</span><br><span class="line"></span><br><span class="line">wget https://github.com/MystenLabs/sui/releases/download/mainnet-v1.22.0/sui-mainnet-v1.22.0-ubuntu-x8长度6_64.tgz</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="1-2，解压-tgz-文件"><a href="#1-2，解压-tgz-文件" class="headerlink" title="1.2，解压 .tgz 文件"></a>1.2，解压 <code>.tgz</code> 文件</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf sui-mainnet-v1.22.0-ubuntu-x86_64.tgz</span><br><span class="line">cd target </span><br><span class="line">cd release</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>二进制文件说明</p>
+<p>sui-faucet- <OS> - <ARCHITECTURE> ：本地水龙头在本地网络上铸造硬币。<br>sui-indexer- <OS> - <ARCHITECTURE> ：本地 Sui 网络的索引器。<br>sui- <OS> - <ARCHITECTURE> ：主要 Sui 二进制文件。<br>sui-node- <OS> - <ARCHITECTURE> ：运行本地节点。<br>sui-test-validator- <OS> - <ARCHITECTURE> ：在本地网络上运行测试验证器以进行开发。<br>sui-tool- <OS> - <ARCHITECTURE> ：为 Sui 提供实用程序。</p>
+</blockquote>
+<p>解压后出现两个文件夹：<code>external-crates/</code>和<code>target</code></p>
+<blockquote>
+<p>move-analyzer-ubuntu-x86_64 文件在		&#x2F;external-crates&#x2F;move&#x2F;target&#x2F;release&#x2F;  里面</p>
+<p>其他主要二进制文件在		target&#x2F;releases&#x2F;  里面</p>
+</blockquote>
+<h2 id="1-3，直接使用二进制文件运行sui"><a href="#1-3，直接使用二进制文件运行sui" class="headerlink" title="1.3，直接使用二进制文件运行sui"></a>1.3，直接使用二进制文件运行sui</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./sui-ubuntu-x86_64 -V</span><br></pre></td></tr></table></figure>
+
+<p>这将显示sui的版本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pwd</span><br></pre></td></tr></table></figure>
+
+<p>显示当前所在目录，这在配置环境变量的环节会用到</p>
+<h2 id="1-4，配置环境变量"><a href="#1-4，配置环境变量" class="headerlink" title="1.4，配置环境变量"></a>1.4，配置环境变量</h2><blockquote>
+<p>如果不想每次都在指定目录输入<code>./sui-ubuntu-x86_64</code>而是直接在任意文件夹用<code>sui</code>，可以配置一下环境变量</p>
+</blockquote>
+<p>和传统的复杂配置思路不同，我们可以直接把二进制文件放到<code>/usr/local/bin/</code>，因为<code>/usr/local/bin/</code>是默认的环境变量值，里面的二进制文件自然也默认配置为了环境变量中的文件</p>
+<p><code>（例子中的文件夹：/home/ubuntu/target/release/）</code>替换成刚才pwd命令显示的目录，<code>sui-ubuntu-x86_64</code>以你下载的实际文件版本和架构为准,<code>../</code>是上一级目录</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cd /home/ubuntu/target/</span><br><span class="line">sudo mv /home/ubuntu/target/release/ /usr/local/bin/</span><br><span class="line">cd /usr/local/bin/release</span><br><span class="line">sudo mv * ../ </span><br><span class="line">cd ../</span><br><span class="line">ls</span><br></pre></td></tr></table></figure>
+
+<p>重命名二进制文件，并把<code>sui-ubuntu-x86_64</code>重命名为<code>sui</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/bin</span><br><span class="line">sudo mv sui-ubuntu-x86_64 sui</span><br></pre></td></tr></table></figure>
+
+<p>授予运行权限（）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod +x /usr/local/bin/*</span><br></pre></td></tr></table></figure>
+
+<p>查看</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls</span><br></pre></td></tr></table></figure>
+
+<p>你应该能看到</p>
+<p><img src="https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/image-20240411175458245.png" alt="image-20240411175458245"></p>
+<p>验证sui安装</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ~</span><br><span class="line">sui</span><br></pre></td></tr></table></figure>
+
+<p>你应该能看到</p>
+<p><img src="https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/image-20240411175836938.png" alt="image-20240411175836938"></p>
+<p>证明安装成功</p>
+<h1 id="strp2，连接到sui网络"><a href="#strp2，连接到sui网络" class="headerlink" title="strp2，连接到sui网络"></a>strp2，连接到sui网络</h1><p><a target="_blank" rel="noopener" href="https://docs.sui.io/guides/developer/getting-started/connect">官方文档</a></p>
+<p>Sui 拥有可用的主网、开发网和测试网网络。您可以使用测试网络（Devnet 或 Testnet）之一来试验在该网络上运行的 Sui 版本。您还可以建立本地 Sui 网络以进行本地开发。</p>
+<p>Sui Testnet 和 Devnet 网络由 Mysten Labs 运营的四个验证器节点组成。客户端使用 JSON-RPC 通过此端点 <code>https://fullnode.&lt;SUI-NETWORK-VERSION&gt;.sui.io:443</code> 发送事务和读取请求。</p>
+<blockquote>
+<p> 例如：testnet的地址：<code>https://fullnode.testnet.sui.io:443</code></p>
+</blockquote>
+<h2 id="2-1，配置Sui客户端"><a href="#2-1，配置Sui客户端" class="headerlink" title="2.1，配置Sui客户端"></a>2.1，配置Sui客户端</h2><p>要将 Sui 客户端连接到网络，请运行以下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sui client</span><br></pre></td></tr></table></figure>
+
+<p>第一次启动没有 client.yaml 文件的 Sui 客户端时，控制台会显示以下消息：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Config file [&quot;&lt;PATH-TO-FILE&gt;/client.yaml&quot;] doesn&#x27;t exist, do you want to connect to a Sui Full node server [y/N]?</span><br></pre></td></tr></table></figure>
+
+<p>按 y，然后按 Enter。然后该进程请求 RPC 服务器 URL：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Sui Full node server URL (Defaults to Sui Devnet if not specified) :</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>建议：作为开发人员，常用testnet，因此这里填上<code>https://fullnode.testnet.sui.io:443</code></p>
+</blockquote>
+<p>按 Enter 键连接到 Sui Devnet。要使用自定义 RPC 服务器、Sui Testnet 或 Sui Mainnet，请输入正确的 RPC 端点的 URL，然后按 Enter。</p>
+<p>如果您输入 URL，该过程会提示输入环境别名：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Environment alias for [&lt;URL-ENTERED&gt;] :</span><br></pre></td></tr></table></figure>
+
+<p>输入别名并按 Enter 键。（例如，如果你上面填写了testnet的url则可以写一个：testnet）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Select key scheme to generate keypair (0 for ed25519, 1 for secp256k1, 2 for secp256r1):</span><br></pre></td></tr></table></figure>
+
+<p>按 0、1 或 2 选择按键方案，然后按 Enter。（不知道怎么选可以选0）</p>
+<p>Sui 返回一条类似于以下内容的消息（取决于您选择的密钥方案），其中包括地址和该地址的 12 字恢复短语：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Generated new keypair for address with scheme &quot;ed25519&quot; [0xb9c83a8b40d3263c9ba40d551514fbac1f8c12e98a4005a0dac072d3549c2442]</span><br><span class="line">Secret Recovery Phrase : [cap wheat many line human lazy few solid bored proud speed grocery]</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2，连接到自定义-RPC-端点（可选）"><a href="#2-2，连接到自定义-RPC-端点（可选）" class="headerlink" title="2.2，连接到自定义 RPC 端点（可选）"></a>2.2，连接到自定义 RPC 端点（可选）</h3><p>您可以使用 <code>sui client envs</code> 命令查看定义的环境，并使用 <code>sui client switch</code> 命令在它们之间切换。</p>
+<p>如果您之前安装了连接到 Sui 网络的 Sui 客户端，或者创建了本地网络，则可以修改现有的 client.yaml 文件来更改配置的 RPC 端点。与环境相关的 <code>sui client</code> 命令读取和写入 client.yaml 文件。</p>
+<p><strong>要检查当前可用的环境别名，请运行以下命令：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sui client envs</span><br></pre></td></tr></table></figure>
+
+<p>该命令输出可用的环境别名，其中 <code>(active)</code> 表示当前活动的网络。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">localnet =&gt; http://0.0.0.0:9000 (active)</span><br><span class="line">devnet =&gt; https://fullnode.devnet.sui.io:443</span><br></pre></td></tr></table></figure>
+
+<p><strong>要为自定义 RPC 端点添加新别名，请运行以下命令。将 <code>&lt;</code> <code>&gt;</code> 中的值替换为您的安装值：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sui client new-env --alias &lt;ALIAS&gt; --rpc &lt;RPC-SERVER-URL&gt;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>例如：<code>sui client new-env --alias testnet --rpc https://fullnode.testnet.sui.io:443</code></p>
+</blockquote>
+<p>要切换活动网络，请运行以下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sui client switch --env &lt;ALIAS&gt;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>后续内容施工中</p>
+<p><img src="https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/00D382D9.png" alt="img"></p>
+<hr>
+<h1 id="info-0，说明"><a href="#info-0，说明" class="headerlink" title="info 0，说明"></a>info 0，说明</h1><h2 id="一、如何升级-Sui-？"><a href="#一、如何升级-Sui-？" class="headerlink" title="一、如何升级 Sui ？"></a>一、如何升级 Sui ？</h2><p><strong>如果您之前安装了 Sui 二进制文件，则可以使用与安装它们相同的命令将它们更新到最新版本</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cargo install --locked --git https://github.com/MystenLabs/sui.git --branch testnet sui</span><br></pre></td></tr></table></figure>
+
+<h2 id="二、用哪一个区块链浏览器"><a href="#二、用哪一个区块链浏览器" class="headerlink" title="二、用哪一个区块链浏览器"></a>二、用哪一个区块链浏览器</h2><p>推荐：<a target="_blank" rel="noopener" href="https://suivision.xyz/">https://suivision.xyz/</a></p>
+<p>devnet、testnet、mainnet的交易信息都可以很方便地查询</p>
+<p>切换：</p>
+<p><img src="https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/image-20240411191008311.png" alt="image-20240411191008311"></p>
+<h2 id="三、各个网的prc端点号"><a href="#三、各个网的prc端点号" class="headerlink" title="三、各个网的prc端点号"></a>三、各个网的prc端点号</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">https://sui-mainnet-endpoint.blockvision.org</span><br><span class="line"></span><br><span class="line">https://sui-testnet-endpoint.blockvision.org</span><br><span class="line"></span><br><span class="line">https://sui-devnet-endpoint.blockvision.org</span><br></pre></td></tr></table></figure>
+
+<p>或者</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">https://fullnode.devnet.sui.io:443</span><br><span class="line"></span><br><span class="line">https://fullnode.testnet.sui.io:443</span><br></pre></td></tr></table></figure>
+
+<h2 id="四、如何进行github的pr操作"><a href="#四、如何进行github的pr操作" class="headerlink" title="四、如何进行github的pr操作"></a>四、如何进行github的pr操作</h2><blockquote>
+<p>一个github翻译插件：<code>https://github.com/maboloshi/github-chinese</code></p>
+</blockquote>
+<p>以一个move任务激励项目为例：<a target="_blank" rel="noopener" href="https://github.com/move-cn/letsmove/pulls">https://github.com/move-cn/letsmove/pulls</a></p>
+<p>现在要提交letsmove项目的pr</p>
+<p>首先从上游链接fork项目到自己的仓库</p>
+<p><img src="https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/image-20240411191325660.png" alt="image-20240411191325660"></p>
+<p>然后到自己仓库下面看fork的项目，用<code>git clone</code>下载到本地</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/yourname/letsmove.git</span><br></pre></td></tr></table></figure>
+
+<p>在本地修改项目，改完后，更新到<strong>自己的仓库</strong>，可以通过多种方式，例如：直接上传修改的文件</p>
+<p><img src="https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/image-20240411191950261.png" alt="image-20240411191950261"></p>
+<p>上传完毕后，点击自己仓库下面的pr，新建一个pr</p>
+<p><img src="https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/image-20240411192119071.png" alt="image-20240411192119071"></p>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2024/04/08/java_springboot_simple/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+
+
+    
+       <!--PC版-->
+        <div id="SOHUCS" ></div>
+        <script charset="utf-8" type="text/javascript" src="https://cy-cdn.kuaizhan.com/upload/changyan.js" ></script>
+        <script type="text/javascript">
+        window.changyan.api.config({
+            appid: 'cywJvGKKO',
+            conf: 'prod_dfd0ec91693832034dcc62943592b045'
+        });
+        </script>   
+     
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+                
+                <br>
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+    
+
+  </body>
+</html>
