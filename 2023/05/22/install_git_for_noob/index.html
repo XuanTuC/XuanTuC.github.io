@@ -149,37 +149,30 @@
 <hr>
 <h1 id="git的使用"><a href="#git的使用" class="headerlink" title="git的使用"></a>git的使用</h1><h2 id="步骤1：-1"><a href="#步骤1：-1" class="headerlink" title="步骤1："></a>步骤1：</h2><p>打开Git Bash 在开始菜单中搜索Git Bash并打开它。Git Bash是Git在Windows上的命令行终端仿真器，我们将在这里执行Git命令。</p>
 <h2 id="步骤2：-1"><a href="#步骤2：-1" class="headerlink" title="步骤2："></a>步骤2：</h2><p>配置Git用户信息 在Git Bash中，输入以下命令，并将中括号内的信息替换为你自己的用户名和邮箱地址：</p>
-<p>Plain TextCopy code</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;Your Name&quot;</span><br><span class="line">git config --global user.email &quot;email@example.com&quot;</span><br></pre></td></tr></table></figure>
 
 <p>这里的用户名和邮箱地址将用于Git提交代码时的身份标识。</p>
 <h2 id="步骤3：-1"><a href="#步骤3：-1" class="headerlink" title="步骤3："></a>步骤3：</h2><p>创建一个代码仓库 要开始使用Git，首先需要创建一个代码仓库。在Git Bash中，选择一个你希望将代码仓库放置的目录，然后使用以下命令进入该目录并初始化一个空的Git仓库：</p>
-<p>Plain TextCopy code</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /path/to/your/directory</span><br><span class="line">git init</span><br></pre></td></tr></table></figure>
 
 <p>这将在该目录中创建一个名为<code>.git</code>的子目录，用于存储Git的版本控制信息。</p>
 <h2 id="步骤4：-1"><a href="#步骤4：-1" class="headerlink" title="步骤4："></a>步骤4：</h2><p>添加和提交代码 在代码仓库中添加你的代码文件。将代码文件复制到你的代码仓库目录中。然后在Git Bash中使用以下命令来添加代码文件并提交到版本控制：</p>
-<p>Plain TextCopy code</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m &quot;Initial commit&quot;</span><br></pre></td></tr></table></figure>
 
 <p>这将会把你的代码添加到暂存区（Git的一个中间状态），然后提交到仓库中，并附带一条提交信息。</p>
 <h2 id="步骤5：-1"><a href="#步骤5：-1" class="headerlink" title="步骤5："></a>步骤5：</h2><p>查看代码状态 可以使用以下命令来查看代码仓库的状态：</p>
-<p>Plain TextCopy code</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
 
 <p>这将显示已修改、已暂存和已提交的文件，以及任何未添加到版本控制的文件。</p>
 <h2 id="步骤6：-1"><a href="#步骤6：-1" class="headerlink" title="步骤6："></a>步骤6：</h2><p>创建和切换分支 你可以使用以下命令来创建一个新的分支，并切换到该分支：</p>
-<p>Plain TextCopy code</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git branch mybranch</span><br><span class="line">git checkout mybranch</span><br></pre></td></tr></table></figure>
 
 <p>这将在代码仓库中创建一个名为<code>mybranch</code>的新分支，并切换到该分支。你可以在不同的分支上进行不同的开发工作，以避免影响主分支。</p>
 <h2 id="步骤7：-1"><a href="#步骤7：-1" class="headerlink" title="步骤7："></a>步骤7：</h2><p>合并分支 如果你在不同的分支上开发了不同的功能且测试通过，可以使用以下命令将该分支合并到主分支：</p>
-<p>Plain TextCopy code</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout main</span><br><span class="line">git merge mybranch</span><br></pre></td></tr></table></figure>
 
 <p>这将切换回主分支并将<code>mybranch</code>分支的代码合并到主分支上。</p>
 <h2 id="步骤8：-1"><a href="#步骤8：-1" class="headerlink" title="步骤8："></a>步骤8：</h2><p>推送到远程仓库 如果你的代码仓库已与远程仓库关联，你可以将本地代码推送到远程仓库中：</p>
-<p>Plain TextCopy code</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin main</span><br></pre></td></tr></table></figure>
 
 <p>这将把本地的<code>main</code>分支推送到远程仓库中。</p>
