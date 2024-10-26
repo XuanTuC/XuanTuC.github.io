@@ -16,7 +16,7 @@
 
 
 
-<title>z3求解器：数学好帮手 | 曲径通幽处.</title>
+<title>hashcat在手，密码破解无忧 | 曲径通幽处.</title>
 
 
 
@@ -114,7 +114,7 @@
         <div class="post-title">
             
             
-                z3求解器：数学好帮手
+                hashcat在手，密码破解无忧
             
             
         </div>
@@ -129,15 +129,35 @@
     </div>
 </div>
     <div class="post-content">
-    <h1 id="step1-关于安装"><a href="#step1-关于安装" class="headerlink" title="step1.关于安装"></a>step1.关于安装</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install z3-solver</span><br></pre></td></tr></table></figure>
+    <p>hashcat号称是目前世界上最快的password crack tool</p>
+<p>hashcat仓库：<a target="_blank" rel="noopener" href="https://github.com/hashcat/hashcat">https://github.com/hashcat/hashcat</a></p>
+<p>关于hashcat的使用，官方的wiki提供了详细的教程：</p>
+<p>​	<a target="_blank" rel="noopener" href="https://hashcat.net/wiki/">https://hashcat.net/wiki/</a></p>
+<p>​	<a target="_blank" rel="noopener" href="https://www.unix-ninja.com/p/A_guide_to_password_cracking_with_Hashcat">https://www.unix-ninja.com/p/A_guide_to_password_cracking_with_Hashcat</a></p>
+<p>下面对我个人的使用需求做一个记录</p>
+<h1 id="0-须知"><a href="#0-须知" class="headerlink" title="0.须知"></a>0.须知</h1><p>Hashcat 是一个命令行界面（CLI）应用程序。</p>
+<p>Hashcat（标准的基于CPU的破解软件）</p>
+<p>oclHashcat（基于GPU加速的破解软件）</p>
+<p>攻击模式 (A) 和哈希模式(M) ，标准攻击模式（模式0），模式0为字典攻击</p>
+<p>进入hashcat解压后的目录中，可以查看帮助以确定hashcat是否正确地运行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hashcat.exe --help</span><br></pre></td></tr></table></figure>
 
-<p>使用上面命令即可，但是有可能会出现下图这种bug</p>
-<p><img src="https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/image-20241026153556116.png" alt="image-20241026153556116"></p>
-<p>若出现此类情况，建议查看已经安装的软件包</p>
-<p>如果存在<code>z3</code>这个老软件包，先卸载：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip uninstall z3</span><br><span class="line">pip uninstall z3-solver</span><br></pre></td></tr></table></figure>
+<p>这将显示很多信息，包含所有可使用的参数</p>
+<h1 id="1-用例"><a href="#1-用例" class="headerlink" title="1.用例"></a>1.用例</h1><h2 id="1-我有一串md5加密过的需要破解"><a href="#1-我有一串md5加密过的需要破解" class="headerlink" title="(1).我有一串md5加密过的需要破解"></a>(1).我有一串md5加密过的需要破解</h2><p>在目录下创建两个文件</p>
+<p>hash.txt存放 破解的密码</p>
+<p>cracked.txt 存放待破解的哈希值</p>
+<p>以 <code>e10adc3949ba59abbe56e057f20f883e</code>  （<code>123456</code>的 MD5）为例</p>
+<p>在hash.txt中放入需要破解的哈希值（<code>e10adc3949ba59abbe56e057f20f883e</code> ）</p>
+<p>运行hashcat</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hashcat.exe -m0 -a3 -o cracked.txt hash.txt</span><br></pre></td></tr></table></figure>
 
-<p>然后重新安装即可</p>
+<p>得到的结果存放在<code>cracked.txt</code>内容如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">e10adc3949ba59abbe56e057f20f883e:123456</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="2-我需要破解一个压缩包"><a href="#2-我需要破解一个压缩包" class="headerlink" title="(2).我需要破解一个压缩包"></a>(2).我需要破解一个压缩包</h2><p>hashcat并不能直接对压缩包密码进行破解，需要配合另一个工具使用：<a target="_blank" rel="noopener" href="https://www.openwall.com/john/">john</a>（开膛手杰克）,目的是提取压缩密码hash，然后对hash本身进行破解</p>
+<p>john官网推荐 windows环境下使用<a target="_blank" rel="noopener" href="https://hashsuite.openwall.net/">hashsuite</a>套件</p>
 
 </div> 
 
@@ -149,17 +169,12 @@
     <nav class="post-nav">
         <div class="prev-item">
            
-                <div class="icon arrow-left"></div>
-                <div class="post-link">
-                    <a href="/2024/10/26/hashcat_tools/">Prev</a>
-                </div>
-            
         </div>
         <div class="next-item">
             
                 <div class="icon arrow-right"></div>
                 <div class="post-link">
-                  <a href="/2024/10/26/python_pakage/">Next</a>  
+                  <a href="/2024/10/26/z3/">Next</a>  
                 </div>  
             
         </div>
