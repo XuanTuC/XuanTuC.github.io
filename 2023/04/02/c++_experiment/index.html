@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head><!-- hexo injector head_begin start -->
+<link rel="stylesheet" href="/css/bilicard.css">
+<!-- hexo injector head_begin end -->
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="xuan tu">
+
+
+
+
+
+
+
+<title>c++实验记录 | 曲径通幽处.</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/frame.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 6.3.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            ヾ(^_^) back Home.!!
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">主页</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">文章</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a target="_blank" rel="noopener" href="https://drive.google.com/drive/folders/1a-OiD9e0tEgNmWDoR0RGkhBtp-v8TQq8?usp=drive_link">书阁(M)</a>
+              </li> 
+                   
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                c++实验记录
+            
+            
+        </div>
+        <span class="post-date">
+            4月 2, 2023
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <h2 id="实验一：类和对象"><a href="#实验一：类和对象" class="headerlink" title="实验一：类和对象"></a>实验一：类和对象</h2><p>定义一个学生类 Student，学生类中有 3 个私有数据成员：name(姓名)、cls(班级)、<br>grade(年级)；3 个公有成员函数；Student(构造函数)、display、~Student(析构函数)。使<br>用构造函数为 Student 类的对象赋值(name 使用动态内存分配空间)，display 负责显示学生<br>的基本信息，在析构函数中释放动态分配的内存。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Students</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">char</span>* name;</span><br><span class="line">    <span class="type">int</span> cls;</span><br><span class="line">    <span class="type">int</span> grade;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">Students</span>(<span class="type">const</span> <span class="type">char</span>* n, <span class="type">int</span> c, <span class="type">int</span> g) &#123;</span><br><span class="line">        name = <span class="keyword">new</span> <span class="type">char</span>[<span class="built_in">strlen</span>(n) + <span class="number">1</span>];</span><br><span class="line">        <span class="built_in">strcpy</span>(name, n);</span><br><span class="line">        cls = c;</span><br><span class="line">        grade = g;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">display</span><span class="params">()</span> <span class="type">const</span> </span>&#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;name=&quot;</span> &lt;&lt; name &lt;&lt; endl;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;cls=&quot;</span> &lt;&lt; cls &lt;&lt; endl;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;grade=&quot;</span> &lt;&lt; grade &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    ~<span class="built_in">Students</span>() &#123;</span><br><span class="line">        <span class="keyword">delete</span>[] name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="function">Students <span class="title">a</span><span class="params">(<span class="string">&quot;xiaomin&quot;</span>, <span class="number">3</span>, <span class="number">3</span>)</span></span>;</span><br><span class="line">    a.<span class="built_in">display</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">system</span>(<span class="string">&quot;pause&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="实验二：继承和派生"><a href="#实验二：继承和派生" class="headerlink" title="实验二：继承和派生"></a>实验二：继承和派生</h2><p>编写一个学生和教师数据输入和显示程序。其中，学生数据有编号、姓名、班级和成 绩，教师数据有编号、姓名、职称和部门。要求将编号、姓名输入和显示设计成一个类 Person； 然后设计类 Person 的派生类：学生类 Student 和教师类 Teacher；编写一个主函数，通过定 义 student、teacher 的对象，完成相应功能。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line"><span class="keyword">protected</span>:</span><br><span class="line"><span class="type">int</span> id;</span><br><span class="line">string name;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">input</span><span class="params">()</span> </span>&#123;</span><br><span class="line">cout &lt;&lt; <span class="string">&quot;请输入编号：&quot;</span>;</span><br><span class="line">cin &gt;&gt; id;</span><br><span class="line">cout &lt;&lt; <span class="string">&quot;请输入姓名：&quot;</span>;</span><br><span class="line">cin &gt;&gt; name;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">display</span><span class="params">()</span> </span>&#123;</span><br><span class="line">cout &lt;&lt; <span class="string">&quot;编号：&quot;</span> &lt;&lt; id &lt;&lt; endl;</span><br><span class="line">cout &lt;&lt; <span class="string">&quot;姓名：&quot;</span> &lt;&lt; name &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span> : <span class="keyword">public</span> Person &#123;</span><br><span class="line"><span class="keyword">protected</span>:</span><br><span class="line">string className;</span><br><span class="line"><span class="type">int</span> score;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">input</span><span class="params">()</span> </span>&#123;</span><br><span class="line">Person::<span class="built_in">input</span>();</span><br><span class="line">cout &lt;&lt; <span class="string">&quot;请输入班级：&quot;</span>;</span><br><span class="line">cin &gt;&gt; className;</span><br><span class="line">cout &lt;&lt; <span class="string">&quot;请输入成绩：&quot;</span>;</span><br><span class="line">cin &gt;&gt; score;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">display</span><span class="params">()</span> </span>&#123;</span><br><span class="line">Person::<span class="built_in">display</span>();</span><br><span class="line">cout &lt;&lt; <span class="string">&quot;班级：&quot;</span> &lt;&lt; className &lt;&lt; endl;</span><br><span class="line">cout &lt;&lt; <span class="string">&quot;成绩：&quot;</span> &lt;&lt; score &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Teacher</span> : <span class="keyword">public</span> Person &#123;</span><br><span class="line"><span class="keyword">protected</span>:</span><br><span class="line">string title;</span><br><span class="line">string department;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">input</span><span class="params">()</span> </span>&#123;</span><br><span class="line">Person::<span class="built_in">input</span>();</span><br><span class="line">cout &lt;&lt; <span class="string">&quot;请输入职称：&quot;</span>;</span><br><span class="line">cin &gt;&gt; title;</span><br><span class="line">cout &lt;&lt; <span class="string">&quot;请输入部门：&quot;</span>;</span><br><span class="line">cin &gt;&gt; department;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">display</span><span class="params">()</span> </span>&#123;</span><br><span class="line">Person::<span class="built_in">display</span>();</span><br><span class="line">cout &lt;&lt; <span class="string">&quot;职称：&quot;</span> &lt;&lt; title &lt;&lt; endl;</span><br><span class="line">cout &lt;&lt; <span class="string">&quot;部门：&quot;</span> &lt;&lt; department &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">Student student;</span><br><span class="line">Teacher teacher;</span><br><span class="line">cout &lt;&lt; <span class="string">&quot;请输入学生信息：&quot;</span> &lt;&lt; endl;</span><br><span class="line">student.<span class="built_in">input</span>();</span><br><span class="line">cout &lt;&lt; <span class="string">&quot;请输入教师信息：&quot;</span> &lt;&lt; endl;</span><br><span class="line">teacher.<span class="built_in">input</span>();</span><br><span class="line">cout &lt;&lt; <span class="string">&quot;学生信息如下：&quot;</span> &lt;&lt; endl;</span><br><span class="line">student.<span class="built_in">display</span>();</span><br><span class="line">cout &lt;&lt; <span class="string">&quot;教师信息如下：&quot;</span> &lt;&lt; endl;</span><br><span class="line">teacher.<span class="built_in">display</span>();</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//包含三个类：Person、 Student、 Teacher。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//1. Person类是基类，包含两个数据成员：id和name，以及两个成员函数：input()和display()，用于输入和输出基类对象的信息。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//2. Student类是从Person派生而来的子类，又增加了两个数据成员：className和score，以及两个成员函数：input()和display()，用于输入和输出学生对象的信息。在子类中的input()函数中，首先调用基类的input()函数，再输入className和score。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//3. Teacher类同样是从Person派生而来的子类，又增加了两个数据成员：title和department，以及两个成员函数：input()和display()，用于输入和输出教师对象的信息。在子类中的input()函数中，同样首先调用基类的input()函数，再输入title和department。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//在main()函数中，首先定义了一个Student对象和一个Teacher对象。然后输入学生信息和教师信息，并输出他们的信息。</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="实验四"><a href="#实验四" class="headerlink" title="实验四"></a>实验四</h2><p>以现实中银行卡为原型，进行需求调查，抽象出相应的类，设计类的成员函数和数据成员，完成银行账户管理系统。编写程序，帮助工作人员有效、准确并且高校的完成存取事件。（系统主要完成开户管理，存取钱管理，修改密码，注销等功能）</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 用户结构体  </span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">User</span> &#123;</span><br><span class="line">    string username; <span class="comment">// 用户名  </span></span><br><span class="line">    <span class="type">int</span> account_number; <span class="comment">// 账户号码  </span></span><br><span class="line">    string password; <span class="comment">// 密码  </span></span><br><span class="line">    <span class="type">bool</span> is_active; <span class="comment">// 是否激活  </span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 用户数组  </span></span><br><span class="line">User users[<span class="number">10</span>];</span><br><span class="line"><span class="type">int</span> user_count = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 添加用户  </span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">add_user</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (user_count &gt;= <span class="number">10</span>) &#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;用户数已达上限！&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    User user;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;请输入用户名：&quot;</span>;</span><br><span class="line">    cin &gt;&gt; user.username;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;请输入账户号码：&quot;</span>;</span><br><span class="line">    cin &gt;&gt; user.account_number;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;请输入密码：&quot;</span>;</span><br><span class="line">    cin &gt;&gt; user.password;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;请输入是否激活（1表示激活，0表示未激活）：&quot;</span>;</span><br><span class="line">    cin &gt;&gt; user.is_active;</span><br><span class="line">    users[user_count] = user;</span><br><span class="line">    user_count++;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;添加成功！&quot;</span> &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 查找用户  </span></span><br><span class="line"><span class="function">User <span class="title">find_user</span><span class="params">(string username)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; user_count; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (users[i].username == username) &#123;</span><br><span class="line">            <span class="keyword">return</span> users[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">User</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 存款  </span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">deposit</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    string username, password;</span><br><span class="line">    <span class="type">int</span> amount;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;请输入存款账户号码：&quot;</span>;</span><br><span class="line">    cin &gt;&gt; username;</span><br><span class="line">    User user = <span class="built_in">find_user</span>(username);</span><br><span class="line">    <span class="keyword">if</span> (user.username == <span class="string">&quot;&quot;</span>) &#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;账户不存在！&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;请输入存款金额：&quot;</span>;</span><br><span class="line">    cin &gt;&gt; amount;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;请输入密码：&quot;</span>;</span><br><span class="line">    cin &gt;&gt; password;</span><br><span class="line">    <span class="keyword">if</span> (user.password != password) &#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;密码错误！&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    user.account_number += amount;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;存款成功！账户余额为：&quot;</span> &lt;&lt; user.account_number &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 取款  </span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">withdraw</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    string username, password;</span><br><span class="line">    <span class="type">int</span> amount;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;请输入取款账户号码：&quot;</span>;</span><br><span class="line">    cin &gt;&gt; username;</span><br><span class="line">    User user = <span class="built_in">find_user</span>(username);</span><br><span class="line">    <span class="keyword">if</span> (user.username == <span class="string">&quot;&quot;</span>) &#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;账户不存在！&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;请输入取款金额：&quot;</span>;</span><br><span class="line">    cin &gt;&gt; amount;</span><br><span class="line">    <span class="keyword">if</span> (amount &gt; user.account_number) &#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;取款失败！账户余额不足！&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;请输入密码：&quot;</span>;</span><br><span class="line">    cin &gt;&gt; password;</span><br><span class="line">    <span class="keyword">if</span> (user.password != password) &#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;密码错误！&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    user.account_number -= amount;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;取款成功！账户余额为：&quot;</span> &lt;&lt; user.account_number &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 修改密码  </span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">change_password</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    string username, old_password, new_password;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;请输入账户号码：&quot;</span>;</span><br><span class="line">    cin &gt;&gt; username;</span><br><span class="line">    User user = <span class="built_in">find_user</span>(username);</span><br><span class="line">    <span class="keyword">if</span> (user.username == <span class="string">&quot;&quot;</span>) &#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;账户不存在！&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;请输入旧密码：&quot;</span>;</span><br><span class="line">    cin &gt;&gt; old_password;</span><br><span class="line">    <span class="keyword">if</span> (user.password != old_password) &#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;密码错误！&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;请输入新密码：&quot;</span>;</span><br><span class="line">    cin &gt;&gt; new_password;</span><br><span class="line">    user.password = new_password;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;密码修改成功！&quot;</span> &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> choice;</span><br><span class="line">    <span class="keyword">do</span> &#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;请选择要进行的操作：&quot;</span> &lt;&lt; endl;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;1. 添加用户&quot;</span> &lt;&lt; endl;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;2. 存款&quot;</span> &lt;&lt; endl;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;3. 取款&quot;</span> &lt;&lt; endl;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;4. 修改密码&quot;</span> &lt;&lt; endl;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;5. 退出&quot;</span> &lt;&lt; endl;</span><br><span class="line">        cin &gt;&gt; choice;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">switch</span> (choice) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">            <span class="built_in">add_user</span>();</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">            <span class="built_in">deposit</span>();</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">            <span class="built_in">withdraw</span>();</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">4</span>:</span><br><span class="line">            <span class="built_in">change_password</span>();</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">5</span>:</span><br><span class="line">            cout &lt;&lt; <span class="string">&quot;谢谢使用！&quot;</span> &lt;&lt; endl;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            cout &lt;&lt; <span class="string">&quot;无效的选择，请重新输入。&quot;</span> &lt;&lt; endl;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">while</span> (choice != <span class="number">5</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2023/04/24/BUU%20CODE%20REVIEW%201%201_wp/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2023/03/30/sql_injection/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+
+
+    
+       <!--PC版-->
+        <div id="SOHUCS" ></div>
+        <script charset="utf-8" type="text/javascript" src="https://cy-cdn.kuaizhan.com/upload/changyan.js" ></script>
+        <script type="text/javascript">
+        window.changyan.api.config({
+            appid: 'cywJvGKKO',
+            conf: 'prod_dfd0ec91693832034dcc62943592b045'
+        });
+        </script>   
+     
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+    
+
+  </body>
+</html>

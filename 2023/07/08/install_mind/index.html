@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head><!-- hexo injector head_begin start -->
+<link rel="stylesheet" href="/css/bilicard.css">
+<!-- hexo injector head_begin end -->
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="xuan tu">
+
+
+
+
+
+
+
+<title>mindspoer 的安装 | 曲径通幽处.</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/frame.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 6.3.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            ヾ(^_^) back Home.!!
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">主页</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">文章</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a target="_blank" rel="noopener" href="https://drive.google.com/drive/folders/1a-OiD9e0tEgNmWDoR0RGkhBtp-v8TQq8?usp=drive_link">书阁(M)</a>
+              </li> 
+                   
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                mindspoer 的安装
+            
+            
+        </div>
+        <span class="post-date">
+            7月 8, 2023
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <p>官方教程：<a target="_blank" rel="noopener" href="https://www.mindspore.cn/install">https://www.mindspore.cn/install</a></p>
+<p><em>前排提示：建议先用 火绒断网修复工具 检测一下自己网络环境是否有问题，有时候开代理会影响安装</em></p>
+<hr>
+<p><strong>一、按照如图选择配置</strong><img src="https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/73869447_ab3a97f4cecd4d89b3b0775db4e3fb27.png" alt="img"></p>
+<p>Windows平台由于我也不知道的原因，只支持cpu平台，python版本根据自己的选择</p>
+<hr>
+<p><strong>二、进行SHA-256完整性校验。以2.0.0版本为例，执行以下命令：</strong></p>
+<p><strong>set MS_VERSION&#x3D;2.0.0</strong></p>
+<hr>
+<p><strong>三、执行上面配置的命令：</strong></p>
+<p><strong>pip install <a target="_blank" rel="noopener" href="https://ms-release.obs.cn-north-4.myhuaweicloud.com/2.0.0/MindSpore/cpu/x86_64/mindspore-2.0.0-cp39-cp39-win_amd64.whl">https://ms-release.obs.cn-north-4.myhuaweicloud.com/2.0.0/MindSpore/cpu/x86_64/mindspore-2.0.0-cp39-cp39-win_amd64.whl</a> –trusted-host ms-release.obs.cn-north-4.myhuaweicloud.com -i <a target="_blank" rel="noopener" href="https://pypi.tuna.tsinghua.edu.cn/simple">https://pypi.tuna.tsinghua.edu.cn/simple</a></strong></p>
+<hr>
+<p><strong>四、检测常见依赖是否安装：</strong></p>
+<p><strong>1、点击查看</strong><a target="_blank" rel="noopener" href="https://gitee.com/mindspore/mindspore/blob/r2.0/requirements.txt"><strong>需要的依赖</strong></a></p>
+<p><img src="https://imgs.aixifan.com/newUpload/73869447_842d294196a64050b2f4254fe1024bcc.png" alt="img"></p>
+<p><strong>2、查看本地依赖版本：（以nmap为例）</strong></p>
+<p><strong>pip show nmap</strong></p>
+<p>其中version参数即为版本号</p>
+<p><img src="https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/73869447_1cb87da620a042afb53e6bc70ad15663.png" alt="img"></p>
+<p>若显示 <strong>WARNING: Package(s) not found:</strong> <strong>pack_name</strong></p>
+<p><img src="https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/73869447_21b378b3b3ce44be98c086a41aea0e13.png" alt="img"></p>
+<p>则表示你的电脑上没有这个依赖，需要进行安装</p>
+<p><strong>3、安装需要的依赖（以nmap为例，使用清华镜像）</strong></p>
+<p><strong>pip install nmap -i <a target="_blank" rel="noopener" href="https://pypi.tuna.tsinghua.edu.cn/simple">https://pypi.tuna.tsinghua.edu.cn/simple</a></strong></p>
+<p>对列表中的依赖每个都进行2、3步骤操作</p>
+<p><strong>4、单独检测****pillow依赖包的版本，确保ANTIALIAS方法可以正常使用</strong></p>
+<p><strong>pip show pillow</strong></p>
+<p>一般显示的版本为10.0.0，因为这个版本删除了ANTIALIAS方法</p>
+<p>因此可以选择使用9.5.0版本，或者使用 PIL库</p>
+<p>卸载当前版本：</p>
+<p><strong>pip uninstall -y Pillow</strong></p>
+<p>安装9.5.0版本：</p>
+<p> <strong>pip install Pillow&#x3D;&#x3D;9.5.0 -i <a target="_blank" rel="noopener" href="https://pypi.tuna.tsinghua.edu.cn/simple">https://pypi.tuna.tsinghua.edu.cn/simple</a></strong></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/light2081/article/details/131517132">参考</a></p>
+<hr>
+<p><strong>五、验证mindspore安装是否成功：</strong></p>
+<p><strong>python -c “import mindspore;mindspore.run_check()”</strong></p>
+<p><strong>如果出现</strong></p>
+<p><img src="https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/73869447_fd3bec369def4d7595935bfc08e782ef.png" alt="img"></p>
+<p><strong>则视为安装成功，可以愉快地玩耍了</strong>!</p>
+<p><strong>如果报错</strong></p>
+<p><img src="https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/73869447_b740565630934501a4df502bb5f15718.png" alt="img"></p>
+<p>则为pillow包问题，参考第4步</p>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2023/07/19/sql%201/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2023/06/05/learn_AI/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+
+
+    
+       <!--PC版-->
+        <div id="SOHUCS" ></div>
+        <script charset="utf-8" type="text/javascript" src="https://cy-cdn.kuaizhan.com/upload/changyan.js" ></script>
+        <script type="text/javascript">
+        window.changyan.api.config({
+            appid: 'cywJvGKKO',
+            conf: 'prod_dfd0ec91693832034dcc62943592b045'
+        });
+        </script>   
+     
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+    
+
+  </body>
+</html>

