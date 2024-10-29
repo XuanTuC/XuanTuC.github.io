@@ -131,7 +131,7 @@
     <div class="post-content">
     <p>在编写python脚本时，为了追求便捷，会使用集成开发环境（IDE），但是当我只想写一个脚本，而没有项目管理需求时，就会出现<strong>软件包管理紊乱</strong>的情况</p>
 <p>运行时各种不兼容问题层出不穷，在移动项目文件夹时再次打开python脚本甚至需要<strong>重新选择python解释器</strong>，但是我在用的时候就没有对每个具体解释器需要干什么进行详细规划，这就导致可能你以前安装过的软件包在移动文件后再次打开就无法使用了</p>
-<p>更令人头疼的是，在pycharm这样的ide中使用pip安装新软件版时，居然<strong>不能用代理</strong>，就需要先手动关闭代理，再尝试下载，然后又报错，由此陷入了一个<strong>恶心循环</strong>，每次都需要为python环境的各种问题<strong>浪费时间</strong></p>
+<p>更令人头疼的是，在pycharm这样的ide中使用pip安装新软件版时，居然<strong>不能用代理</strong>，就需要先手动关闭代理，再尝试下载，然后又报错，由此陷入了一个<strong>恶性循环</strong>，每次都需要为python环境的各种问题<strong>浪费时间</strong></p>
 <p><strong>极大地降低了工作效率</strong>，为此需要制定一个合理的方案来解决这种问题</p>
 <h1 id="1-docker"><a href="#1-docker" class="headerlink" title="1, docker"></a>1, docker</h1><p>使用docker可以谢绝这种问题，比如我的pwn环境就是用的docker，仅在我需要编写pwn脚本时，才会启用该环境，当我们需要使用特定的工具时，可以pull官方的docker镜像，但每次使用都必须启动docker</p>
 <h1 id="2，anaconda"><a href="#2，anaconda" class="headerlink" title="2，anaconda"></a>2，anaconda</h1><p>Anaconda是一个可以对虚拟环境进行统一管理的python发行版工具。</p>
