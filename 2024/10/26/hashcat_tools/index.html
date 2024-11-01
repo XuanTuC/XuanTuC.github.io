@@ -116,6 +116,26 @@
     <div class="post-info">
         <div class="tag-list">
             
+                
+                    <span class="post-tag">
+                        <a href="/tags/%E5%AF%86%E7%A0%81%E7%A0%B4%E8%A7%A3/">
+                            密码破解
+                        </a>
+                    </span>    
+                
+                    <span class="post-tag">
+                        <a href="/tags/%E5%8E%8B%E7%BC%A9%E5%8C%85/">
+                            压缩包
+                        </a>
+                    </span>    
+                
+                    <span class="post-tag">
+                        <a href="/tags/%E5%93%88%E5%B8%8C/">
+                            哈希
+                        </a>
+                    </span>    
+                           
+            
         </div>
         <div class="post-title">
             
@@ -149,6 +169,8 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hashcat.exe --help</span><br></pre></td></tr></table></figure>
 
 <p>这将显示很多信息，包含所有可使用的参数</p>
+<p>或者你可以在<a target="_blank" rel="noopener" href="https://hashcat.net/wiki/doku.php?id=hashcat">hashcat_wiki</a>查看该工具用法</p>
+<p>已破解的哈希值默认存储在<code>hashcat.potfile</code>这个文件中</p>
 <h1 id="1-用例"><a href="#1-用例" class="headerlink" title="1.用例"></a>1.用例</h1><h2 id="1-我有一串md5加密过的需要破解"><a href="#1-我有一串md5加密过的需要破解" class="headerlink" title="(1).我有一串md5加密过的需要破解"></a>(1).我有一串md5加密过的需要破解</h2><p>在目录下创建两个文件</p>
 <p>hash.txt存放 破解的密码</p>
 <p>cracked.txt 存放待破解的哈希值</p>
@@ -163,7 +185,30 @@
 
 
 <h2 id="2-我需要破解一个压缩包"><a href="#2-我需要破解一个压缩包" class="headerlink" title="(2).我需要破解一个压缩包"></a>(2).我需要破解一个压缩包</h2><p>hashcat并不能直接对压缩包密码进行破解，需要配合另一个工具使用：<a target="_blank" rel="noopener" href="https://www.openwall.com/john/">john</a>（开膛手杰克）,目的是提取压缩密码hash，然后对hash本身进行破解</p>
-<p>john官网推荐 windows环境下使用<a target="_blank" rel="noopener" href="https://hashsuite.openwall.net/">hashsuite</a>套件</p>
+<p>john: windows环境下使用<a target="_blank" rel="noopener" href="https://www.openwall.com/john/k/john-1.9.0-jumbo-1-win64.7z">该链接</a>来下载适用于windows64位的<code>john-1.9.0</code></p>
+<p>使用<code>john-1.9.0-jumbo-1-win64\run</code>目录下的<code>zip2john.exe</code>工具获取加密zip的哈希值</p>
+<p>例如，获取<code>flag.zip</code>的哈希值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zip2john.exe flag.zip</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/image-20241101174206490.png" alt="image-20241101174206490"></p>
+<p>冒号后面**$包裹的**即为该加密压缩包的哈希值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$pkzip2$1*1*2*0*21*13*696b59b0*0*26*8*21*696b*8cbd*dd4bda6101e35564ec081dbcfd076001661b2a2244dced2600fc4ed9c3a2991355*$/pkzip2$</span><br></pre></td></tr></table></figure>
+
+<p><code>-m</code> 参数说明hash mod，具体需要使用哪个hash mod，见<a target="_blank" rel="noopener" href="https://hashcat.net/wiki/doku.php?id=hashcat">HashcatWiki</a>的<code>- [ Hash modes ] -</code>部分，比如<code>-m 13600</code>表示设置为<code>WinZip</code>模式</p>
+<p>对于我演示中的这个文件，显示为pkzip，我们在wiki使用<code>ctrl+f</code>搜索<code>pkzip</code></p>
+<p><img src="https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/image-20241101174853739.png" alt="image-20241101174853739"></p>
+<p>因此<code>-m</code>使用上述参数17200</p>
+<p><code>-a</code>参数表示攻击类型，wiki文档如下，3是暴力破解，即穷举法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">- [ Attack Modes ] -</span><br><span class="line"></span><br><span class="line">  # | Mode</span><br><span class="line"> ===+======</span><br><span class="line">  0 | Straight</span><br><span class="line">  1 | Combination</span><br><span class="line">  3 | Brute-force</span><br><span class="line">  6 | Hybrid Wordlist + Mask</span><br><span class="line">  7 | Hybrid Mask + Wordlist</span><br><span class="line">  9 | Association</span><br><span class="line">  ///////////////////////////////////////////////////////</span><br><span class="line">Brute-Force attack (-a 3)</span><br><span class="line">暴力攻击(-a 3)</span><br><span class="line">Combinator attack (-a 1)</span><br><span class="line">组合器攻击(-a 1)</span><br><span class="line">Dictionary attack (-a 0)</span><br><span class="line">字典攻击（-a 0）</span><br><span class="line">Hybrid attack (-a 6, -a 7)</span><br><span class="line">混合攻击（-a 6、-a 7）</span><br><span class="line">Mask attack (-a 3)</span><br><span class="line">掩码攻击（-a 3）</span><br><span class="line">Rule-based attack (-r option to -a 0)</span><br><span class="line">基于规则的攻击（-r 选项改为 -a 0）</span><br><span class="line">Toggle-Case attack (only supported by using rule files)</span><br><span class="line">Toggle-Case 攻击（仅使用规则文件支持）</span><br><span class="line">Association attack (a -9)</span><br><span class="line">联合攻击（a -9）</span><br></pre></td></tr></table></figure>
+
+<p><code>--show</code>参数表示破解后再终端显示</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hashcat.exe -a 3 -m 17200 $pkzip2$1*1*2*0*21*13*696b59b0*0*26*8*21*696b*8cbd*dd4bda6101e35564ec081dbcfd076001661b2a2244dced2600fc4ed9c3a2991355*$/pkzip2$</span><br></pre></td></tr></table></figure>
+
+<p>运行后破解成功，回显</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">$pkzip2$1*1*2*0*21*13*696b59b0*0*26*8*21*696b*8cbd*dd4bda6101e35564ec081dbcfd076001661b2a2244dced2600fc4ed9c3a2991355*$/pkzip2$:114514</span><br><span class="line"></span><br><span class="line">Session..........: hashcat</span><br><span class="line">Status...........: Cracked</span><br><span class="line">Hash.Mode........: 17200 (PKZIP (Compressed))</span><br><span class="line">Hash.Target......: $pkzip2$1*1*2*0*21*13*696b59b0*0*26*8*21*696b*8cbd*...kzip2$</span><br><span class="line">Time.Started.....: Fri Nov 01 18:10:12 2024 (10 secs)</span><br><span class="line">Time.Estimated...: Fri Nov 01 18:10:22 2024 (0 secs)</span><br><span class="line">Kernel.Feature...: Pure Kernel</span><br><span class="line">Guess.Mask.......: ?1?2?2?2?2?2 [6]</span><br><span class="line">Guess.Charset....: -1 ?l?d?u, -2 ?l?d, -3 ?l?d*!$@_, -4 Undefined</span><br><span class="line">Guess.Queue......: 6/15 (40.00%)</span><br><span class="line">Speed.#1.........: 53574.9 kH/s (15.14ms) @ Accel:2 Loops:512 Thr:32 Vec:1</span><br><span class="line">Speed.#*.........: 53574.9 kH/s</span><br><span class="line">Recovered........: 1/1 (100.00%) Digests (total), 1/1 (100.00%) Digests (new)</span><br><span class="line">Progress.........: 519521280/3748902912 (13.86%)</span><br><span class="line">Rejected.........: 0/519521280 (0.00%)</span><br><span class="line">Restore.Point....: 232320/1679616 (13.83%)</span><br><span class="line">Restore.Sub.#1...: Salt:0 Amplifier:0-512 Iteration:0-512</span><br><span class="line">Candidate.Engine.: Device Generator</span><br><span class="line">Candidates.#1....: sacrxa -&gt; hs9ont</span><br><span class="line">Hardware.Mon.#1..: Temp: 65c Util: 98% Core:2002MHz Mem:7000MHz Bus:8</span><br><span class="line"></span><br><span class="line">Started: Fri Nov 01 18:09:48 2024</span><br><span class="line">Stopped: Fri Nov 01 18:10:23 2024</span><br></pre></td></tr></table></figure>
+
+<p>破解的值存在<code>hashcat.potfile</code>这个文件里面，可以看到此压缩包的密码哈希破解后为<code>114514</code></p>
+<p><img src="https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/image-20241101181520637.png" alt="image-20241101181520637"></p>
 
 </div> 
 
