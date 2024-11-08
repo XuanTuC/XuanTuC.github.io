@@ -171,6 +171,10 @@
 <p>这将显示很多信息，包含所有可使用的参数</p>
 <p>或者你可以在<a target="_blank" rel="noopener" href="https://hashcat.net/wiki/doku.php?id=hashcat">hashcat_wiki</a>查看该工具用法</p>
 <p>已破解的哈希值默认存储在<code>hashcat.potfile</code>这个文件中</p>
+<p>怎么算破解完成？<br>status 为Cracked<br>status 为Exhausted 已经跑完字典，但是没找到原密码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tatus [p]ause ypass [c]heckpoint [f]inish [q]uit =&gt;</span><br></pre></td></tr></table></figure>
+
+<p>出现此提示，输入s可以查看进度</p>
 <h1 id="1-用例"><a href="#1-用例" class="headerlink" title="1.用例"></a>1.用例</h1><h2 id="1-我有一串md5加密过的需要破解"><a href="#1-我有一串md5加密过的需要破解" class="headerlink" title="(1).我有一串md5加密过的需要破解"></a>(1).我有一串md5加密过的需要破解</h2><p>在目录下创建两个文件</p>
 <p>hash.txt存放 破解的密码</p>
 <p>cracked.txt 存放待破解的哈希值</p>
@@ -209,6 +213,17 @@
 
 <p>破解的值存在<code>hashcat.potfile</code>这个文件里面，可以看到此压缩包的密码哈希破解后为<code>114514</code></p>
 <p><img src="https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/image-20241101181520637.png" alt="image-20241101181520637"></p>
+<h2 id="3-在取证中的应用：构造SMB-的-hash串"><a href="#3-在取证中的应用：构造SMB-的-hash串" class="headerlink" title="(3).在取证中的应用：构造SMB 的 hash串"></a>(3).在取证中的应用：构造SMB 的 hash串</h2><p>例题: 强网杯2024——谍影重重5</p>
+<p>SMB登录流量的hash串破解</p>
+<p>SMB2的hash串结构：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">username::domain:challenge(16个字符):ntproofstr(32个字符):blob(至少32个字符</span><br><span class="line"></span><br><span class="line"># 例如下方就是一个标准的SMB hash串</span><br><span class="line"></span><br><span class="line">tom::.:c1dec53240124487:ca32f9b5b48c04ccfa96f35213d63d75:010100000000000040d0731fb92adb01221434d6e24970170000000002001e004400450053004b0054004f0050002d004a0030004500450039004d00520001001e004400450053004b0054004f0050002d004a0030004500450039004d00520004001e004400450053004b0054004f0050002d004a0030004500450039004d00520003001e004400450053004b0054004f0050002d004a0030004500450039004d0052000700080040d0731fb92adb0106000400020000000800300030000000000000000100000000200000bd69d88e01f6425e6c1d7f796d55f11bd4bdcb27c845c6ebfac35b8a3acc42c20a001000000000000000000000000000000000000900260063006900660073002f003100370032002e00310036002e003100300035002e003100320039000000000000000000</span><br></pre></td></tr></table></figure>
+
+<p>使用<code>tshark</code>对<code>1.pcapng</code>进行流量的特征值的提取</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 提取其他部分</span><br><span class="line">tshark -n -r 1.pcapng -Y  &#x27;ntlmssp.messagetype = 0x00000003&#x27; -T fields -e ntlmssp.auth.username -e ntlmssp.auth.domain -e ntlmssp.ntlmv2_response.ntproofstr -e ntlmssp.auth.sesskey -e smb2.sesid</span><br><span class="line"></span><br><span class="line"># 提取challenge部分</span><br><span class="line">tshark -n -r 1.pcapng -Y &#x27;ntlmssp.messagetype = 0x00000002&#x27; -T fields -e ntlmssp.ntlmserverchallenge</span><br></pre></td></tr></table></figure>
+
+<p>爆破</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hashcat.exe -a 3 -m 5600 SMB2的hash串</span><br></pre></td></tr></table></figure>
+
 
 </div> 
 
