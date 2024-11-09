@@ -145,16 +145,15 @@
 <p>linux</p>
 </blockquote>
 <p><strong>本文以ubuntu linux为例</strong></p>
-<h2 id="0-0网络环境"><a href="#0-0网络环境" class="headerlink" title="0.0网络环境"></a>0.0网络环境</h2><p>科学上网</p>
-<blockquote>
+<h2 id="0-0网络环境"><a href="#0-0网络环境" class="headerlink" title="0.0网络环境"></a>0.0网络环境</h2><blockquote>
 <p><strong>特别强调</strong>：如果你没有软路由等网络层代理工具，而是用软件代理，你的终端是不走软件的代理的（大多数情况）</p>
 </blockquote>
 <p>因此你要通过<strong>终端代理工具+软件代理工具</strong>的方式实现终端代理</p>
-<p>介绍一个方案：**<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/2288071">ProxyChains</a>** + <strong><a target="_blank" rel="noopener" href="https://einverne.github.io/post/2021/10/linux-use-clash-for-windows.html">cfw</a></strong></p>
+<p>介绍一个方案：**<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/2288071">ProxyChains</a>** + **<a target="_blank" rel="noopener" href="https://einverne.github.io/post/2021/10/linux-use-clash-for-windows.html">cfw</a>**（或者v2ray）</p>
 <p><strong>示例</strong>：假设你现在已经安装好了上述两个工具，并配置且运行了<code>cfw</code></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/proxychains.conf</span><br></pre></td></tr></table></figure>
 
-<p>在打开的文件里面最后添加一行（7890 是cfw的默认代理端口），注释掉socks</p>
+<p>打开配置文件，在最后添加一行（7890 是cfw的默认代理端口），注释掉socks</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http 127.0.0.1 7890</span><br></pre></td></tr></table></figure>
 
 <p>然后<code>ctrl+o</code>保存，<code>ctrl+x</code>关闭</p>
@@ -172,24 +171,24 @@
 <p>libpq-dev libpq </p>
 <p>build-essential </p>
 </blockquote>
-<p><strong>安装本节中列出的先决条件。</strong></p>
+<p><strong>先决条件。</strong></p>
 <p><strong>使用以下命令更新 <code>apt-get</code> ：</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
 
-<p><strong>运行以下命令来一次安装它们</strong></p>
+<p><strong>安装所需要的依赖</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install curl git-all cmake gcc libssl-dev pkg-config libclang-dev libpq-dev build-essential</span><br></pre></td></tr></table></figure>
 
 
 
 <h3 id="0-2-2-安装-cargo-和-rust"><a href="#0-2-2-安装-cargo-和-rust" class="headerlink" title="0.2.2 安装 cargo 和 rust"></a>0.2.2 安装 cargo 和 rust</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl --proto &#x27;=https&#x27; --tlsv1.2 -sSf https://sh.rustup.rs | sh</span><br></pre></td></tr></table></figure>
 
-<p>如果不成功，请确保终端已经实现科学上网</p>
+<p>如果不成功，请确保终端已经实现网络代理</p>
 <p>Sui 使用最新版本的 Cargo 来构建和管理依赖项。有关更多信息，请参阅 Rust 网站上的<a target="_blank" rel="noopener" href="https://doc.rust-lang.org/cargo/getting-started/installation.html">Cargo installation</a>页面。</p>
 <p>使用以下命令将 Rust 更新为 <code>rustup</code> ：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rustup update stable</span><br></pre></td></tr></table></figure>
 
 <h1 id="step1，Install-Sui-move-环境"><a href="#step1，Install-Sui-move-环境" class="headerlink" title="step1，Install Sui move 环境"></a>step1，Install Sui move 环境</h1><p>官网提供了</p>
-<h2 id="我建议使用“从二进制文件安装”"><a href="#我建议使用“从二进制文件安装”" class="headerlink" title="我建议使用“从二进制文件安装”"></a>我建议使用“从二进制文件安装”</h2><p>访问 <a target="_blank" rel="noopener" href="https://github.com/MystenLabs/sui%E3%80%82">https://github.com/MystenLabs/sui。</a></p>
+<h2 id="建议使用“从二进制文件安装”"><a href="#建议使用“从二进制文件安装”" class="headerlink" title="建议使用“从二进制文件安装”"></a>建议使用“从二进制文件安装”</h2><p>访问 <a target="_blank" rel="noopener" href="https://github.com/MystenLabs/sui%E3%80%82">https://github.com/MystenLabs/sui。</a></p>
 <p>在右侧窗格中，找到“<strong>Releases</strong>”部分。</p>
 <p><img src="https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/releases-508571c4e1b0f73222ac83d4bb30a4c2.png" alt="Sui releases in GitHub"></p>
 <p>单击标记为“<strong>Latest</strong> ”的版本以打开该版本的页面。</p>
@@ -428,7 +427,7 @@
 <h1 id="info-0，说明"><a href="#info-0，说明" class="headerlink" title="info 0，说明"></a>info 0，说明</h1><h2 id="一、如何升级-Sui-？"><a href="#一、如何升级-Sui-？" class="headerlink" title="一、如何升级 Sui ？"></a>一、如何升级 Sui ？</h2><p><strong>如果您之前安装了 Sui 二进制文件，则可以使用与安装它们相同的命令将它们更新到最新版本</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cargo install --locked --git https://github.com/MystenLabs/sui.git --branch testnet sui</span><br></pre></td></tr></table></figure>
 
-<h2 id="二、用哪一个区块链浏览器"><a href="#二、用哪一个区块链浏览器" class="headerlink" title="二、用哪一个区块链浏览器"></a>二、用哪一个区块链浏览器</h2><p>推荐：<a target="_blank" rel="noopener" href="https://suivision.xyz/">https://suivision.xyz/</a></p>
+<h2 id="二、用哪一个区块链浏览器？"><a href="#二、用哪一个区块链浏览器？" class="headerlink" title="二、用哪一个区块链浏览器？"></a>二、用哪一个区块链浏览器？</h2><p>推荐：<a target="_blank" rel="noopener" href="https://suivision.xyz/">https://suivision.xyz/</a></p>
 <p>devnet、testnet、mainnet的交易信息都可以很方便地查询</p>
 <p>切换：</p>
 <p><img src="https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/image-20240411191008311.png" alt="image-20240411191008311"></p>

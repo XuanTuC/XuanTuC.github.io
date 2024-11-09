@@ -152,7 +152,7 @@
 <p><code>sudo unzip v2ray-linux-64.zip -d /usr/local/v2ray-core</code></p>
 <h1 id="cat-step2-下载并安装-v2rayA"><a href="#cat-step2-下载并安装-v2rayA" class="headerlink" title=":cat: step2 下载并安装 v2rayA"></a><strong>:cat: step2 下载并安装 v2rayA</strong></h1><p>v2rayA官网：<a target="_blank" rel="noopener" href="https://v2raya.org/docs/prologue/installation/debian/">https://v2raya.org/docs/prologue/installation/debian/</a></p>
 <p>手动安装 deb 包</p>
-<p>去<a target="_blank" rel="noopener" href="https://github.com/v2rayA/v2rayA/releases">https://github.com/v2rayA/v2rayA/releases</a><br>下载适合自己架构的deb宝，例如<code>installer_debian_x86_2.2.5.6.deb</code></p>
+<p>去<a target="_blank" rel="noopener" href="https://github.com/v2rayA/v2rayA/releases">https://github.com/v2rayA/v2rayA/releases</a><br>下载适合自己架构的deb包，例如<code>installer_debian_x86_2.2.5.6.deb</code></p>
 <p>用命令安装deb包（在下载的文件所在的目录，替换成你实际的包）<br><code>sudo dpkg -i installer_debian_x86_2.2.5.6.deb</code></p>
 <h1 id="cat-step3-配置v2rayA"><a href="#cat-step3-配置v2rayA" class="headerlink" title=":cat: step3 配置v2rayA"></a><strong>:cat: step3 配置v2rayA</strong></h1><p>修改&#x2F;etc&#x2F;default&#x2F;v2raya配置文件让 v2raya 使用 v2ray-core</p>
 <h2 id="将V2rayA和v2ray-core关联起来"><a href="#将V2rayA和v2ray-core关联起来" class="headerlink" title="将V2rayA和v2ray-core关联起来"></a>将V2rayA和v2ray-core关联起来</h2><p><code>sudo nano /etc/default/v2raya</code></p>
@@ -162,7 +162,7 @@
 <p>设置开机启动<br><code>sudo systemctl enable v2raya.service</code></p>
 <p>查看运行情况<br><code>systemctl status v2raya</code></p>
 <p>启动后，浏览器  127.0.0.1:2017 进入管理面板<br>具体设置不再详细说明，可看文章：<a target="_blank" rel="noopener" href="https://pengtech.net/network/v2rayA_install.html">https://pengtech.net/network/v2rayA_install.html</a></p>
-<h1 id="cat-step5-配置系统代理"><a href="#cat-step5-配置系统代理" class="headerlink" title=":cat: step5 配置系统代理"></a><strong>:cat: step5 配置系统代理</strong></h1><p>打开ubuntu设置，打开网络，网络代理，http和https按照v2raya默认进行设置：<br>都是127.0.0.1 端口20171,忽略主机留空，全局代理成功，打开github开始网络冲浪吧</p>
+<h1 id="cat-step5-配置系统代理"><a href="#cat-step5-配置系统代理" class="headerlink" title=":cat: step5 配置系统代理"></a><strong>:cat: step5 配置系统代理</strong></h1><p>打开ubuntu设置，打开网络，网络代理，http和https按照v2raya默认进行设置：<br>都是127.0.0.1 端口20171,忽略主机留空，全局代理成功。</p>
 
 </div> 
 
