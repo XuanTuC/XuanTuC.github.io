@@ -175,6 +175,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tatus [p]ause ypass [c]heckpoint [f]inish [q]uit =&gt;</span><br></pre></td></tr></table></figure>
 
 <p>出现此提示，输入s可以查看进度</p>
+<p>严禁用与非法破解</p>
 <h1 id="1-用例"><a href="#1-用例" class="headerlink" title="1.用例"></a>1.用例</h1><h2 id="1-我有一串md5加密过的需要破解"><a href="#1-我有一串md5加密过的需要破解" class="headerlink" title="(1).我有一串md5加密过的需要破解"></a>(1).我有一串md5加密过的需要破解</h2><p>在目录下创建两个文件</p>
 <p>hash.txt存放 破解的密码</p>
 <p>cracked.txt 存放待破解的哈希值</p>
@@ -224,6 +225,16 @@
 <p>爆破</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hashcat.exe -a 3 -m 5600 SMB2的hash串</span><br></pre></td></tr></table></figure>
 
+<h2 id="4-hashcat的其他实用选项"><a href="#4-hashcat的其他实用选项" class="headerlink" title="(4).hashcat的其他实用选项"></a>(4).hashcat的其他实用选项</h2><p>限定需要破解的密码长度范围</p>
+<p>选项：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--increment --increment-min 最小位数 --increment-max 最大位数</span><br></pre></td></tr></table></figure>
+
+<p>例句：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hashcat.exe -a 3 -m 17200 $pkzip2$1*1*2*0*21*13*696b59b0*0*26*8*21*696b*8cbd*dd4bda6101e35564ec081dbcfd076001661b2a2244dced2600fc4ed9c3a2991355*$/pkzip2$ --increment --increment-min 8 --increment-max 18 </span><br></pre></td></tr></table></figure>
+
+<h2 id="5-wifi密码截获破解实验"><a href="#5-wifi密码截获破解实验" class="headerlink" title="(5). wifi密码截获破解实验"></a>(5). wifi密码截获破解实验</h2><p><code>wifite</code> 工具，若使用虚拟机则需要无线网卡</p>
+<p><a target="_blank" rel="noopener" href="https://www.kali.org/tools/wifite/">https://www.kali.org/tools/wifite/</a></p>
+<p>wsl，</p>
 
 </div> 
 
