@@ -1,0 +1,1621 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head><!-- hexo injector head_begin start -->
+<link rel="stylesheet" href="/css/bilicard.css">
+<!-- hexo injector head_begin end -->
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="xuan tu">
+
+
+
+
+
+
+
+<title>translate-shell：翻译好帮手 | 曲径通幽处.</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/frame.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 6.3.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            ヾ(^_^) back Home.!!
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">主页</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">文章</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a target="_blank" rel="noopener" href="https://drive.google.com/drive/folders/1a-OiD9e0tEgNmWDoR0RGkhBtp-v8TQq8?usp=drive_link">书阁(M)</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a target="_blank" rel="noopener" href="https://github.com/XuanTuC/CTF_BambooSlips">CTF竹简</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a target="_blank" rel="noopener" href="https://linjx1210.github.io/">友链</a>
+              </li> 
+                   
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                translate-shell：翻译好帮手
+            
+            
+        </div>
+        <span class="post-date">
+            12月 13, 2024
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <h1 id="section-0"><a href="#section-0" class="headerlink" title="section.0"></a>section.0</h1><p>**<a target="_blank" rel="noopener" href="https://github.com/soimort/translate-shell">translate-shell</a>**是一个开源项目</p>
+<p>在GNU&#x2F;Linux中，终端是每天都使用的工具，终端提供了一种快捷的使用体验：没有什么比“在键盘上按下ctrl+alt+t就能打开一个可以做任何事情的工具” 更让GNU&#x2F;Linux用户兴奋的事情了</p>
+<p>当我们在日常使用中需要用到或者理解某个不熟悉的单词时，通常重复着：<strong>打开浏览器&gt;搜索translate&gt;输入想知道的单词或者句子</strong> 这样的操作，在键盘和鼠标之间来回切换，使得这种行为十分低效，所以为什么不直接在终端中进行翻译操作呢？</p>
+<p>ctrl+alt+t，输入命令，回车，得到结果；一气呵成</p>
+<p>translate-shell就是这样的一款CLI工具</p>
+<p>可以选择从项目官方的github构建，当然，也可以使用包管理器进行安装</p>
+<p>如果你是Arch linux用户，可以通过pacman进行安装</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S translate-shell</span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p><em>其他发行版的用户可以在下面文档中找到对应的安装命令：<a target="_blank" rel="noopener" href="https://github.com/soimort/translate-shell/wiki/Distros#alpine-linux">https://github.com/soimort/translate-shell/wiki/Distros#alpine-linux</a></em></p>
+</blockquote>
+<p>此工具的便捷性和专业性，足以简化你的语言学习路径。</p>
+<h1 id="使用示例："><a href="#使用示例：" class="headerlink" title="使用示例："></a>使用示例：</h1><p>Google翻译可以自动识别源文本的语言，默认情况下，Translate Shell会将源文本翻译为您<code>所在地区</code>的语言。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">trans vorto</span><br></pre></td></tr></table></figure>
+
+<p>默认情况下，会显示带有详细解释的翻译。您也可以简单地翻译文本：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">trans -brief &#x27;Saluton, Mondo!&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>可以翻译句子</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">trans &#x27;Saluton, Mondo!&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>可以指定输入输出语言，比如把”word processor”这个英文en句子翻译为中文zh</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">trans en:zh &quot;word processor&quot;</span><br></pre></td></tr></table></figure>
+
+<p>将一个单词翻译为汉语和日语：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">trans :zh+ja word</span><br></pre></td></tr></table></figure>
+
+
+
+<p>更多高级用法详见项目wiki：<a target="_blank" rel="noopener" href="https://github.com/soimort/translate-shell/wiki">https://github.com/soimort/translate-shell/wiki</a></p>
+<h1 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h1><p>支持的语言与对应代码的表。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>代码</td>
+<td>语言</td>
+<td>语系</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/soimort/translate-shell/wiki/Writing-Systems-and-Fonts">文字</a></td>
+<td><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Right-to-left">右起书写</a>?</td>
+<td>字典?</td>
+</tr>
+<tr>
+<td><strong><code>af</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/afr"><code>afr</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:afr">南非荷兰语 &#x2F; 布尔语</a></strong> <strong>Afrikaans</strong></td>
+<td>印欧</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>am</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/amh"><code>amh</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:amh">阿姆哈拉语</a></strong> <strong>አማርኛ</strong></td>
+<td>亚非</td>
+<td>吉兹字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>ar</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/ara"><code>ara</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:ara">阿拉伯语</a></strong> <strong>العربية</strong></td>
+<td>亚非</td>
+<td>阿拉伯文</td>
+<td>✓</td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>as</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/asm"><code>asm</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:asm">阿萨姆语</a></strong> <strong>অসমীয়া</strong></td>
+<td>印欧</td>
+<td>孟加拉文</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>ay</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/aym"><code>aym</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:aym">艾马拉语</a></strong> <strong>Aymar aru</strong></td>
+<td>艾马拉</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>az</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/aze"><code>aze</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:aze">阿塞拜疆语</a></strong> <strong>Azərbaycanca</strong></td>
+<td>突厥</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>ba</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/bak"><code>bak</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:bak">巴什基尔语</a></strong> <strong>Башҡортса</strong></td>
+<td>突厥</td>
+<td>西里尔字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>be</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/bel"><code>bel</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:bel">白俄罗斯语</a></strong> <strong>беларуская</strong></td>
+<td>印欧</td>
+<td>西里尔字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>bg</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/bul"><code>bul</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:bul">保加利亚语</a></strong> <strong>български</strong></td>
+<td>印欧</td>
+<td>西里尔字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>bho</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/bho"><code>bho</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:bho">博杰普尔语</a></strong> <strong>भोजपुरी</strong></td>
+<td>印欧</td>
+<td>天城文</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>bm</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/bam"><code>bam</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:bam">班巴拉语</a></strong> <strong>Bamanankan</strong></td>
+<td>曼德</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>bn</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/ben"><code>ben</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:ben">孟加拉语</a></strong> <strong>বাংলা</strong></td>
+<td>印欧</td>
+<td>孟加拉文</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>bo</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/bod"><code>bod</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:bod">藏语</a></strong> <strong>བོད་ཡིག</strong></td>
+<td>汉藏</td>
+<td>藏文</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>br</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/bre"><code>bre</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:bre">布列塔尼语</a></strong> <strong>Brezhoneg</strong></td>
+<td>印欧</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>bs</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/bos"><code>bos</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:bos">波斯尼亚语</a></strong> <strong>Bosanski</strong></td>
+<td>印欧</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>ca</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/cat"><code>cat</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:cat">加泰罗尼亚语</a></strong> <strong>Català</strong></td>
+<td>印欧</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>ceb</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/ceb"><code>ceb</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:ceb">宿务语</a></strong> <strong>Cebuano</strong></td>
+<td>南岛</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>chr</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/chr"><code>chr</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:chr">切罗基语</a></strong> <strong>ᏣᎳᎩ</strong></td>
+<td>易洛魁</td>
+<td>切罗基字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>ckb</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/ckb"><code>ckb</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:ckb">中库尔德语</a></strong> <strong>سۆرانی</strong></td>
+<td>印欧</td>
+<td>阿拉伯文</td>
+<td>✓</td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>co</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/cos"><code>cos</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:cos">科西嘉语</a></strong> <strong>Corsu</strong></td>
+<td>印欧</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>cs</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/ces"><code>ces</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:ces">捷克语</a></strong> <strong>Čeština</strong></td>
+<td>印欧</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>cv</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/chv"><code>chv</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:chv">楚瓦什语</a></strong> <strong>Чӑвашла</strong></td>
+<td>突厥</td>
+<td>西里尔字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>cy</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/cym"><code>cym</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:cym">威尔士语</a></strong> <strong>Cymraeg</strong></td>
+<td>印欧</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>da</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/dan"><code>dan</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:dan">丹麦语</a></strong> <strong>Dansk</strong></td>
+<td>印欧</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>de</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/deu"><code>deu</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:deu">德语</a></strong> <strong>Deutsch</strong></td>
+<td>印欧</td>
+<td>拉丁字母</td>
+<td></td>
+<td>✓</td>
+</tr>
+<tr>
+<td><strong><code>doi</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/doi"><code>doi</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:doi">多格拉语</a></strong> <strong>डोगरी</strong></td>
+<td>印欧</td>
+<td>天城文</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>dv</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/div"><code>div</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:div">迪维希语</a></strong> <strong>ދިވެހި</strong></td>
+<td>印欧</td>
+<td>它拿字母</td>
+<td>✓</td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>dz</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/dzo"><code>dzo</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:dzo">宗喀语</a></strong> <strong>རྫོང་ཁ</strong></td>
+<td>汉藏</td>
+<td>藏文</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>ee</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/ewe"><code>ewe</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:ewe">埃维语</a></strong> <strong>Eʋegbe</strong></td>
+<td>大西洋-刚果</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>el</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/ell"><code>ell</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:ell">希腊语</a></strong> <strong>Ελληνικά</strong></td>
+<td>印欧</td>
+<td>希腊字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>en</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/eng"><code>eng</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:eng">英语</a></strong> <strong>English</strong></td>
+<td>印欧</td>
+<td>拉丁字母</td>
+<td></td>
+<td>✓</td>
+</tr>
+<tr>
+<td><strong><code>eo</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/epo"><code>epo</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:epo">世界语</a></strong> <strong>Esperanto</strong></td>
+<td>人工语言</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>es</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/spa"><code>spa</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:spa">西班牙语</a></strong> <strong>Español</strong></td>
+<td>印欧</td>
+<td>拉丁字母</td>
+<td></td>
+<td>✓</td>
+</tr>
+<tr>
+<td><strong><code>et</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/est"><code>est</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:est">爱沙尼亚语</a></strong> <strong>Eesti</strong></td>
+<td>乌拉尔</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>eu</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/eus"><code>eus</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:eus">巴斯克语</a></strong> <strong>Euskara</strong></td>
+<td>孤立语言</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>fa</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/fas"><code>fas</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:fas">波斯语</a></strong> <strong>فارسی</strong></td>
+<td>印欧</td>
+<td>阿拉伯文</td>
+<td>✓</td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>fi</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/fin"><code>fin</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:fin">芬兰语</a></strong> <strong>Suomi</strong></td>
+<td>乌拉尔</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>fj</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/fij"><code>fij</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:fij">斐济语</a></strong> <strong>Vosa Vakaviti</strong></td>
+<td>南岛</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>fo</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/fao"><code>fao</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:fao">法罗语</a></strong> <strong>Føroyskt</strong></td>
+<td>印欧</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>fr</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/fra"><code>fra</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:fra">法语</a></strong> <strong>Français</strong></td>
+<td>印欧</td>
+<td>拉丁字母</td>
+<td></td>
+<td>✓</td>
+</tr>
+<tr>
+<td><strong><code>fr-CA</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/fra"><code>fra</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:fra">加拿大法语</a></strong> <strong>Français canadien</strong></td>
+<td>印欧</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>fy</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/fry"><code>fry</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:fry">西弗里斯语</a></strong> <strong>Frysk</strong></td>
+<td>印欧</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>ga</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/gle"><code>gle</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:gle">爱尔兰语</a></strong> <strong>Gaeilge</strong></td>
+<td>印欧</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>gd</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/gla"><code>gla</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:gla">苏格兰盖尔语</a></strong> <strong>Gàidhlig</strong></td>
+<td>印欧</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>gl</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/glg"><code>glg</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:glg">加利西亚语</a></strong> <strong>Galego</strong></td>
+<td>印欧</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>gn</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/gug"><code>gug</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:gug">瓜拉尼语</a></strong> <strong>Avañe’ẽ</strong></td>
+<td>图皮</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>gom</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/gom"><code>gom</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:gom">孔卡尼语</a></strong> <strong>कोंकणी</strong></td>
+<td>印欧</td>
+<td>天城文</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>gu</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/guj"><code>guj</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:guj">古吉拉特语</a></strong> <strong>ગુજરાતી</strong></td>
+<td>印欧</td>
+<td>古吉拉特文</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>ha</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/hau"><code>hau</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:hau">豪萨语</a></strong> <strong>Hausa</strong></td>
+<td>亚非</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>haw</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/haw"><code>haw</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:haw">夏威夷语</a></strong> <strong>ʻŌlelo Hawaiʻi</strong></td>
+<td>南岛</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>he</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/heb"><code>heb</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:heb">希伯来语</a></strong> <strong>עִבְרִית</strong></td>
+<td>亚非</td>
+<td>希伯来文</td>
+<td>✓</td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>hi</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/hin"><code>hin</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:hin">印地语</a></strong> <strong>हिन्दी</strong></td>
+<td>印欧</td>
+<td>天城文</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>hmn</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/hmn"><code>hmn</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:hmn">苗语</a></strong> <strong>Hmoob</strong></td>
+<td>苗瑶</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>hr</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/hrv"><code>hrv</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:hrv">克罗地亚语</a></strong> <strong>Hrvatski</strong></td>
+<td>印欧</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>hsb</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/hsb"><code>hsb</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:hsb">上索布语</a></strong> <strong>Hornjoserbšćina</strong></td>
+<td>印欧</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>ht</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/hat"><code>hat</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:hat">海地克里奥尔语</a></strong> <strong>Kreyòl Ayisyen</strong></td>
+<td>印欧</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>hu</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/hun"><code>hun</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:hun">匈牙利语</a></strong> <strong>Magyar</strong></td>
+<td>乌拉尔</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>hy</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/hye"><code>hye</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:hye">亚美尼亚语</a></strong> <strong>Հայերեն</strong></td>
+<td>印欧</td>
+<td>亚美尼亚字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>id</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/ind"><code>ind</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:ind">印尼语</a></strong> <strong>Bahasa Indonesia</strong></td>
+<td>南岛</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>ie</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/ile"><code>ile</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:ile">西方国际语</a></strong> <strong>Interlingue</strong></td>
+<td>人工语言</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>ig</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/ibo"><code>ibo</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:ibo">伊博语</a></strong> <strong>Igbo</strong></td>
+<td>大西洋-刚果</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>ikt</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/ikt"><code>ikt</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:ikt">因纽维埃卢克顿语</a></strong> <strong>Inuinnaqtun</strong></td>
+<td>爱斯基摩-阿留申</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>ilo</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/ilo"><code>ilo</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:ilo">伊洛卡诺语</a></strong> <strong>Ilokano</strong></td>
+<td>南岛</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>is</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/isl"><code>isl</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:isl">冰岛语</a></strong> <strong>Íslenska</strong></td>
+<td>印欧</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>it</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/ita"><code>ita</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:ita">意大利语</a></strong> <strong>Italiano</strong></td>
+<td>印欧</td>
+<td>拉丁字母</td>
+<td></td>
+<td>✓</td>
+</tr>
+<tr>
+<td><strong><code>iu</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/iku"><code>iku</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:iku">伊努克提图特语</a></strong> <strong>ᐃᓄᒃᑎᑐᑦ</strong></td>
+<td>爱斯基摩-阿留申</td>
+<td>加拿大原住民音节文字</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>iu-Latn</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/iku"><code>iku</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:iku">伊努克提图特语 (拉丁字母)</a></strong> <strong>Inuktitut</strong></td>
+<td>爱斯基摩-阿留申</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>ja</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/jpn"><code>jpn</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:jpn">日语</a></strong> <strong>日本語</strong></td>
+<td>日本</td>
+<td>日文 (假名+汉字)</td>
+<td></td>
+<td>✓</td>
+</tr>
+<tr>
+<td><strong><code>jv</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/jav"><code>jav</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:jav">爪哇语</a></strong> <strong>Basa Jawa</strong></td>
+<td>南岛</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>ka</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/kat"><code>kat</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:kat">格鲁吉亚语</a></strong> <strong>ქართული</strong></td>
+<td>南高加索</td>
+<td>格鲁吉亚字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>kk</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/kaz"><code>kaz</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:kaz">哈萨克语</a></strong> <strong>Қазақ тілі</strong></td>
+<td>突厥</td>
+<td>西里尔字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>kl</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/kal"><code>kal</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:kal">格陵兰语</a></strong> <strong>Kalaallisut</strong></td>
+<td>爱斯基摩-阿留申</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>km</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/khm"><code>khm</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:khm">高棉语</a></strong> <strong>ភាសាខ្មែរ</strong></td>
+<td>南亚</td>
+<td>高棉文</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>kn</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/kan"><code>kan</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:kan">卡纳达语</a></strong> <strong>ಕನ್ನಡ</strong></td>
+<td>达罗毗荼</td>
+<td>卡纳达文</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>ko</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/kor"><code>kor</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:kor">韩语 &#x2F; 朝鲜语</a></strong> <strong>한국어</strong></td>
+<td>朝鲜</td>
+<td>韩文 (谚文+汉字)</td>
+<td></td>
+<td>✓</td>
+</tr>
+<tr>
+<td><strong><code>kri</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/kri"><code>kri</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:kri">克里奥语</a></strong> <strong>Krio</strong></td>
+<td>印欧</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>ku</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/kmr"><code>kmr</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:kmr">北库尔德语</a></strong> <strong>Kurmancî</strong></td>
+<td>印欧</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>ky</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/kir"><code>kir</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:kir">柯尔克孜语 &#x2F; 吉尔吉斯语</a></strong> <strong>Кыргызча</strong></td>
+<td>突厥</td>
+<td>西里尔字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>la</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/lat"><code>lat</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:lat">拉丁语</a></strong> <strong>Latina</strong></td>
+<td>印欧</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>lb</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/ltz"><code>ltz</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:ltz">卢森堡语</a></strong> <strong>Lëtzebuergesch</strong></td>
+<td>印欧</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>lg</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/lug"><code>lug</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:lug">卢干达语</a></strong> <strong>Luganda</strong></td>
+<td>大西洋-刚果</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>ln</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/lin"><code>lin</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:lin">林加拉语</a></strong> <strong>Lingála</strong></td>
+<td>大西洋-刚果</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>lo</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/lao"><code>lao</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:lao">老挝语</a></strong> <strong>ລາວ</strong></td>
+<td>壮侗</td>
+<td>老挝文</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>lt</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/lit"><code>lit</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:lit">立陶宛语</a></strong> <strong>Lietuvių</strong></td>
+<td>印欧</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>lus</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/lus"><code>lus</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:lus">米佐语</a></strong> <strong>Mizo ṭawng</strong></td>
+<td>汉藏</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>lv</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/lav"><code>lav</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:lav">拉脱维亚语</a></strong> <strong>Latviešu</strong></td>
+<td>印欧</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>lzh</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/lzh"><code>lzh</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:lzh">文言</a></strong> <strong>文言</strong></td>
+<td>汉藏</td>
+<td>简体汉字</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>mai</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/mai"><code>mai</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:mai">迈蒂利语</a></strong> <strong>मैथिली</strong></td>
+<td>印欧</td>
+<td>天城文</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>mg</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/mlg"><code>mlg</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:mlg">马尔加什语 &#x2F; 马拉加斯语</a></strong> <strong>Malagasy</strong></td>
+<td>南岛</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>mhr</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/mhr"><code>mhr</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:mhr">东马里语</a></strong> <strong>Олык марий</strong></td>
+<td>乌拉尔</td>
+<td>西里尔字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>mi</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/mri"><code>mri</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:mri">毛利语</a></strong> <strong>Māori</strong></td>
+<td>南岛</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>mk</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/mkd"><code>mkd</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:mkd">马其顿语</a></strong> <strong>Македонски</strong></td>
+<td>印欧</td>
+<td>西里尔字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>ml</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/mal"><code>mal</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:mal">马拉雅拉姆语</a></strong> <strong>മലയാളം</strong></td>
+<td>达罗毗荼</td>
+<td>马拉雅拉姆文</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>mn</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/mon"><code>mon</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:mon">蒙古语</a></strong> <strong>Монгол</strong></td>
+<td>蒙古</td>
+<td>西里尔字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>mn-Mong</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/mon"><code>mon</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:mon">蒙古语 (传统蒙文)</a></strong> <strong>ᠮᠣᠩᠭᠣᠯ</strong></td>
+<td>蒙古</td>
+<td>传统蒙文</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>mni-Mtei</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/mni"><code>mni</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:mni">曼尼普尔语</a></strong> <strong>ꯃꯤꯇꯩꯂꯣꯟ</strong></td>
+<td>汉藏</td>
+<td>曼尼普尔文</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>mr</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/mar"><code>mar</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:mar">马拉地语</a></strong> <strong>मराठी</strong></td>
+<td>印欧</td>
+<td>天城文</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>mrj</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/mrj"><code>mrj</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:mrj">山地马里语</a></strong> <strong>Кырык мары</strong></td>
+<td>乌拉尔</td>
+<td>西里尔字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>ms</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/msa"><code>msa</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:msa">马来语</a></strong> <strong>Bahasa Melayu</strong></td>
+<td>南岛</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>mt</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/mlt"><code>mlt</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:mlt">马耳他语</a></strong> <strong>Malti</strong></td>
+<td>亚非</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>my</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/mya"><code>mya</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:mya">缅甸语</a></strong> <strong>မြန်မာစာ</strong></td>
+<td>汉藏</td>
+<td>缅文</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>ne</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/nep"><code>nep</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:nep">尼泊尔语</a></strong> <strong>नेपाली</strong></td>
+<td>印欧</td>
+<td>天城文</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>nl</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/nld"><code>nld</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:nld">荷兰语</a></strong> <strong>Nederlands</strong></td>
+<td>印欧</td>
+<td>拉丁字母</td>
+<td></td>
+<td>✓</td>
+</tr>
+<tr>
+<td><strong><code>no</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/nor"><code>nor</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:nor">挪威语</a></strong> <strong>Norsk</strong></td>
+<td>印欧</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>nso</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/nso"><code>nso</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:nso">北索托语</a></strong> <strong>Sepedi</strong></td>
+<td>大西洋-刚果</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>ny</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/nya"><code>nya</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:nya">齐切瓦语</a></strong> <strong>Nyanja</strong></td>
+<td>大西洋-刚果</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>oc</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/oci"><code>oci</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:oci">奥克语</a></strong> <strong>Occitan</strong></td>
+<td>印欧</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>om</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/orm"><code>orm</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:orm">奥罗莫语</a></strong> <strong>Afaan Oromoo</strong></td>
+<td>亚非</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>or</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/ori"><code>ori</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:ori">奥里亚语</a></strong> <strong>ଓଡ଼ିଆ</strong></td>
+<td>印欧</td>
+<td>奥里亚文</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>otq</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/otq"><code>otq</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:otq">克雷塔罗奥托米语</a></strong> <strong>Hñąñho</strong></td>
+<td>欧托-曼格</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>pa</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/pan"><code>pan</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:pan">旁遮普语</a></strong> <strong>ਪੰਜਾਬੀ</strong></td>
+<td>印欧</td>
+<td>古木基文</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>pap</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/pap"><code>pap</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:pap">帕皮阿门托语</a></strong> <strong>Papiamentu</strong></td>
+<td>印欧</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>pl</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/pol"><code>pol</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:pol">波兰语</a></strong> <strong>Polski</strong></td>
+<td>印欧</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>prs</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/prs"><code>prs</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:prs">达里语</a></strong> <strong>دری</strong></td>
+<td>印欧</td>
+<td>阿拉伯文</td>
+<td>✓</td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>ps</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/pus"><code>pus</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:pus">普什图语</a></strong> <strong>پښتو</strong></td>
+<td>印欧</td>
+<td>阿拉伯文</td>
+<td>✓</td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>pt-BR</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/por"><code>por</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:por">巴西葡萄牙语</a></strong> <strong>Português Brasileiro</strong></td>
+<td>印欧</td>
+<td>拉丁字母</td>
+<td></td>
+<td>✓</td>
+</tr>
+<tr>
+<td><strong><code>pt-PT</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/por"><code>por</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:por">葡萄牙语</a></strong> <strong>Português Europeu</strong></td>
+<td>印欧</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>qu</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/que"><code>que</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:que">克丘亚语</a></strong> <strong>Runasimi</strong></td>
+<td>克丘亚</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>rm</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/roh"><code>roh</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:roh">罗曼什语</a></strong> <strong>Rumantsch</strong></td>
+<td>印欧</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>ro</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/ron"><code>ron</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:ron">罗马尼亚语</a></strong> <strong>Română</strong></td>
+<td>印欧</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>ru</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/rus"><code>rus</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:rus">俄语</a></strong> <strong>Русский</strong></td>
+<td>印欧</td>
+<td>西里尔字母</td>
+<td></td>
+<td>✓</td>
+</tr>
+<tr>
+<td><strong><code>rw</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/kin"><code>kin</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:kin">卢旺达语</a></strong> <strong>Ikinyarwanda</strong></td>
+<td>大西洋-刚果</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>sa</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/san"><code>san</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:san">梵语</a></strong> <strong>संस्कृतम्</strong></td>
+<td>印欧</td>
+<td>天城文</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>sah</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/sah"><code>sah</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:sah">雅库特语</a></strong> <strong>Sakha</strong></td>
+<td>突厥</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>sd</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/snd"><code>snd</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:snd">信德语</a></strong> <strong>سنڌي</strong></td>
+<td>印欧</td>
+<td>阿拉伯文</td>
+<td>✓</td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>si</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/sin"><code>sin</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:sin">僧伽罗语</a></strong> <strong>සිංහල</strong></td>
+<td>印欧</td>
+<td>僧伽罗文</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>sk</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/slk"><code>slk</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:slk">斯洛伐克语</a></strong> <strong>Slovenčina</strong></td>
+<td>印欧</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>sl</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/slv"><code>slv</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:slv">斯洛文尼亚语</a></strong> <strong>Slovenščina</strong></td>
+<td>印欧</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>sm</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/smo"><code>smo</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:smo">萨摩亚语</a></strong> <strong>Gagana Sāmoa</strong></td>
+<td>南岛</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>sn</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/sna"><code>sna</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:sna">修纳语</a></strong> <strong>chiShona</strong></td>
+<td>大西洋-刚果</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>so</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/som"><code>som</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:som">索马里语</a></strong> <strong>Soomaali</strong></td>
+<td>亚非</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>sq</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/sqi"><code>sqi</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:sqi">阿尔巴尼亚语</a></strong> <strong>Shqip</strong></td>
+<td>印欧</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>sr-Cyrl</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/srp"><code>srp</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:srp">塞尔维亚语 (西里尔字母)</a></strong> <strong>Српски</strong></td>
+<td>印欧</td>
+<td>西里尔字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>sr-Latn</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/srp"><code>srp</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:srp">塞尔维亚语 (拉丁字母)</a></strong> <strong>Srpski</strong></td>
+<td>印欧</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>st</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/sot"><code>sot</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:sot">塞索托语</a></strong> <strong>Sesotho</strong></td>
+<td>大西洋-刚果</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>su</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/sun"><code>sun</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:sun">巽他语</a></strong> <strong>Basa Sunda</strong></td>
+<td>南岛</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>sv</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/swe"><code>swe</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:swe">瑞典语</a></strong> <strong>Svenska</strong></td>
+<td>印欧</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>sw</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/swa"><code>swa</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:swa">斯瓦希里语</a></strong> <strong>Kiswahili</strong></td>
+<td>大西洋-刚果</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>ta</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/tam"><code>tam</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:tam">泰米尔语</a></strong> <strong>தமிழ்</strong></td>
+<td>达罗毗荼</td>
+<td>泰米尔文</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>te</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/tel"><code>tel</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:tel">泰卢固语</a></strong> <strong>తెలుగు</strong></td>
+<td>达罗毗荼</td>
+<td>泰卢固文</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>tg</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/tgk"><code>tgk</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:tgk">塔吉克语</a></strong> <strong>Тоҷикӣ</strong></td>
+<td>印欧</td>
+<td>西里尔字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>th</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/tha"><code>tha</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:tha">泰语</a></strong> <strong>ไทย</strong></td>
+<td>壮侗</td>
+<td>泰文</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>ti</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/tir"><code>tir</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:tir">提格利尼亚语</a></strong> <strong>ትግርኛ</strong></td>
+<td>亚非</td>
+<td>吉兹字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>tk</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/tuk"><code>tuk</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:tuk">土库曼语</a></strong> <strong>Türkmen</strong></td>
+<td>突厥</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>tl</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/fil"><code>fil</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:fil">菲律宾语 &#x2F; 他加禄语</a></strong> <strong>Filipino</strong></td>
+<td>南岛</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>tlh-Latn</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/tlh"><code>tlh</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:tlh">克林贡语 (拉丁字母)</a></strong> <strong>tlhIngan Hol</strong></td>
+<td>人工语言</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>tn</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/tsn"><code>tsn</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:tsn">茨瓦纳语</a></strong> <strong>Setswana</strong></td>
+<td>大西洋-刚果</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>to</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/ton"><code>ton</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:ton">汤加语</a></strong> <strong>Lea faka-Tonga</strong></td>
+<td>南岛</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>tr</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/tur"><code>tur</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:tur">土耳其语</a></strong> <strong>Türkçe</strong></td>
+<td>突厥</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>ts</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/tso"><code>tso</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:tso">聪加语</a></strong> <strong>Xitsonga</strong></td>
+<td>大西洋-刚果</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>tt</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/tat"><code>tat</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:tat">鞑靼语</a></strong> <strong>татарча</strong></td>
+<td>突厥</td>
+<td>西里尔字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>tw</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/twi"><code>twi</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:twi">契维语</a></strong> <strong>Twi</strong></td>
+<td>大西洋-刚果</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>ty</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/tah"><code>tah</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:tah">塔希提语</a></strong> <strong>Reo Tahiti</strong></td>
+<td>南岛</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>udm</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/udm"><code>udm</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:udm">乌德穆尔特语</a></strong> <strong>Удмурт</strong></td>
+<td>乌拉尔</td>
+<td>西里尔字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>ug</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/uig"><code>uig</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:uig">维吾尔语</a></strong> <strong>ئۇيغۇر تىلى</strong></td>
+<td>突厥</td>
+<td>阿拉伯文</td>
+<td>✓</td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>uk</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/ukr"><code>ukr</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:ukr">乌克兰语</a></strong> <strong>Українська</strong></td>
+<td>印欧</td>
+<td>西里尔字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>ur</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/urd"><code>urd</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:urd">乌尔都语</a></strong> <strong>اُردُو</strong></td>
+<td>印欧</td>
+<td>阿拉伯文</td>
+<td>✓</td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>uz</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/uzb"><code>uzb</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:uzb">乌兹别克语</a></strong> <strong>Oʻzbek tili</strong></td>
+<td>突厥</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>vi</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/vie"><code>vie</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:vie">越南语</a></strong> <strong>Tiếng Việt</strong></td>
+<td>南亚</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>vo</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/vol"><code>vol</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:vol">沃拉普克语</a></strong> <strong>Volapük</strong></td>
+<td>人工语言</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>wo</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/wol"><code>wol</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:wol">沃洛夫语</a></strong> <strong>Wollof</strong></td>
+<td>大西洋-刚果</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>xh</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/xho"><code>xho</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:xho">科萨语</a></strong> <strong>isiXhosa</strong></td>
+<td>大西洋-刚果</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>yi</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/yid"><code>yid</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:yid">意第绪语</a></strong> <strong>ייִדיש</strong></td>
+<td>印欧</td>
+<td>希伯来文</td>
+<td>✓</td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>yo</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/yor"><code>yor</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:yor">约鲁巴语</a></strong> <strong>Yorùbá</strong></td>
+<td>大西洋-刚果</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>yua</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/yua"><code>yua</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:yua">尤卡坦玛雅语</a></strong> <strong>Màaya T’àan</strong></td>
+<td>玛雅</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>yue</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/yue"><code>yue</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:yue">粤语</a></strong> <strong>粵語</strong></td>
+<td>汉藏</td>
+<td>繁体汉字</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>zh-CN</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/zho"><code>zho</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:zho">汉语 (简体中文)</a></strong> <strong>简体中文</strong></td>
+<td>汉藏</td>
+<td>简体汉字</td>
+<td></td>
+<td>✓</td>
+</tr>
+<tr>
+<td><strong><code>zh-TW</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/zho"><code>zho</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:zho">汉语 (繁体中文)</a></strong> <strong>繁體中文</strong></td>
+<td>汉藏</td>
+<td>繁体汉字</td>
+<td></td>
+<td>✓</td>
+</tr>
+<tr>
+<td><strong><code>zu</code></strong> <a target="_blank" rel="noopener" href="http://www.ethnologue.com/language/zul"><code>zul</code></a></td>
+<td><strong><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/ISO_639:zul">祖鲁语</a></strong> <strong>isiZulu</strong></td>
+<td>大西洋-刚果</td>
+<td>拉丁字母</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2024/10/26/hashcat_tools/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+
+
+    
+       <!--PC版-->
+        <div id="SOHUCS" ></div>
+        <script charset="utf-8" type="text/javascript" src="https://cy-cdn.kuaizhan.com/upload/changyan.js" ></script>
+        <script type="text/javascript">
+        window.changyan.api.config({
+            appid: 'cywJvGKKO',
+            conf: 'prod_dfd0ec91693832034dcc62943592b045'
+        });
+        </script>   
+     
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+                人生得意须尽欢，莫使金樽空对月.
+                <br>
+            
+            
+                xuan_tu | 
+            
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+    
+
+  </body>
+</html>
