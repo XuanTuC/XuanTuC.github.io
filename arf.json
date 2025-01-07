@@ -1,9 +1,9 @@
 {
-  "name": "自由软件导图",
+  "name": "Free Softs Framework",
   "type": "folder",
   "children": [
   {
-    "name": "绘图软件",
+    "name": "image manipulation",
     "type": "folder",
     "children": [
     {
