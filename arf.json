@@ -1,19 +1,19 @@
 {
-  "name": "Free Nice Softs",
+  "name": "自由软件导图",
   "type": "folder",
   "children": [
   {
-    "name": "Username",
+    "name": "绘图软件",
     "type": "folder",
     "children": [
     {
-      "name": "Username Search Engines",
+      "name": "GUN/Linux",
       "type": "folder",
       "children": [
       {
-        "name": "WhatsMyName",
+        "name": "GIMP",
         "type": "url",
-        "url": "https://whatsmyname.app/"
+        "url": "https://www.gimp.org/"
       },
       {
         "name": "Namechk",
@@ -103,7 +103,7 @@
     }]
   },
   {
-    "name": "Email Address",
+    "name": "Android",
     "type": "folder",
     "children": [
     {
@@ -263,7 +263,7 @@
     }]
   },
   {
-    "name": "Domain Name",
+    "name": "Windows",
     "type": "folder",
     "children": [
     {
