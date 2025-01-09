@@ -170,6 +170,7 @@
 
 <p>EP4CE6F17C8</p>
 <p>17：0~179个管脚</p>
+<p>C：工作温度是0~85摄氏度</p>
 <p>8：速度等级</p>
 <h1 id="2-not-gate-非门"><a href="#2-not-gate-非门" class="headerlink" title="2.not_gate[非门]"></a>2.not_gate[非门]</h1><p>设计输入输出</p>
 <p>创建工程</p>
@@ -228,6 +229,67 @@
 
 <p>仿真结果正确</p>
 <p><img src="https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/image-20250107103229325.png" alt="image-20250107103229325"></p>
+<h1 id="4-调制解调"><a href="#4-调制解调" class="headerlink" title="4.调制解调"></a>4.调制解调</h1><p>毛刺：干扰信号：竞争冒险</p>
+<p>解决竞争冒险</p>
+<p>1，时间顺序读取（去掉）</p>
+<p>2，填充（找到上一时刻。保持上一时刻的状态，保持的时长为毛刺长度）</p>
+<p>3，时间的来源：（ 晶振-&gt; 频率- &gt; 周期-&gt;   &lt;傅里叶变换&gt;   时间）</p>
+<p>1<del>0下降沿，0</del>1上升沿</p>
+<p>D触发器（晶振的最小时间单元）D_FLIP_FLOP</p>
+<ul>
+<li>具有记忆性</li>
+<li>具有两个稳定状态</li>
+<li>信息存储单元</li>
+</ul>
+<p>边沿触发的标志</p>
+<ul>
+<li>上升沿触发：向右的三角形，在上升沿之间进行采样，看是高电平还是低电平</li>
+<li>下降沿触发：在下降沿之间进行采样，看是高电平还是低电平</li>
+</ul>
+<p>组合逻辑：即时触发</p>
+<p>时序逻辑：时序触发</p>
+<h2 id="创建d触发器"><a href="#创建d触发器" class="headerlink" title="创建d触发器"></a>创建d触发器</h2><p>频率50mhz ，周期是20纳秒</p>
+<p>时序的实现</p>
+<h1 id="状态机"><a href="#状态机" class="headerlink" title="状态机"></a>状态机</h1><h2 id="序列检测："><a href="#序列检测：" class="headerlink" title="序列检测："></a>序列检测：</h2><p>设置一个计数器，如果遇到序列第一个，此计数器加1，再检测下一个，如果仍然满足序列的第二个，则继续加一，若不是序列的第二个则减去一（有的不是，需要具体分析状态机），直到计数器达到序列自身长度</p>
+<p>如何寻找10010这一行，例如：接收到10010时才给出一个周期的高电平</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Moore状态机:输出只取决于当前状态，与输入状态无关，有S4</span><br><span class="line"></span><br><span class="line">Mealy状态机:输出不仅取决于当前状态，还和输入有关</span><br></pre></td></tr></table></figure>
+
+<p>重复检测</p>
+<p><img src="https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/image-20250108142712411.png" alt="image-20250108142712411"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">如果data==1</span><br><span class="line">	state &lt;=S0</span><br><span class="line">否则</span><br><span class="line">	state &lt;=S</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	if (state == s4)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+<p><code>state2.v</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">module state2(</span><br><span class="line">    input wire  clk,</span><br><span class="line">    input wire  rdt_n,</span><br><span class="line">    input wire  state_out,</span><br><span class="line">    input reg   find</span><br><span class="line">  </span><br><span class="line">);</span><br><span class="line">parameter IDLE =6&#x27;000_001 ;       //二进制编码，独热码  </span><br><span class="line">parameter s0 =6&#x27;000_010 ;         //二进制编码，独热码</span><br><span class="line">parameter s1 =6&#x27;000_100 ;         //二进制编码，独热码</span><br><span class="line">parameter s2 =6&#x27;001_000 ;         //二进制编码，独热码</span><br><span class="line">parameter s3 =6&#x27;010_000 ;         //二进制编码，独热码</span><br><span class="line">parameter s4 =6&#x27;100_001 ;         //二进制编码，独热码</span><br><span class="line"></span><br><span class="line">reg [5:0] state; //状态寄存器</span><br><span class="line"></span><br><span class="line">//二段式状态机：第一段描述状态转移，第二段描述状态输出</span><br><span class="line">always @ (posedge clk , negedge rst_n)</span><br><span class="line">	if(~rst_n)</span><br><span class="line">		state &lt;= IDLE ;</span><br><span class="line">	else case (state)</span><br><span class="line">		IDLE : 	if(data==1)</span><br><span class="line">					state &lt;= s0	  ;</span><br><span class="line">				else</span><br><span class="line">					state &lt;= IDLE ;</span><br><span class="line">		s0	 :	if(data==0)</span><br><span class="line">					state &lt;= s1	  ;</span><br><span class="line">				else</span><br><span class="line">					state &lt;= s0   ;</span><br><span class="line">		s1	 :	if(data==0)</span><br><span class="line">					state &lt;= s2	  ;</span><br><span class="line">				else</span><br><span class="line">					state &lt;= s0   ;	</span><br><span class="line">		s2	 :	if(data==1)</span><br><span class="line">					state &lt;= s3	  ;</span><br><span class="line">				else</span><br><span class="line">					state &lt;= IDLE   ;</span><br><span class="line">		s3	 :	if(data==0)</span><br><span class="line">					state &lt;= s4	  ;</span><br><span class="line">				else</span><br><span class="line">					state &lt;= s0   ;</span><br><span class="line">					</span><br><span class="line">		s4	 :	if(data==0)</span><br><span class="line">					state &lt;= s2	  ;    //重复检测100</span><br><span class="line">				else</span><br><span class="line">					state &lt;= s0   ;</span><br><span class="line">					</span><br><span class="line">		default	 :	state &lt;= state;</span><br><span class="line">	endcase</span><br><span class="line"></span><br><span class="line">always @ (posedge clk , negedge rst_n)//状态输出</span><br><span class="line">	if(~rst_n)</span><br><span class="line">		find &lt;= 0 ;</span><br><span class="line">    else if (state == s4)</span><br><span class="line">		find &lt;= 1 ;</span><br><span class="line">	else</span><br><span class="line">		find &lt;= 0 ;</span><br><span class="line"></span><br><span class="line">endmodule</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h1 id="UART总线"><a href="#UART总线" class="headerlink" title="UART总线"></a>UART总线</h1><p>三大低速总线（UART、 SPI、 IIC）</p>
+<p>RXD：接收数据</p>
+<p>TXD：发送数据</p>
+<p>串口的协议之一：RS232</p>
+<p>串口的帧结构（一个最基本的 RS232 帧结构）</p>
+<p>8位宽数据，每一位都是1bit</p>
+<p><img src="https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/wps1.jpg" alt="img"></p>
+<p>1bit持续的时间为<strong>波特率</strong>（baud），常用4800、9600</p>
+<p>比特率：1秒钟发送了多少个bit</p>
+<p>比特率&#x3D;波特率 * 单个调制状态对应的二进制位数，如果使用的是 9600 的波特率，其串口的比特率为： </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">9600Bps *1bit= 9600bps。</span><br></pre></td></tr></table></figure>
+
+<p><code>bps = bit/s</code></p>
+<p>由计算得串口发送或者接收 1bit 数据的时间为一个波特，即 1&#x2F;9600 秒，如果用<br>50MHz（周期为 20ns）的系统时钟来计数，需要计数的个数为 cnt &#x3D; (1s * 10^9)ns &#x2F;<br>9600bit)ns &#x2F; 20ns ≈ 5208 个系统时钟周期，即每个 bit 数据之间的间隔要在 50MHz 的时钟频率下计数 5208 次(13位宽)。<br>$$<br>2^{13}<br>$$</p>
+<h2 id="位拼接"><a href="#位拼接" class="headerlink" title="位拼接"></a>位拼接</h2><p>组合逻辑中的毛刺叫：<strong>竞争冒险</strong></p>
+<p>时序逻辑中的毛刺叫：<strong>亚稳态</strong></p>
+<p>bit_cnt &#x3D;&#x3D;8 &amp;&amp; bit_flag&#x3D;&#x3D;1的时候，work_en 拉低</p>
 
 </div> 
 
