@@ -16,7 +16,7 @@
 
 
 
-<title>Hacker News 精选 | 曲径通幽处.</title>
+<title>四旋翼无人机之实践 | 曲径通幽处.</title>
 
 
 
@@ -126,12 +126,12 @@
         <div class="post-title">
             
             
-                Hacker News 精选
+                四旋翼无人机之实践
             
             
         </div>
         <span class="post-date">
-            1月 10, 2025
+            1月 13, 2025
         </span>
     </div>
     <div class="post-img">
@@ -141,19 +141,59 @@
     </div>
 </div>
     <div class="post-content">
-    <blockquote>
-<p><strong>Hacker News</strong> 是一家关于计算机<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E9%BB%91%E5%AE%A2">黑客</a>和<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%88%9B%E4%B8%9A%E5%85%AC%E5%8F%B8">创业公司</a>的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/w/index.php?title=%E7%A4%BE%E4%BC%9A%E5%8C%96%E6%96%B0%E9%97%BB&action=edit&redlink=1">社会化新闻</a>网站，由<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E4%BF%9D%E7%BD%97%C2%B7%E6%A0%BC%E9%9B%B7%E5%8E%84%E5%A7%86">保罗·格雷厄姆</a>的创业孵化器 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Y_Combinator_(%E5%85%AC%E5%8F%B8)">Y Combinator</a> 创建。与其它社会化新闻网站不同的是 Hacker News 未登录访客没有赞成或反对一条提交新闻的选项，不过还是可以被有足够 Karma 的用户投赞成或反对票。简而言之，Hacker News 允许提交任何可以被理解为“任何满足人们求知欲”的新闻[<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E9%BB%91%E5%AE%A2%E6%96%B0%E9%97%BB#cite_note-3">3]</a>。</p>
+    <h1 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a>背景介绍</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>嵌入式在汽车电子领域的应用</p>
+<p>BMS:电池管理系统，限制充电放电温度电流大小等，包含限流模块（类似一个线圈）</p>
+<p>BCM:车身控制器，对车体上的模块进行控制（一般在发动机左上角）</p>
+<p>OBD:车载自诊断系统</p>
+<p>关于通信频段：</p>
+<h2 id="芯片"><a href="#芯片" class="headerlink" title="芯片"></a>芯片</h2><p>国外单片机品牌：ST、德州仪器TI、恩智浦NXP</p>
+<p>国内单片机品牌：兆易创新GD、MM、CH、HC</p>
+<p>本次使用的芯片：<code>STM32F103C8T6</code>	,手柄和飞控都用此芯片</p>
+<p>单片机的组成：</p>
+<ul>
+<li>Cortex-M3内核</li>
+<li>调试系统</li>
+<li>内部总线</li>
+<li>外设</li>
+<li>存储器</li>
+<li>时钟和复位</li>
+<li>I&#x2F;O</li>
+</ul>
+<p>总线：</p>
+<ul>
+<li>APB2总线（72MHZ）</li>
+<li>AHB总线（系统总线）</li>
+</ul>
+<p>外设：</p>
+<ul>
+<li>片上外设：存在于芯片内部的外设，出厂时由厂商集成在芯片内部的设备  | 例如： ADC，DAC，SPI，IIC，USART等</li>
+<li>片外外设： | 例如：蜂鸣器</li>
+</ul>
+<p>存储器：</p>
+<ul>
+<li>内存（内存）：SRAM</li>
+<li>外存（磁盘）：FLASH（闪存）</li>
+</ul>
+<blockquote>
+<p><em>| 根据片上flash的大小，对单片机容量进行了划分 |</em></p>
 </blockquote>
-<h1 id="pdf中的俄罗斯方块"><a href="#pdf中的俄罗斯方块" class="headerlink" title="pdf中的俄罗斯方块"></a>pdf中的俄罗斯方块</h1><p><a target="_blank" rel="noopener" href="https://th0mas.nl/downloads/pdftris.pdf">https://th0mas.nl/downloads/pdftris.pdf</a></p>
-<hr>
-<h1 id="pdf中的毁灭战士"><a href="#pdf中的毁灭战士" class="headerlink" title="pdf中的毁灭战士"></a>pdf中的毁灭战士</h1><p><a target="_blank" rel="noopener" href="https://doompdf.pages.dev/doom.pdf">https://doompdf.pages.dev/doom.pdf</a></p>
-<hr>
-<h1 id="Bad-Apple-but-it’s-6-500-regexes-that-I-search-for-in-vim"><a href="#Bad-Apple-but-it’s-6-500-regexes-that-I-search-for-in-vim" class="headerlink" title="Bad Apple but it’s 6,500 regexes that I search for in vim"></a>Bad Apple but it’s 6,500 regexes that I search for in vim</h1><p><em>在vim中使用正则表达式播放bad apple</em></p>
-<p><a target="_blank" rel="noopener" href="https://eieio.games/blog/bad-apple-with-regex-in-vim/">https://eieio.games/blog/bad-apple-with-regex-in-vim/</a></p>
-<hr>
-<h1 id="I-spent-18-years-in-the-Linux-console-and-I-don’t-regret-it"><a href="#I-spent-18-years-in-the-Linux-console-and-I-don’t-regret-it" class="headerlink" title="I spent 18 years in the Linux console and I don’t regret it"></a>I spent 18 years in the Linux console and I don’t regret it</h1><p><em>我在 Linux 控制台上度过了 18 年，我并不后悔</em></p>
-<p><a target="_blank" rel="noopener" href="https://eugene-andrienko.com/en/it/2024/01/02/life-in-console">https://eugene-andrienko.com/en/it/2024/01/02/life-in-console</a></p>
-<hr>
+<p>时钟和复位：</p>
+<ul>
+<li>4个时钟源： <ul>
+<li>HSE：外部高速时钟（给予内核以时钟，外接晶振，稳定）</li>
+<li>HSI：内部高速时钟（给予内核以时钟）</li>
+<li>LSE：外部低速时钟（给予RTC以时钟，外接晶振，稳定）</li>
+<li>LSI：内部低速时钟（给予RTC以时钟）</li>
+</ul>
+</li>
+<li>复位：<ul>
+<li>让程序恢复至最初位置重新运行</li>
+<li>冷复位：断点再上电</li>
+<li>热复位：上电时按下复位键</li>
+<li>复位是可控的、优先级最高的异常</li>
+</ul>
+</li>
+</ul>
 
 </div> 
 
@@ -165,17 +205,12 @@
     <nav class="post-nav">
         <div class="prev-item">
            
-                <div class="icon arrow-left"></div>
-                <div class="post-link">
-                    <a href="/2025/01/13/%E5%B5%8C%E5%85%A5%E5%BC%8F%E9%A3%9E%E8%A1%8C%E5%99%A8/">Prev</a>
-                </div>
-            
         </div>
         <div class="next-item">
             
                 <div class="icon arrow-right"></div>
                 <div class="post-link">
-                  <a href="/2025/01/09/slang/">Next</a>  
+                  <a href="/2025/01/10/hackernews/">Next</a>  
                 </div>  
             
         </div>
