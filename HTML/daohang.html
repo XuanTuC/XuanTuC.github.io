@@ -161,26 +161,62 @@
             text-align: center;
             color: #000000;
             font-size: 2em;
+            background-color: #ffffff;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border: 1px solid #000000;
+            margin-bottom: 40px;
+        }
+
+        .category {
+            margin-bottom: 40px;
+        }
+
+        .category h2 {
+            font-size: 1.5em;
+            cursor: pointer;
+            background-color: #ffffff;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #000000;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .category h2:hover {
+            transform: scale(1.05);
         }
 
         .nav-list {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 20px;
-            margin-top: 40px;
+            margin-top: 20px;
+            transition: all 0.3s ease-in-out;
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+        }
+
+        .nav-list.show {
+            opacity: 1;
+            max-height: 1000px; /* Adjust based on content height */
         }
 
         .nav-item {
             background-color: #ffffff;
             box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
-            width: 250px;
             text-align: center;
             padding: 20px;
             border: 1px solid #000000;
+            transition: transform 0.3s ease-in-out;
         }
 
-        .nav-item h2 {
+        .nav-item:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-item h3 {
             color: #000000;
             font-size: 1.4em;
             margin: 0 0 10px;
@@ -206,6 +242,7 @@
             background-color: #333333;
             border-color: #333333;
         }
+
     </style>
 </head>
 <body>
@@ -213,45 +250,70 @@
     <div class="container">
 
 
-        <div class="nav-list">
-            <div class="nav-item">
-                <h2>EEVblog</h2>
-                <p>一个专注于电子工程和相关技术领域的博客及论坛网站</p>
-                <a href="https://www.eevblog.com/" target="_blank">GO</a>
+        <!-- 分类：电子工程 -->
+        <div class="category">
+            <h2 onclick="toggleCategory('electronics')">电子工程</h2>
+            <div id="electronics" class="nav-list">
+                <div class="nav-item">
+                    <h3>EEVblog</h3>
+                    <p>一个专注于电子工程和相关技术领域的博客及论坛网站</p>
+                    <a href="https://www.eevblog.com/" target="_blank">GO</a>
+                </div>
+                <div class="nav-item">
+                    <h3>FFmpeg By Examples</h3>
+                    <p>一个文档网站，展示使用 FFmpeg 的所有独特且不同的用法</p>
+                    <a href="https://ffmpegbyexample.com/" target="_blank">GO</a>
+                </div>
             </div>
-
-            <div class="nav-item">
-                <h2>Hacker News</h2>
-                <p>即刻发现新技术</p>
-                <a href="https://news.ycombinator.com/" target="_blank">GO</a>
-            </div>
-
-            <div class="nav-item">
-                <h2>hardbreak.wiki</h2>
-                <p>开源硬件黑客维基</p>
-                <a href="https://www.hardbreak.wiki/" target="_blank">GO</a>
-            </div>
-
-            <div class="nav-item">
-                <h2>FFmpeg By Examples</h2>
-                <p>一个文档网站，展示使用 FFmpeg 的所有独特且不同的用法</p>
-                <a href="https://ffmpegbyexample.com/" target="_blank">GO</a>
-            </div>
-
-
-            <div class="nav-item">
-                <h2>IEEE Spectrum</h2>
-                <p>IEEE Spectrum 是 IEEE（Institute of Electrical and Electronics Engineers）的旗舰出版物，专注于工程、技术和科学的发展。</p>
-                <a href="https://spectrum.ieee.org/" target="_blank">GO</a>
-            </div>
-
-
         </div>
+
+        <!-- 分类：技术新闻 -->
+        <div class="category">
+            <h2 onclick="toggleCategory('tech-news')">技术新闻</h2>
+            <div id="tech-news" class="nav-list">
+                <div class="nav-item">
+                    <h3>Hacker News</h3>
+                    <p>即刻发现新技术</p>
+                    <a href="https://news.ycombinator.com/" target="_blank">GO</a>
+                </div>
+                <div class="nav-item">
+                    <h3>IEEE Spectrum</h3>
+                    <p>IEEE Spectrum 是 IEEE（Institute of Electrical and Electronics Engineers）的旗舰出版物，专注于工程、技术和科学的发展。</p>
+                    <a href="https://spectrum.ieee.org/" target="_blank">GO</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 分类：开源项目 -->
+        <div class="category">
+            <h2 onclick="toggleCategory('open-source')">开源项目</h2>
+            <div id="open-source" class="nav-list">
+                <div class="nav-item">
+                    <h3>hardbreak.wiki</h3>
+                    <p>开源硬件黑客维基</p>
+                    <a href="https://www.hardbreak.wiki/" target="_blank">GO</a>
+                </div>
+            </div>
+        </div>
+
     </div>
+
+    <script>
+        function toggleCategory(categoryId) {
+            const category = document.getElementById(categoryId);
+            const isVisible = category.classList.contains('show');
+
+            // 如果当前可见，则隐藏
+            if (isVisible) {
+                category.classList.remove('show');
+            } else {
+                category.classList.add('show');
+            }
+        }
+    </script>
 
 </body>
 </html>
-
 </div> 
 
 <script>
