@@ -328,7 +328,30 @@
 <p>请求挂起寄存器EXIT_PR</p>
 <h1 id="模拟-x2F-数字转换-ADC"><a href="#模拟-x2F-数字转换-ADC" class="headerlink" title="模拟&#x2F;数字转换(ADC)"></a>模拟&#x2F;数字转换(ADC)</h1><h2 id=""><a href="#" class="headerlink" title=""></a></h2><p>ADC位数越大，采得每份电压值越小，ADC精度越高</p>
 <h2 id="逐次逼近型"><a href="#逐次逼近型" class="headerlink" title="逐次逼近型"></a>逐次逼近型</h2><h2 id="通道"><a href="#通道" class="headerlink" title="通道"></a>通道</h2><p>有16个多路通道。可以把转换组织成两组：规则通道与注入通道</p>
-<h1 id="DMA"><a href="#DMA" class="headerlink" title="DMA"></a>DMA</h1><h1 id="问题的解决："><a href="#问题的解决：" class="headerlink" title="问题的解决："></a>问题的解决：</h1><h2 id="使用ST-LINK进行代码烧录的情况下"><a href="#使用ST-LINK进行代码烧录的情况下" class="headerlink" title="使用ST-LINK进行代码烧录的情况下"></a>使用ST-LINK进行代码烧录的情况下</h2><p>下图为STLINK下载器</p>
+<hr>
+<h1 id="DMA"><a href="#DMA" class="headerlink" title="DMA"></a>DMA</h1><p>DMA，全称Direct Memory Access，<strong>直接存储器访问</strong>，是一种硬件机制，允许数据在内存和外设之间直接传输，无需CPU介入。(可视为数据搬运工，<u><strong>只负责搬运数据，本身无存储空间</strong></u>)</p>
+<p>DMA的数据传输方向：</p>
+<ul>
+<li>偏上外设 &#x3D;&#x3D;&gt; 存储器</li>
+<li>存储器 &#x3D;&#x3D;&gt; 片上外设</li>
+<li>存储器 &#x3D;&#x3D;&gt; 存储器</li>
+</ul>
+<p>独立数据源：从哪里取出数据</p>
+<p>目标数据区：数据放到哪里去</p>
+<p>DMA资源：DMA1有7个通道，DMA2有5个通道</p>
+<p>DMA2和ADC3都只存在于大容量和互联设备中</p>
+<p>DMA可协作CPU搬运外设的数据，但值得注意的是，DMA优先级是低于内核CPU的。</p>
+<p>从外设数据寄存器或者从当前外设&#x2F;存储器地址寄存器指示的存储器地址取数据，第一次传输时的开始地址是DMA_CPARx或DMA_CMARx寄存器指定的外设基地址或存储器单元。</p>
+<p>存数据到外设数据寄存器或者当前外设&#x2F;存储器地址寄存器指示的存储器地址，第一次传输时的开始地址是DMA_CPARx或DMA_CMARx寄存器指定的外设基地址或存储器单元。</p>
+<p>执行一次DMA_CNDTRx寄存器的递减操作，该寄存器包含未完成的操作数目。</p>
+<p>数据传输的宽度</p>
+<ul>
+<li>字（8位）</li>
+<li>半字（16位）</li>
+<li>全字（32位）</li>
+</ul>
+<hr>
+<h1 id="问题的解决："><a href="#问题的解决：" class="headerlink" title="问题的解决："></a>问题的解决：</h1><h2 id="使用ST-LINK进行代码烧录的情况下"><a href="#使用ST-LINK进行代码烧录的情况下" class="headerlink" title="使用ST-LINK进行代码烧录的情况下"></a>使用ST-LINK进行代码烧录的情况下</h2><p>下图为STLINK下载器</p>
 <p><img src="https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/image-20250114111658130.png" alt="image-20250114111658130"></p>
 <p>在没有进行驱动安装的时候，直接点击keil软件中的load按钮是无法写入的，可能会报一个”Cannot Load Flash Device Description!”的错误日志</p>
 <p>1，在keil软件中点击下面的按钮</p>
