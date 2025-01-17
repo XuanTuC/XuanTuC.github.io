@@ -354,6 +354,20 @@
 <p>AT指令集——modbus通讯协议：串行通信协议</p>
 <p>网络层：</p>
 <p>TCP协议簇、MQTT协议</p>
+<h1 id="IIC协议"><a href="#IIC协议" class="headerlink" title="IIC协议"></a>IIC协议</h1><p>协议类似USART(串口)、SPI</p>
+<p>IIC的特点：串行、同步、半双工</p>
+<p>硬件层：</p>
+<p>​	SCL时钟线：给主机和从机提供同步时钟，确保通信的稳定性</p>
+<p>​	SDA数据线，传输数据</p>
+<p>IIC的数据有效性：</p>
+<p>SDA的状态只能在SCL为低电平的时候改变</p>
+<p>当SCL为高电平时，SDA必须保持稳定（保持高或者低电平不能更改），当SCL为低电平时，才能改变电平状态</p>
+<p>读写位在地址后面的原因</p>
+<p>确认读还是写数据（读写输出输入有不同的状态）</p>
+<h1 id="PID算法"><a href="#PID算法" class="headerlink" title="PID算法"></a>PID算法</h1><p>开环和闭环（PID是闭环中用的最多的）</p>
+<p>P：比例</p>
+<p>I：积分</p>
+<p>D：微分</p>
 <hr>
 <h1 id="问题的解决："><a href="#问题的解决：" class="headerlink" title="问题的解决："></a>问题的解决：</h1><h2 id="使用ST-LINK进行代码烧录的情况下"><a href="#使用ST-LINK进行代码烧录的情况下" class="headerlink" title="使用ST-LINK进行代码烧录的情况下"></a>使用ST-LINK进行代码烧录的情况下</h2><p>下图为STLINK下载器</p>
 <p><img src="https://tuchuan-1317533020.cos.ap-nanjing.myqcloud.com/image/image-20250114111658130.png" alt="image-20250114111658130"></p>
