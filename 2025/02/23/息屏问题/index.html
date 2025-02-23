@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head><!-- hexo injector head_begin start -->
+<link rel="stylesheet" href="/css/bilicard.css">
+<!-- hexo injector head_begin end -->
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="xuan tu">
+
+
+
+
+
+
+
+<title>我是如何解决Sway Manjaro的自动熄屏时间过短的问题的？ | 曲径通幽处.</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/frame.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 6.3.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            ヾ(^_^) back Home.!!
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">主页</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">文章</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a target="_blank" rel="noopener" href="https://drive.google.com/drive/folders/1a-OiD9e0tEgNmWDoR0RGkhBtp-v8TQq8?usp=drive_link">书阁(M)</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a target="_blank" rel="noopener" href="https://github.com/XuanTuC/CTF_BambooSlips">CTF竹简</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a target="_blank" rel="noopener" href="https://linjx1210.github.io/">友链</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a target="_blank" rel="noopener" href="https://xuantuc.github.io/HTML/daohang">网站舆图</a>
+              </li> 
+                   
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                我是如何解决Sway Manjaro的自动熄屏时间过短的问题的？
+            
+            
+        </div>
+        <span class="post-date">
+            2月 23, 2025
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <h2 id="step-0：背景"><a href="#step-0：背景" class="headerlink" title="step-0：背景"></a>step-0：背景</h2><p>使用番茄钟（<a target="_blank" rel="noopener" href="https://studywithme.io/aesthetic-pomodoro-timer/%EF%BC%89%E8%BF%9B%E8%A1%8C25%E5%88%86%E9%92%9F%E7%9A%84%E4%B8%93%E6%B3%A8%E5%B7%A5%E4%BD%9C%E6%97%B6%EF%BC%8C%E6%88%91%E5%8F%91%E7%8E%B0%E5%B1%8F%E5%B9%95%E5%9C%A8%E5%89%A9%E4%BD%995%E5%88%86%E9%92%9F%E6%97%B6%E8%87%AA%E5%8A%A8%E7%86%84%E7%81%AD%EF%BC%8C%E8%BF%99%E4%B8%A5%E9%87%8D%E6%89%93%E6%96%AD%E4%BA%86%E6%88%91%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E3%80%82%E7%94%B1%E4%BA%8ESway%E7%AA%97%E5%8F%A3%E7%AE%A1%E7%90%86%E5%99%A8%E7%BC%BA%E4%B9%8F%E5%9B%BE%E5%BD%A2%E5%8C%96%E7%9A%84%E7%94%B5%E6%BA%90%E7%AE%A1%E7%90%86%E8%AE%BE%E7%BD%AE%EF%BC%8C%E6%88%91%E4%B8%8D%E5%BE%97%E4%B8%8D%E9%80%9A%E8%BF%87%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%92%8C%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%9D%A5%E8%A7%A3%E5%86%B3%E8%BF%99%E4%B8%80%E9%97%AE%E9%A2%98%E3%80%82">https://studywithme.io/aesthetic-pomodoro-timer/）进行25分钟的专注工作时，我发现屏幕在剩余5分钟时自动熄灭，这严重打断了我的工作流程。由于Sway窗口管理器缺乏图形化的电源管理设置，我不得不通过命令行和配置文件来解决这一问题。</a></p>
+<h2 id="step-1：搜索"><a href="#step-1：搜索" class="headerlink" title="step-1：搜索"></a>step-1：搜索</h2><p>首先我查看了sway的配置文件，发现其中并没有关于“熄屏”或者“电源”管理的相关配置</p>
+<p>然后，我首先通过直接向在线AI提问，了解到我需要搜索怎样的关键词，或者说，和“熄屏”有关的配置的专业名词叫什么，我是这样提问的：</p>
+<p>“我目前在使用 Sway Manjaro 操作系统，我发现当我闲置操作20分钟后，我的屏幕会自动熄灭，我觉得20分钟太短了，我应该输入什么命令，或者：怎样更改我的配置文件，更改哪个配置文件，以延长我的熄屏时间，需要了解到的是：swaywm下没有图形化的“设置”GUI，请帮我思考解决方法”</p>
+<p>从AI的答复中，我得知了这可能与DPMS（显示电源管理信号）有关。</p>
+<p>DPMS：linux系统下，一种用于管理显示器电源的机制</p>
+<h2 id="step-2：深入"><a href="#step-2：深入" class="headerlink" title="step-2：深入"></a>step-2：深入</h2><p>接下来，我去了Manjaro的用户社区，搜索了“DPMS”“电源管理”“屏幕关闭”等相关的关键词（当然，需要使用英文搜索。）</p>
+<p>我看到了有人提到利用swayidle和swaylock来配置锁屏以达到省电的目的。</p>
+<p>通过逆向思维，搜索配置锁屏的具体步骤（因为要配置锁屏，涉及到一个监测系统闲置时间，关闭屏幕或配置锁屏壁纸的操作，这恰好与我要搜索的DPMS完全相关）</p>
+<p>于是我找到了一篇腾讯云翻译过来的文章：<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/ask/sof/116326636">https://cloud.tencent.com/developer/ask/sof/116326636</a></p>
+<p>找到的脚本片段如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">enable-lock|*)</span><br><span class="line">            pkill swayidle</span><br><span class="line">            swayidle -w \</span><br><span class="line">                <span class="built_in">timeout</span> <span class="variable">$TIMEOUT</span>                <span class="string">&quot;swaymsg &#x27;output * dpms off&#x27;&quot;</span>  resume <span class="string">&quot;swaymsg &#x27;output * dpms on&#x27;&quot;</span> \</span><br><span class="line">                <span class="built_in">timeout</span> $(( TIMEOUT * <span class="number">2</span> ))      <span class="string">&quot;swaymsg &#x27;output * dpms on&#x27;; mylock lock-now&quot;</span> \</span><br><span class="line">                <span class="built_in">timeout</span> $(( TIMEOUT * <span class="number">3</span> ))      <span class="string">&quot;swaymsg &#x27;output * dpms off&#x27;&quot;</span> resume <span class="string">&quot;swaymsg &#x27;output * dpms on&#x27;&quot;</span> \</span><br><span class="line">                <span class="built_in">timeout</span> $(( TIMEOUT * <span class="number">4</span> ))      <span class="string">&quot;sudo systemctl suspend&quot;</span> \</span><br><span class="line">                before-sleep                    <span class="string">&quot;mylock lock-now wait&quot;</span> &amp;</span><br><span class="line">            ;;</span><br></pre></td></tr></table></figure>
+
+<p>为了验证DPMS是否真的控制了我的显示器，我运行了以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">swaymsg <span class="string">&#x27;output * dpms off&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>运行后，屏幕果然断电了。这证实了DPMS确实是控制显示器电源的关键机制。</p>
+<p>这个脚本的逻辑是：</p>
+<p>设置TIMEOUT为全局熄屏倒计时，，脚本启动时，kill掉原有的swayidle服务，新开启一个swayidle监测闲置时间，闲置时间一到则启用swaylock，并通过dpms关闭屏幕。</p>
+<h2 id="step-3：解决"><a href="#step-3：解决" class="headerlink" title="step-3：解决"></a>step-3：解决</h2><p>随后我修改了文中脚本设置的TIMEOUT参数，设置为了 1分钟 （文中的TIMEOUT参数为脚本使用者希望的自动熄屏监测时间）</p>
+<p>然后我运行了这个脚本。</p>
+<p>在一分钟的等待之后，屏幕也如预期的熄灭了。</p>
+<p>如此一来，只需要将TIMEOUT参数设置为你想要的时间，然后在开机的时候，在sway配置文件（<code>~/.config/sway/config</code>）中写上运行脚本的命令，即可解决熄屏时间短的问题。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">exec</span> ～/bin/mylock enable-lock</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="step-e：附录"><a href="#step-e：附录" class="headerlink" title="step-e：附录"></a>step-e：附录</h2><p>我的完整脚本如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/env bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># name：mylock</span></span><br><span class="line"></span><br><span class="line">[[ <span class="string">&quot;<span class="variable">$SWAYSOCK</span>&quot;</span> ]] &amp;&amp; &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 多长时间后休眠</span></span><br><span class="line">    TIMEOUT=3600 <span class="comment"># 60分钟</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 这里存放你的图片路径</span></span><br><span class="line">    BACKGROUND_COLLECTION=/home/xuantu/Pictures/wallpapers</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 下面是随机选取图片作为背景的功能</span></span><br><span class="line">    BACKGROUND=$( <span class="built_in">ls</span> <span class="variable">$BACKGROUND_COLLECTION</span> | <span class="built_in">shuf</span> -n 1)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">case</span> <span class="string">&quot;<span class="variable">$1</span>&quot;</span> <span class="keyword">in</span></span><br><span class="line">        lock-now)</span><br><span class="line">            BG=<span class="string">&#x27;&amp;&#x27;</span></span><br><span class="line">            [[ <span class="string">&quot;<span class="variable">$2</span>&quot;</span> == <span class="string">&quot;wait&quot;</span> ]] &amp;&amp; BG=<span class="string">&#x27;&#x27;</span></span><br><span class="line">            swaylock -f --image <span class="string">&quot;<span class="variable">$BACKGROUND_COLLECTION</span>/<span class="variable">$BACKGROUND</span>&quot;</span></span><br><span class="line">            ;;</span><br><span class="line"></span><br><span class="line">        lock-off)</span><br><span class="line">            pkill swayidle</span><br><span class="line">            swayidle -w \</span><br><span class="line">                <span class="built_in">timeout</span> <span class="variable">$TIMEOUT</span> <span class="string">&quot;swaymsg &#x27;output * dpms off&#x27;&quot;</span> \</span><br><span class="line">                resume <span class="string">&quot;swaymsg &#x27;output * dpms on&#x27;&quot;</span> \</span><br><span class="line">                before-sleep <span class="string">&quot;mylock lock-now wait; mylock enable-lock&quot;</span> &amp;</span><br><span class="line">            rofi -width 20 -e <span class="string">&quot;screen lock disabled&quot;</span></span><br><span class="line"></span><br><span class="line">            <span class="comment"># 5分钟后发送提示</span></span><br><span class="line">            (<span class="built_in">sleep</span> 300; notify-send <span class="string">&quot;屏幕锁定将在5分钟后重新启用&quot;</span> <span class="string">&quot;请注意！&quot;</span>) &amp;</span><br><span class="line">            ;;</span><br><span class="line"></span><br><span class="line">        enable-lock|*)</span><br><span class="line">            pkill swayidle</span><br><span class="line">            notify-send <span class="string">&quot;mylock 脚本已启动&quot;</span> <span class="string">&quot;<span class="subst">$(printf <span class="string">&quot;自动关闭屏幕电源时间设置为 %s&quot;</span> <span class="string">&quot;<span class="variable">$TIMEOUT</span> 秒&quot;</span>)</span>&quot;</span></span><br><span class="line">            swayidle -w \</span><br><span class="line">                <span class="built_in">timeout</span> <span class="variable">$TIMEOUT</span> <span class="string">&quot;swaymsg &#x27;output * dpms off&#x27;&quot;</span> resume <span class="string">&quot;swaymsg &#x27;output * dpms on&#x27;&quot;</span> \</span><br><span class="line">                <span class="built_in">timeout</span> $(( TIMEOUT * <span class="number">2</span> )) <span class="string">&quot;swaymsg &#x27;output * dpms on&#x27;; mylock lock-now&quot;</span> \</span><br><span class="line">                <span class="built_in">timeout</span> $(( TIMEOUT * <span class="number">3</span> )) <span class="string">&quot;swaymsg &#x27;output * dpms off&#x27;&quot;</span> resume <span class="string">&quot;swaymsg &#x27;output * dpms on&#x27;&quot;</span> \</span><br><span class="line">                <span class="built_in">timeout</span> $(( TIMEOUT * <span class="number">4</span> )) <span class="string">&quot;sudo systemctl suspend&quot;</span> \</span><br><span class="line">                before-sleep <span class="string">&quot;mylock lock-now wait&quot;</span> &amp;</span><br><span class="line">            ;;</span><br><span class="line">    <span class="keyword">esac</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">exit</span> $?</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2025/02/10/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E5%AD%A6/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+
+
+    
+       <!--PC版-->
+        <div id="SOHUCS" ></div>
+        <script charset="utf-8" type="text/javascript" src="https://cy-cdn.kuaizhan.com/upload/changyan.js" ></script>
+        <script type="text/javascript">
+        window.changyan.api.config({
+            appid: 'cywJvGKKO',
+            conf: 'prod_dfd0ec91693832034dcc62943592b045'
+        });
+        </script>   
+     
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+                人生得意须尽欢，莫使金樽空对月.
+                <br>
+            
+            
+                xuan_tu | 
+            
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+    
+
+  </body>
+</html>
