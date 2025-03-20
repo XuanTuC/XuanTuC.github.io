@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head><!-- hexo injector head_begin start -->
+<link rel="stylesheet" href="/css/bilicard.css">
+<!-- hexo injector head_begin end -->
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="xuan tu">
+
+
+
+
+
+
+
+<title>数据库开发技术个人项目记录 | 曲径通幽处.</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/frame.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 6.3.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            ヾ(^_^) back Home.!!
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">主页</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">文章</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a target="_blank" rel="noopener" href="https://drive.google.com/drive/folders/1a-OiD9e0tEgNmWDoR0RGkhBtp-v8TQq8?usp=drive_link">书阁(M)</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a target="_blank" rel="noopener" href="https://github.com/XuanTuC/CTF_BambooSlips">CTF竹简</a>
+              </li> 
+                   
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                数据库开发技术个人项目记录
+            
+            
+        </div>
+        <span class="post-date">
+            1月 11, 2024
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <p>本项目为本人数据库开发技术大作业，2024-1-11</p>
+<h1 id="CS和BS结构的区别"><a href="#CS和BS结构的区别" class="headerlink" title="CS和BS结构的区别"></a>CS和BS结构的区别</h1><p>CS即Client&#x2F;Server（客户机&#x2F;服务器）结构，C&#x2F;S结构在技能上非常成熟，它的重要特征就是交互性强、拥有安全的存取形式、网络通信数量低、响应速度快、利于处置大量数据。可是这个结构的程序就是针对性开发，变更不够灵活，维护与管理的难度较大。常常只局限在小型局域网，不利于扩展。而且，因为这个结构的每台客户机全部须要安装相对应的客户端程序，分布功能弱并且兼容性差，不可以完成迅速部署安装与配置，因为这样缺少通用性，拥有比较大的局限性。请求拥有肯定专业水准的技能人员去结束。</p>
+<p>BS即Browser&#x2F;Server（浏览器&#x2F;服务器）结构，就是只安装维护一个服务器（Server），而客户端选用浏览器（Browse）运行软件。B&#x2F;S结构应用程序相对于传统的C&#x2F;S结构应用程序就是一个特别大的进步。 B&#x2F;S结构的重要特征就是分布性强、维护方便、开发简单并且共享性强、总体拥有费用低。但数据安全性问题、对服务器需要过高、数据传输速度慢、软件的个性化特征明显减少，这些缺点就是有目共睹的，难以完成传统形式下的特殊功能请求。比如通过浏览器实行大量的数据输入或实行报表的应答、专用性打印输出全部相对比较困难与不便。另外，完成复杂的应用构造有较大的困难。</p>
+<p>根据题目要求，我们需要开发的是CS结构，即开发窗体应用程序，连接服务器</p>
+<h1 id="一、-数据库规划"><a href="#一、-数据库规划" class="headerlink" title="一、 数据库规划"></a>一、 数据库规划</h1><p>给出系统开发的目标、任务和定义。</p>
+<p>系统开发目标：</p>
+<p>收集、存储和控制医院住院病人产生的数据，为病人提供出院住院功能，创建病人对应的住院信息表，对病房进行管理，提供辅助医师、护士等的业，方便医生对病人情况的掌握，方便医院对病床的管理。</p>
+<p>住院管理系统主要实现住院病人从入院登记到出院处理的流程管理，贯穿于住院病人从入院到出院的整个住院过程。住院处管理系统不只以费用管理为主，医护人员每天所开具的<strong>医嘱</strong>以及病人的<strong>转床</strong>、<strong>转科</strong>、<strong>转院</strong>等大量信息最后归集到住院管理系统</p>
+<p>系统开发任务：</p>
+<ol>
+<li><p>确保所有必要的信息都存储在数据库中。</p>
+<p>病房管理</p>
+<p>​	病房所属科室</p>
+<p>​	病床信息</p>
+<p>​	在住病人</p>
+</li>
+<li><p>确保获得有关所有必要请求的数据的可能性。</p>
+</li>
+<li><p>减少数据的冗余和重复。</p>
+</li>
+<li><p>确保数据库完整性</p>
+</li>
+</ol>
+<ul>
+<li>实体完整性，同一数据表中不可有多项记录拥有相同识别。</li>
+<li>域完整性，限制字段中的数据必须乎合预设的数据类型，例如：日期。</li>
+<li>参照完整性，如两个数据表是有关联的，父数据表中的记录必须存在，子数据表的记录才有存在。</li>
+</ul>
+<p>​	5.数据访问速度优化</p>
+<h2 id="任务描述："><a href="#任务描述：" class="headerlink" title="任务描述："></a>任务描述：</h2><p>​	<strong>1.病房管理，区分病房所属科室，记录其包含病床信息，在住病人等；</strong></p>
+<p>病房表（<u>病房号</u>、科室、位置、床位数、在住人数）<br>病床表（<u>床号</u>、在住病人号、规格）</p>
+<p>​	<strong>2.医疗人员信息管理，区分大夫和护士角色，所在科室等；</strong></p>
+<p>管理员（<u>id</u>，密码）<br>医护表（<u>医护号</u>、姓名、科室、角色（大夫&#x2F;护士））</p>
+<p>​	<strong>3.辅助业务办理的住院登记、入住病房时主治医生下医嘱单、护士执行医嘱单后录入诊断信息等功能，分配住院号，分配病房病床，安排主治医生。</strong></p>
+<p>住院表（<u>住院号</u>，病人号，姓名，年龄，性别，主治医生）</p>
+<p>医嘱表（<u>医嘱号</u>、医嘱内容、开嘱时间、开嘱医护）</p>
+<p>体征表（<u>测量编号</u>，血压，体重，其他）</p>
+<p>诊断表（<u>诊断号</u>、诊断时间、诊断结果、诊断医师）</p>
+<p>​	<strong>4.建立住院账号，在该账号下预缴住院费。</strong></p>
+<p>住院账号（<u>id</u>，密码）</p>
+<p>缴费表（<u>编号</u>，需缴金额，缴费时间，缴费项目）</p>
+<h1 id="建表脚本"><a href="#建表脚本" class="headerlink" title="建表脚本"></a>建表脚本</h1><p>数据库名称：Hosp</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 病房表</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> Ward (</span><br><span class="line">    WardId  <span class="type">VARCHAR</span>(<span class="number">50</span>)     <span class="keyword">PRIMARY</span> KEY, <span class="comment">-- 病房号</span></span><br><span class="line">    Department <span class="type">VARCHAR</span>(<span class="number">50</span>)  , <span class="comment">-- 科室</span></span><br><span class="line">    Location <span class="type">VARCHAR</span>(<span class="number">50</span>)  , <span class="comment">-- 位置</span></span><br><span class="line">    BedCount  <span class="type">VARCHAR</span>(<span class="number">50</span>)  , <span class="comment">-- 床位数</span></span><br><span class="line">    OccupiedBeds  <span class="type">VARCHAR</span>(<span class="number">50</span>)   <span class="comment">-- 在住人数</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 病床表</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> Bed (</span><br><span class="line">    BedId  <span class="type">VARCHAR</span>(<span class="number">50</span>)     <span class="keyword">PRIMARY</span> KEY, <span class="comment">-- 床号</span></span><br><span class="line">    PatientId  <span class="type">VARCHAR</span>(<span class="number">50</span>), <span class="comment">-- 在住病人号</span></span><br><span class="line">    BedType <span class="type">VARCHAR</span>(<span class="number">50</span>)   <span class="comment">-- 规格</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 管理员账号 </span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> Admin (</span><br><span class="line">    ID <span class="type">VARCHAR</span>(<span class="number">50</span>)   ,   <span class="comment">-- id</span></span><br><span class="line">    PWD <span class="type">VARCHAR</span>(<span class="number">50</span>)   <span class="comment">-- 密码</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 医护表</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> Medical_Staff (</span><br><span class="line">    Staff_Id  <span class="type">VARCHAR</span>(<span class="number">50</span>)     <span class="keyword">PRIMARY</span> KEY, <span class="comment">-- 医护号</span></span><br><span class="line">    Name <span class="type">VARCHAR</span>(<span class="number">50</span>)  , <span class="comment">-- 姓名</span></span><br><span class="line">    Department <span class="type">VARCHAR</span>(<span class="number">50</span>)  , <span class="comment">-- 科室</span></span><br><span class="line">    Role <span class="type">VARCHAR</span>(<span class="number">50</span>)   <span class="comment">-- 角色</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 住院表</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> Hospitalization (</span><br><span class="line">    HospitalizationId <span class="type">VARCHAR</span>(<span class="number">50</span>)     <span class="keyword">PRIMARY</span> KEY, <span class="comment">-- 住院号</span></span><br><span class="line">    Patient_Id  <span class="type">VARCHAR</span>(<span class="number">50</span>)  , <span class="comment">-- 病人号</span></span><br><span class="line">    Name <span class="type">VARCHAR</span>(<span class="number">50</span>)  , <span class="comment">-- 姓名</span></span><br><span class="line">    Age  <span class="type">VARCHAR</span>(<span class="number">50</span>)  , <span class="comment">-- 年龄</span></span><br><span class="line">    Gender <span class="type">VARCHAR</span>(<span class="number">10</span>)  , <span class="comment">-- 性别</span></span><br><span class="line">    AttendingPhysician <span class="type">VARCHAR</span>(<span class="number">50</span>) ，  <span class="comment">-- 主治医生</span></span><br><span class="line">    bedid <span class="type">VARCHAR</span>(<span class="number">50</span>)	<span class="comment">-- 床号</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 医嘱表</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> Doctor_Order (</span><br><span class="line">    Order_Id  <span class="type">VARCHAR</span>(<span class="number">50</span>)     <span class="keyword">PRIMARY</span> KEY, <span class="comment">-- 医嘱号</span></span><br><span class="line">    Order_Content <span class="type">VARCHAR</span>(<span class="number">500</span>)  , <span class="comment">-- 医嘱内容</span></span><br><span class="line">    Order_Time DATETIME  , <span class="comment">-- 开嘱时间</span></span><br><span class="line">    Ordered_By  <span class="type">VARCHAR</span>(<span class="number">50</span>)   <span class="comment">-- 开嘱医护</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 体征表</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> VitalSigns (</span><br><span class="line">    MeasurementId  <span class="type">VARCHAR</span>(<span class="number">50</span>)     <span class="keyword">PRIMARY</span> KEY, <span class="comment">-- 测量编号</span></span><br><span class="line">    BloodPressure <span class="type">VARCHAR</span>(<span class="number">50</span>)  , <span class="comment">-- 血压</span></span><br><span class="line">    Weight <span class="type">FLOAT</span>  , <span class="comment">-- 体重</span></span><br><span class="line">    OtherMeasurements <span class="type">VARCHAR</span>(<span class="number">500</span>) <span class="comment">-- 其他</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 诊断表</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> Diagnosis (</span><br><span class="line">    Diagnosis_Id  <span class="type">VARCHAR</span>(<span class="number">50</span>)     <span class="keyword">PRIMARY</span> KEY, <span class="comment">-- 诊断号</span></span><br><span class="line">    Diagnosis_Time DATETIME  , <span class="comment">-- 诊断时间</span></span><br><span class="line">    Diagnosis_Result <span class="type">VARCHAR</span>(<span class="number">500</span>)  , <span class="comment">-- 诊断结果</span></span><br><span class="line">    Diagnosed_By  <span class="type">VARCHAR</span>(<span class="number">50</span>)   <span class="comment">-- 诊断医师</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 住院账号</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> Hospital_Account (</span><br><span class="line">    Id <span class="type">VARCHAR</span>(<span class="number">50</span>)  , <span class="comment">-- id</span></span><br><span class="line">    PWD <span class="type">VARCHAR</span>(<span class="number">50</span>)   <span class="comment">-- 密码</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 缴费表</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> Payment (</span><br><span class="line">    Payment_Id  <span class="type">VARCHAR</span>(<span class="number">50</span>)     <span class="keyword">PRIMARY</span> KEY, <span class="comment">-- 编号</span></span><br><span class="line">    Amount_Due MONEY  , <span class="comment">-- 需缴金额</span></span><br><span class="line">    Payment_Time DATETIME  , <span class="comment">-- 缴费时间</span></span><br><span class="line">    Payment_Item <span class="type">VARCHAR</span>(<span class="number">50</span>)   <span class="comment">-- 缴费项目</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<h2 id="测试数据"><a href="#测试数据" class="headerlink" title="测试数据"></a>测试数据</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 插入病房数据</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> Ward (Department, Location, BedCount, OccupiedBeds) <span class="keyword">VALUES</span></span><br><span class="line">(<span class="string">&#x27;内科&#x27;</span>, <span class="string">&#x27;住院楼3楼&#x27;</span>, <span class="string">&#x27;20&#x27;</span>, <span class="string">&#x27;15&#x27;</span>),</span><br><span class="line">(<span class="string">&#x27;外科&#x27;</span>, <span class="string">&#x27;住院楼4楼&#x27;</span>, <span class="string">&#x27;25&#x27;</span>, <span class="string">&#x27;18&#x27;</span>),</span><br><span class="line">(<span class="string">&#x27;妇产科&#x27;</span>, <span class="string">&#x27;住院楼5楼&#x27;</span>, <span class="string">&#x27;15&#x27;</span>, <span class="string">&#x27;10&#x27;</span>),</span><br><span class="line">(<span class="string">&#x27;儿科&#x27;</span>, <span class="string">&#x27;住院楼6楼&#x27;</span>, <span class="string">&#x27;10&#x27;</span>, <span class="string">&#x27;8&#x27;</span>),</span><br><span class="line">(<span class="string">&#x27;骨科&#x27;</span>, <span class="string">&#x27;住院楼7楼&#x27;</span>, <span class="string">&#x27;18&#x27;</span>, <span class="string">&#x27;12&#x27;</span>);</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+<h1 id="二、数据库设计"><a href="#二、数据库设计" class="headerlink" title="二、数据库设计"></a>二、数据库设计</h1><h2 id="（一）概念结构设计"><a href="#（一）概念结构设计" class="headerlink" title="（一）概念结构设计"></a>（一）概念结构设计</h2><h3 id="1，绘制ER图"><a href="#1，绘制ER图" class="headerlink" title="1，绘制ER图"></a>1，绘制ER图</h3><p>管理员</p>
+<p>用户表</p>
+<p>分配表（<u>住院号</u>、缴费单编号、床号、医护号）</p>
+<p>病人表（<u></u>、、联系方式、身份证号、病历号、医护编号、科室、病房号）</p>
+<p>缴费单（<u>缴费单编号</u>，金额，缴费项目，缴费时间）</p>
+<p>(1)划分系统模块;<br>(2)每个模块的功能确定;<br>(3)用户使用界面概要设计;<br>(4)输人、输出数据的概要设计;<br>(5)报表概要设计;<br>(6)数据之间的联系、流程分析;<br>(7)文件和数据库表的逻辑设计;<br>(8)硬件、软件开发平台的确定;<br>(9)有规律数据的规范化及数据唯一性要求。<br>系统的详细设计是对系统概要设计的进一步具体化,其主要工作有以下4项:<br>(1)文件和数据库的物理设计;<br>(2)输人输出记录的方案设计;<br>(3)对各子系统的处理方式和处理内容进行细化设计;<br>(4)编写程序设计任务书,通常包括程序规范功能说明程序结构图,通常用 HPIPO(Hierarchy Plus Input Process Output)图来描述。<br>系统详细设计阶段的规范化文档称为软件系统详细设计说明书</p>
+<h1 id="逻辑结构设计"><a href="#逻辑结构设计" class="headerlink" title="逻辑结构设计"></a>逻辑结构设计</h1><p>雏形参考，不可直接使用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">病房表(病房号，科室，位置，床位数，在住人数)</span><br><span class="line">Primary Key 病房号</span><br><span class="line">Foreign Key 科室 references 医护表(科室)</span><br><span class="line"></span><br><span class="line">病床表(床号，病人号，规格)</span><br><span class="line">Primary Key 床号</span><br><span class="line"></span><br><span class="line">管理员账号(id，密码)</span><br><span class="line"></span><br><span class="line">医护表(医护号，姓名，科室，角色)</span><br><span class="line">Primary Key 医护号</span><br><span class="line"></span><br><span class="line">住院表(住院号，病人号，姓名，年龄，性别，主治医生)</span><br><span class="line">Primary Key 住院号</span><br><span class="line">Foreign Key 病人号 references 病人表(病人号)</span><br><span class="line">Foreign Key 主治医生 references 医护表(医护号)</span><br><span class="line"></span><br><span class="line">医嘱表(医嘱号，医嘱内容，开嘱时间，开嘱医护)</span><br><span class="line">Primary Key 医嘱号</span><br><span class="line">Foreign Key 开嘱医护 references 医护表(医护号)</span><br><span class="line"></span><br><span class="line">体征表(测量编号，血压，体重，其他)</span><br><span class="line">Primary Key 测量编号</span><br><span class="line"></span><br><span class="line">诊断表(诊断号，诊断时间，诊断结果，诊断医师)</span><br><span class="line">Primary Key 诊断号</span><br><span class="line">Foreign Key 诊断医师 references 医护表(医护号)</span><br><span class="line"></span><br><span class="line">住院账号(id，密码)</span><br><span class="line"></span><br><span class="line">缴费表(编号，需缴金额，缴费时间，缴费项目)</span><br><span class="line">Primary Key 编号</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>医护人员维护</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 医护表</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> Medical_Staff (</span><br><span class="line">    Staff_Id  <span class="type">VARCHAR</span>(<span class="number">50</span>)     <span class="keyword">PRIMARY</span> KEY, <span class="comment">-- 医护号</span></span><br><span class="line">    Name <span class="type">VARCHAR</span>(<span class="number">50</span>)  , <span class="comment">-- 姓名</span></span><br><span class="line">    Department <span class="type">VARCHAR</span>(<span class="number">50</span>)  , <span class="comment">-- 科室</span></span><br><span class="line">    Role <span class="type">VARCHAR</span>(<span class="number">50</span>)   <span class="comment">-- 角色</span></span><br></pre></td></tr></table></figure>
+
+<p>添加datagrideview</p>
+<h1 id="住院登记"><a href="#住院登记" class="headerlink" title="住院登记"></a>住院登记</h1><p>校验：住院号规则：&lt;年度&gt;-ZC-&lt;科室编号&gt;-XXXXX号。比如：2022年-0001科-12345号</p>
+<table>
+<thead>
+<tr>
+<th>表名</th>
+<th>字段名</th>
+<th>类型长度</th>
+<th>是否关键字</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Ward</td>
+<td>WardId</td>
+<td>VARCHAR(50)</td>
+<td>主键</td>
+<td>病房号</td>
+</tr>
+<tr>
+<td>Ward</td>
+<td>Department</td>
+<td>VARCHAR(50)</td>
+<td>外键</td>
+<td>科室</td>
+</tr>
+<tr>
+<td>Ward</td>
+<td>Location</td>
+<td>VARCHAR(50)</td>
+<td></td>
+<td>位置</td>
+</tr>
+<tr>
+<td>Ward</td>
+<td>BedCount</td>
+<td>VARCHAR(50)</td>
+<td></td>
+<td>床位数</td>
+</tr>
+<tr>
+<td>Ward</td>
+<td>OccupiedBeds</td>
+<td>VARCHAR(50)</td>
+<td></td>
+<td>在住人数</td>
+</tr>
+<tr>
+<td>Bed</td>
+<td>BedId</td>
+<td>VARCHAR(50)</td>
+<td>主键</td>
+<td>床号</td>
+</tr>
+<tr>
+<td>Bed</td>
+<td>PatientId</td>
+<td>VARCHAR(50)</td>
+<td>外键</td>
+<td>在住病人号</td>
+</tr>
+<tr>
+<td>Bed</td>
+<td>BedType</td>
+<td>VARCHAR(50)</td>
+<td></td>
+<td>规格</td>
+</tr>
+<tr>
+<td>Admin</td>
+<td>ID</td>
+<td>VARCHAR(50)</td>
+<td>主键</td>
+<td>管理员账号</td>
+</tr>
+<tr>
+<td>Admin</td>
+<td>PWD</td>
+<td>VARCHAR(50)</td>
+<td></td>
+<td>密码</td>
+</tr>
+<tr>
+<td>Medical_Staff</td>
+<td>Staff_Id</td>
+<td>VARCHAR(50)</td>
+<td>主键</td>
+<td>医护号</td>
+</tr>
+<tr>
+<td>Medical_Staff</td>
+<td>Name</td>
+<td>VARCHAR(50)</td>
+<td></td>
+<td>姓名</td>
+</tr>
+<tr>
+<td>Medical_Staff</td>
+<td>Department</td>
+<td>VARCHAR(50)</td>
+<td></td>
+<td>科室</td>
+</tr>
+<tr>
+<td>Medical_Staff</td>
+<td>Role</td>
+<td>VARCHAR(50)</td>
+<td></td>
+<td>角色</td>
+</tr>
+<tr>
+<td>Hospitalization</td>
+<td>HospitalizationId</td>
+<td>VARCHAR(50)</td>
+<td>主键</td>
+<td>住院号</td>
+</tr>
+<tr>
+<td>Hospitalization</td>
+<td>Patient_Id</td>
+<td>VARCHAR(50)</td>
+<td>外键</td>
+<td>病人号</td>
+</tr>
+<tr>
+<td>Hospitalization</td>
+<td>Name</td>
+<td>VARCHAR(50)</td>
+<td></td>
+<td>姓名</td>
+</tr>
+<tr>
+<td>Hospitalization</td>
+<td>Age</td>
+<td>VARCHAR(50)</td>
+<td></td>
+<td>年龄</td>
+</tr>
+<tr>
+<td>Hospitalization</td>
+<td>Gender</td>
+<td>VARCHAR(10)</td>
+<td></td>
+<td>性别</td>
+</tr>
+<tr>
+<td>Hospitalization</td>
+<td>AttendingPhysician</td>
+<td>VARCHAR(50)</td>
+<td></td>
+<td>主治医生</td>
+</tr>
+<tr>
+<td>Hospitalization</td>
+<td>BedId</td>
+<td>VARCHAR(50)</td>
+<td>外键</td>
+<td>床号</td>
+</tr>
+<tr>
+<td>Doctor_Order</td>
+<td>Order_Id</td>
+<td>VARCHAR(50)</td>
+<td>主键</td>
+<td>医嘱号</td>
+</tr>
+<tr>
+<td>Doctor_Order</td>
+<td>Order_Content</td>
+<td>VARCHAR(500)</td>
+<td></td>
+<td>医嘱内容</td>
+</tr>
+<tr>
+<td>Doctor_Order</td>
+<td>Order_Time</td>
+<td>DATETIME</td>
+<td></td>
+<td>开嘱时间</td>
+</tr>
+<tr>
+<td>Doctor_Order</td>
+<td>Ordered_By</td>
+<td>VARCHAR(50)</td>
+<td></td>
+<td>开嘱医护</td>
+</tr>
+<tr>
+<td>VitalSigns</td>
+<td>MeasurementId</td>
+<td>VARCHAR(50)</td>
+<td>主键</td>
+<td>测量编号</td>
+</tr>
+<tr>
+<td>VitalSigns</td>
+<td>BloodPressure</td>
+<td>VARCHAR(50)</td>
+<td></td>
+<td>血压</td>
+</tr>
+<tr>
+<td>VitalSigns</td>
+<td>Weight</td>
+<td>FLOAT</td>
+<td></td>
+<td>体重</td>
+</tr>
+<tr>
+<td>VitalSigns</td>
+<td>OtherMeasurements</td>
+<td>VARCHAR(500)</td>
+<td></td>
+<td>其他</td>
+</tr>
+<tr>
+<td>Diagnosis</td>
+<td>Diagnosis_Id</td>
+<td>VARCHAR(50)</td>
+<td>主键</td>
+<td>诊断号</td>
+</tr>
+<tr>
+<td>Diagnosis</td>
+<td>Diagnosis_Time</td>
+<td>DATETIME</td>
+<td></td>
+<td>诊断时间</td>
+</tr>
+<tr>
+<td>Diagnosis</td>
+<td>Diagnosis_Result</td>
+<td>VARCHAR(500)</td>
+<td></td>
+<td>诊断结果</td>
+</tr>
+<tr>
+<td>Diagnosis</td>
+<td>Diagnosed_By</td>
+<td>VARCHAR(50)</td>
+<td></td>
+<td>诊断医师</td>
+</tr>
+<tr>
+<td>Hospital_Account</td>
+<td>Id</td>
+<td>VARCHAR(50)</td>
+<td></td>
+<td>住院账号</td>
+</tr>
+<tr>
+<td>Hospital_Account</td>
+<td>PWD</td>
+<td>VARCHAR(50)</td>
+<td></td>
+<td>密码</td>
+</tr>
+<tr>
+<td>Payment</td>
+<td>Payment_Id</td>
+<td>VARCHAR(50)</td>
+<td>主键</td>
+<td>缴费号</td>
+</tr>
+<tr>
+<td>Payment</td>
+<td>Amount_Due</td>
+<td>MONEY</td>
+<td></td>
+<td>需缴金额</td>
+</tr>
+<tr>
+<td>Payment</td>
+<td>Payment_Time</td>
+<td>DATETIME</td>
+<td></td>
+<td>缴费时间</td>
+</tr>
+<tr>
+<td>Payment</td>
+<td>Payment_Item</td>
+<td>VARCHAR(50)</td>
+<td></td>
+<td>缴费项目</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">表名(字段1，字段2，，，，）</span><br><span class="line">Primary Key 关键字名</span><br><span class="line">Alternate Key 候选键名1，候选键名2</span><br><span class="line">Foreign Key 外键名 references 被参照表名(主键） ON UPDATE CASCADE ON DELETE NO ACTION</span><br><span class="line">病房表(病房号，科室，位置，床位数，在住人数)</span><br><span class="line">主键：病房号</span><br><span class="line">候选键：位置</span><br><span class="line"></span><br><span class="line">病床表(床号，在住病人号，规格)</span><br><span class="line">主键：床号</span><br><span class="line">外键：在住病人号 references 住院表(病人号) ON UPDATE CASCADE ON DELETE NO ACTION</span><br><span class="line"></span><br><span class="line">管理员账号表(ID，密码)</span><br><span class="line">主键：ID</span><br><span class="line">候选键：密码</span><br><span class="line"></span><br><span class="line">医护表(医护号，姓名，科室，角色)</span><br><span class="line">主键：医护号</span><br><span class="line">候选键：姓名</span><br><span class="line"></span><br><span class="line">住院表(住院号，病人号，姓名，年龄，性别，主治医生，床号)</span><br><span class="line">主键：住院号</span><br><span class="line">候选键：姓名</span><br><span class="line">外键：病人号 references 病人表(病人号) ON UPDATE CASCADE ON DELETE NO ACTION</span><br><span class="line">外键：主治医生 references 医护表(医护号) ON UPDATE CASCADE ON DELETE NO ACTION</span><br><span class="line">外键：床号 references 病床表(床号) ON UPDATE CASCADE ON DELETE NO ACTION</span><br><span class="line"></span><br><span class="line">医嘱表(医嘱号，医嘱内容，开嘱时间，开嘱医护)</span><br><span class="line">主键：医嘱号</span><br><span class="line">候选键：医嘱内容</span><br><span class="line">外键：开嘱医护 references 医护表(医护号) ON UPDATE CASCADE ON DELETE NO ACTION</span><br><span class="line"></span><br><span class="line">体征表(测量编号，血压，体重，其他)</span><br><span class="line">主键：测量编号</span><br><span class="line"></span><br><span class="line">诊断表(诊断号，诊断时间，诊断结果，诊断医师)</span><br><span class="line">主键：诊断号</span><br><span class="line">外键：诊断医师 references 医护表(医护号) ON UPDATE CASCADE ON DELETE NO ACTION</span><br><span class="line"></span><br><span class="line">住院账号表(ID，密码)</span><br><span class="line">主键：ID</span><br><span class="line">候选键：密码</span><br><span class="line"></span><br><span class="line">缴费表(编号，需缴金额，缴费时间，缴费项目)</span><br><span class="line">主键：编号</span><br></pre></td></tr></table></figure>
+
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2024/02/22/arch%E7%9A%84%E5%AE%89%E8%A3%85%E6%B5%81%E7%A8%8B/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2023/10/25/c#%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+
+
+    
+       <!--PC版-->
+        <div id="SOHUCS" ></div>
+        <script charset="utf-8" type="text/javascript" src="https://cy-cdn.kuaizhan.com/upload/changyan.js" ></script>
+        <script type="text/javascript">
+        window.changyan.api.config({
+            appid: 'cywJvGKKO',
+            conf: 'prod_dfd0ec91693832034dcc62943592b045'
+        });
+        </script>   
+     
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+                人生得意须尽欢，莫使金樽空对月.
+                <br>
+            
+            
+                xuan_tu | 
+            
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+    
+
+  </body>
+</html>

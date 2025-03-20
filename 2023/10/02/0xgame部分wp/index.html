@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head><!-- hexo injector head_begin start -->
+<link rel="stylesheet" href="/css/bilicard.css">
+<!-- hexo injector head_begin end -->
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="xuan tu">
+
+
+
+
+
+
+
+<title>0xgame部分wp | 曲径通幽处.</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/frame.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 6.3.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            ヾ(^_^) back Home.!!
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">主页</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">文章</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a target="_blank" rel="noopener" href="https://drive.google.com/drive/folders/1a-OiD9e0tEgNmWDoR0RGkhBtp-v8TQq8?usp=drive_link">书阁(M)</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a target="_blank" rel="noopener" href="https://github.com/XuanTuC/CTF_BambooSlips">CTF竹简</a>
+              </li> 
+                   
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                0xgame部分wp
+            
+            
+        </div>
+        <span class="post-date">
+            10月 2, 2023
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <p>misk</p>
+<h3 id="Week-1-SignIn"><a href="#Week-1-SignIn" class="headerlink" title="[Week 1] SignIn"></a>[Week 1] SignIn</h3><p>basecrack</p>
+<p><strong>0xGame{Welc0me_To_0xGame2023!!}</strong></p>
+<h3 id="Week-1-重生之我在教学楼打cs"><a href="#Week-1-重生之我在教学楼打cs" class="headerlink" title="[Week 1] 重生之我在教学楼打cs"></a>[Week 1] 重生之我在教学楼打cs</h3><p>cs 地图 这两个关键词一搜，出来的结果，让我得知：bsp文件是cs的地图文件,可以用bsp viewer查看：<img src="C:\Users\34476\AppData\Roaming\Typora\typora-user-images\image-20231002163547955.png" alt="image-20231002163547955"></p>
+<h3 id="Week-1-least-and-most"><a href="#Week-1-least-and-most" class="headerlink" title="[Week 1] least and most"></a>[Week 1] least and most</h3><p>zsteg一下：得到前半部分 0xGame{lsb_com</p>
+<p>least让人联想到：Least Significant Bit，即：lsb</p>
+<p>lsb试一下：<img src="C:\Users\34476\AppData\Roaming\Typora\typora-user-images\image-20231002160051985.png" alt="image-20231002160051985"></p>
+<p>most让人联想到msb</p>
+<p>bined_wi th_msb}</p>
+<p><img src="C:\Users\34476\AppData\Roaming\Typora\typora-user-images\image-20231002160318671.png" alt="image-20231002160318671"></p>
+<p>连起来：0xGame{lsb_combined_with_msb}</p>
+<h3 id="Week-1-another-signin"><a href="#Week-1-another-signin" class="headerlink" title="[Week 1] another signin"></a>[Week 1] another signin</h3><p>区块链攻击：教程：<a target="_blank" rel="noopener" href="https://hak5.com.cn/post/1203.html">https://hak5.com.cn/post/1203.html</a></p>
+<h3 id="Week-1-shark-shark"><a href="#Week-1-shark-shark" class="headerlink" title="[Week 1] shark shark"></a>[Week 1] shark shark</h3><p>统计-&gt;协议分级-&gt;data-&gt;查找 看到一串16进制数据和一个字符串：secret</p>
+<p>找一个文件，利用010editor，将16进制数据覆盖原文件，发现是个zip文件，改后缀为zip，发现里面存在加密flag.txt文件，尝试使用密码：secret</p>
+<p>错误，尝试tcp流里的密码：very_safe_password 正确</p>
+<p>0xGame{7a504dab-ada6-4c41-adb3-0d1530098cd4}</p>
+<h3 id="Week-1-hide-and-seek"><a href="#Week-1-hide-and-seek" class="headerlink" title="[Week 1] hide and seek"></a>[Week 1] hide and seek</h3><p>提示steghide，即用这个工具来解，但是这个解需要密码，现在的目标是找到密码</p>
+<h3 id="Week-1-signin"><a href="#Week-1-signin" class="headerlink" title="[Week 1] signin"></a>[Week 1] signin</h3><p>f12 查看 main.js</p>
+<h3 id="Week-1-baby-php"><a href="#Week-1-baby-php" class="headerlink" title="[Week 1] baby_php"></a>[Week 1] baby_php</h3><ol>
+<li>找到一个MD5哈希碰撞的例子，例如’a’和’b’。</li>
+<li>设置’c’为”1024abc”。</li>
+<li>设置Cookie ‘name’为”flag”。</li>
+<li>发送GET请求包含’a’和’b’，发送POST请求包含’c’，并附带上述设置的Cookie。</li>
+</ol>
+<h3 id="Week-1-找不到且不对劲的flag"><a href="#Week-1-找不到且不对劲的flag" class="headerlink" title="[Week 1] 找不到且不对劲的flag"></a>[Week 1] 找不到且不对劲的flag</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">nc 8.130.35.16 51000</span><br><span class="line">ls -a</span><br><span class="line">cd .secret</span><br><span class="line">cat flag</span><br></pre></td></tr></table></figure>
+
+<p>0xGame{N3t_cA7_M30w_9dn23hcx8}</p>
+<h3 id="Week-1-What’s-CBC"><a href="#Week-1-What’s-CBC" class="headerlink" title="[Week 1] What’s CBC?"></a>[Week 1] What’s CBC?</h3><p>什么是cbc？cbc是AES加密算法的一种最常用的分组模式</p>
+<p>下面来分析代码，写注释</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> secret <span class="keyword">import</span> flag,key</span><br><span class="line"><span class="comment">#to_bytes()方法将异或运算后的ASCII码转换为一个字节字符串</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">bytes_xor</span>(<span class="params">a,b</span>):</span><br><span class="line">	a,b=bytes_to_long(a),bytes_to_long(b)</span><br><span class="line">	<span class="keyword">return</span> long_to_bytes(a^b)</span><br><span class="line">	<span class="comment">#异或运算函数</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">pad</span>(<span class="params">text</span>):</span><br><span class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(text)%<span class="number">8</span>:</span><br><span class="line">		<span class="keyword">return</span> text</span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">		pad = <span class="number">8</span>-(<span class="built_in">len</span>(text)%<span class="number">8</span>)</span><br><span class="line">		text += pad.to_bytes(<span class="number">1</span>,<span class="string">&#x27;big&#x27;</span>)*pad</span><br><span class="line">		<span class="keyword">return</span> text</span><br><span class="line">    	<span class="comment">#填充算法，不足8个字符则填充，目的是将文本变成8的倍数</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">Encrypt_CBC</span>(<span class="params">text,iv,key</span>):</span><br><span class="line">	result = <span class="string">b&#x27;&#x27;</span></span><br><span class="line">	text = pad(text)</span><br><span class="line">	block=[text[_*<span class="number">8</span>:(_+<span class="number">1</span>)*<span class="number">8</span>] <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(text)//<span class="number">8</span>)]</span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> block:</span><br><span class="line">		tmp = bytes_xor(iv,i)</span><br><span class="line">		iv = encrypt(tmp,key)</span><br><span class="line">		result += iv</span><br><span class="line">	<span class="keyword">return</span> result</span><br><span class="line"><span class="comment">#cbc加密算法</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">encrypt</span>(<span class="params">text,key</span>):</span><br><span class="line">	result = <span class="string">b&#x27;&#x27;</span></span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> text:</span><br><span class="line">		result += ((i^key)).to_bytes(<span class="number">1</span>,<span class="string">&#x27;big&#x27;</span>)</span><br><span class="line">	<span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line">iv = <span class="string">b&#x27;11111111&#x27;</span></span><br><span class="line">enc = (Encrypt_CBC(flag,iv,key))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;enc = <span class="subst">&#123;enc&#125;</span>&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#enc = b&quot;\x8e\xc6\xf9\xdf\xd3\xdb\xc5\x8e8q\x10f&gt;7.5\x81\xcc\xae\x8d\x82\x8f\x92\xd9o&#x27;D6h8.d\xd6\x9a\xfc\xdb\xd3\xd1\x97\x96Q\x1d&#123;\\TV\x10\x11&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>具体分析过程：</p>
+<p>text就是flag明文</p>
+<p>vi&#x3D;11111111<br>加密算法是：encrypt函数<br>它的实现：</p>
+<p>密文与key进行异或<strong>text xor key &#x3D; result</strong></p>
+<p>所以一个组的解密过程就很清晰了：</p>
+<hr>
+<p>iv xor 明文一 &#x3D; 加密后的iv</p>
+<p>加密后的iv  xor key   &#x3D; A</p>
+<p>A xor 明文二 &#x3D; B</p>
+<hr>
+<p>B xor key &#x3D;C</p>
+<p>C XOR 明文三 &#x3D;D</p>
+<hr>
+<p>D XOR  key&#x3D;E</p>
+<p>E xor 明文四 &#x3D;F</p>
+<hr>
+<p>F XOR key &#x3D;G</p>
+<p>……</p>
+<hr>
+<p>其中，A 是密文分组一，C是密文分组二，E是密文分组三，G是密文分组四，……</p>
+<p><em>ps:(enc 这一串我起初以为是16进制字符串，怎么看都看不明白，后来问了一下AI，才知道这玩意是ascii字符串）</em></p>
+<p>现在的目标是得到key。</p>
+<p>由</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">enc = enc[:8]</span><br></pre></td></tr></table></figure>
+
+<p>得到密文分组一，即A</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\x8e8\x81o\xd6Q</span><br></pre></td></tr></table></figure>
+
+<p>iv xor 明文一 &#x3D; 加密后的iv</p>
+<p>加密后的iv  xor key   &#x3D; A</p>
+<p>那么</p>
+<p>（iv xor 明文一）xor key &#x3D; A</p>
+<p>（iv xor 明文一）xor A &#x3D; key</p>
+<p>（11111111  xor 明文一 ）xor \x8e\xc6\xf9\xdf\xd3\xdb\xc5\x8e &#x3D; key</p>
+<h3 id="Week-1-BabyRSA"><a href="#Week-1-BabyRSA" class="headerlink" title="[Week 1] BabyRSA"></a>[Week 1] BabyRSA</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">先分解n</span><br><span class="line">然后写脚本：</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">factor=[<span class="number">2329990801</span>,<span class="number">2436711469</span>,<span class="number">2732757047</span>,<span class="number">2770441151</span>,<span class="number">2821163021</span>,<span class="number">2864469667</span>,<span class="number">2995527113</span>,<span class="number">3111632101</span>,<span class="number">3162958289</span>,<span class="number">3267547559</span>,<span class="number">3281340371</span>, <span class="number">3479527847</span>,<span class="number">3561068417</span>,<span class="number">3978177241</span>,<span class="number">4134768233</span>,<span class="number">4160088337</span>]</span><br><span class="line">n = <span class="number">93099494899964317992000886585964221136368777219322402558083737546844067074234332564205970300159140111778084916162471993849233358306940868232157447540597</span></span><br><span class="line">c = <span class="number">54352122428332145724828674757308827564883974087400720449151348825082737474080849774814293027988784740602148317713402758353653028988960687525211635107801</span></span><br><span class="line">e = <span class="number">65537</span></span><br><span class="line">phi = <span class="number">1</span></span><br><span class="line">mask = <span class="number">54257528450885974256117108479579183871895740052660152544049844968621224899247</span></span><br><span class="line"><span class="keyword">for</span> p <span class="keyword">in</span> factor:</span><br><span class="line">    phi *= p - <span class="number">1</span></span><br><span class="line">d = inverse(e, phi)</span><br><span class="line">m = <span class="built_in">pow</span>(c, d, n)</span><br><span class="line">flag=m//mask</span><br><span class="line"><span class="built_in">print</span>(long_to_bytes(flag))</span><br><span class="line"><span class="comment">#0xGame&#123;Magic_M@th_Make_Crypt0&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Week-1-Vigenere"><a href="#Week-1-Vigenere" class="headerlink" title="[Week 1] Vigenere"></a>[Week 1] Vigenere</h3><p>已知flag是0xGame{……}</p>
+<p>手算密钥得到密钥是 game</p>
+<p>找个在线网站解出来得到</p>
+<p>0xGame{79ad4e0522a0a67a6e196be52357e60b}</p>
+<h3 id="Week-1-baby-php-1"><a href="#Week-1-baby-php-1" class="headerlink" title="[Week 1] baby_php"></a>[Week 1] baby_php</h3><p>MD5碰撞</p>
+<h3 id="Week-1-another-signin-1"><a href="#Week-1-another-signin-1" class="headerlink" title="[Week 1] another signin"></a>[Week 1] another signin</h3><p>区块链题目：</p>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2023/10/25/c#%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2023/09/25/rsa%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+
+
+    
+       <!--PC版-->
+        <div id="SOHUCS" ></div>
+        <script charset="utf-8" type="text/javascript" src="https://cy-cdn.kuaizhan.com/upload/changyan.js" ></script>
+        <script type="text/javascript">
+        window.changyan.api.config({
+            appid: 'cywJvGKKO',
+            conf: 'prod_dfd0ec91693832034dcc62943592b045'
+        });
+        </script>   
+     
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+                人生得意须尽欢，莫使金樽空对月.
+                <br>
+            
+            
+                xuan_tu | 
+            
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+    
+
+  </body>
+</html>

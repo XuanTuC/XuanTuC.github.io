@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head><!-- hexo injector head_begin start -->
+<link rel="stylesheet" href="/css/bilicard.css">
+<!-- hexo injector head_begin end -->
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="xuan tu">
+
+
+
+
+
+
+
+<title>newstarctf 部分wp | 曲径通幽处.</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/frame.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 6.3.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            ヾ(^_^) back Home.!!
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">主页</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">文章</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a target="_blank" rel="noopener" href="https://drive.google.com/drive/folders/1a-OiD9e0tEgNmWDoR0RGkhBtp-v8TQq8?usp=drive_link">书阁(M)</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a target="_blank" rel="noopener" href="https://github.com/XuanTuC/CTF_BambooSlips">CTF竹简</a>
+              </li> 
+                   
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                newstarctf 部分wp
+            
+            
+        </div>
+        <span class="post-date">
+            9月 25, 2023
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <h1 id="Caesar’s-Secert"><a href="#Caesar’s-Secert" class="headerlink" title="Caesar’s Secert"></a>Caesar’s Secert</h1><p>凯撒加解密</p>
+<p>偏移量为5时，得到：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;ca3s4r&#x27;s_c1pher_i5_v4ry_3azy&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="brainfuck"><a href="#brainfuck" class="headerlink" title="brainfuck"></a>brainfuck</h1><p>在搜索引擎搜索题目，得知这是一种编程语言，可进行加解密</p>
+<p>在线工具：<a target="_blank" rel="noopener" href="https://ctf.bugku.com/tool/brainfuck">https://ctf.bugku.com/tool/brainfuck</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;Oiiaioooooiai#b7c0b1866fe58e12&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="Fence"><a href="#Fence" class="headerlink" title="Fence"></a>Fence</h1><p>提示栅栏，栅栏加密是一种简单的加密方法</p>
+<p>栏数为2时，得到结果</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;reordering_the_plaintext#686f8c03&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="Vigenere"><a href="#Vigenere" class="headerlink" title="Vigenère"></a>Vigenère</h1><p>意大利语，翻译过来是维吉尼亚，因此大概是维吉尼亚密码</p>
+<p>介绍里还有这么一串：</p>
+<p>le chiffre indéchiffrable</p>
+<p>维吉尼亚是需要key的，本来因为那一串意大利语就是key，但是维吉尼亚只有英文字母，所以可能需要我们自己推算密钥</p>
+<p>看前面四个字母，由前几题可以得知，flag的格式是：“flag{……}”</p>
+<p>所以前面四个字母经过解密后一定是flag四个字母</p>
+<p><img src="https://pic2.zhimg.com/v2-994bb20eb908fe1ace76f14d5e93aea1_r.jpg" alt="img"></p>
+<p>根据这张码表</p>
+<p>原文如果是x，则密钥是y，密文是z</p>
+<p>则z&#x3D;（x,y），即为坐标处的字母</p>
+<p>现在我们知道了z，和x，如何知道y呢</p>
+<p><strong>先找x对应的列，在这列中找z，找到z后，看z对应的行，即为y的值</strong></p>
+<p>由此，我们得知，密钥是<strong>kfc</strong></p>
+<p>利用在线工具或者编写脚本得到flag：、</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;la_c1fr4_del_5ign0r_giovan_batt1st4_b3ll5s0&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="babyrsa"><a href="#babyrsa" class="headerlink" title="babyrsa"></a>babyrsa</h1><p>rsa加密算法，需要先知道它的数学运算规则，然后根据一致量求解未知量，可以先搞清楚原理，在草稿纸上写出算法，然后通过python或者其他编程语言写脚本</p>
+<p>终端运行：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pycryptodome -i https://pypi.tuna.tsinghua.edu.cn/simple</span><br></pre></td></tr></table></figure>
+
+<p>安装密码学模块，然后，先学习一下rsa加密算法吧……</p>
+<p>学习之后得知，flag是一个位置的函数，是需要我们自己来写的，写的方法是按照rsa解密的原理进行的的</p>
+<p><strong>(d*e)对t取模 &#x3D; 1，已知t,e,如何计算d</strong></p>
+<p>使用扩展欧几里得算法计算 d 的步骤如下：</p>
+<ol>
+<li>调用 <code>gcd(e, t)</code> 函数，计算 e 和 t 的最大公约数。</li>
+<li>将最大公约数作为 d 的返回值。</li>
+</ol>
+<hr>
+<p>题目说是分解n，分解得到15个32位质数相乘，以前本来以为rsa只能是两个质数进行算法加密，但是实际上是可以选择多个质数的，利用下面的网站分解n：<a target="_blank" rel="noopener" href="http://factordb.com/">http://factordb.com/</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2217990919 2338725373 2370292207 2463878387 2706073949 2794985117 2804303069 2923072267 2970591037 3207148519 3654864131 3831680819 3939901243 4093178561 4278428893</span><br></pre></td></tr></table></figure>
+
+<p>然后解密：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">factor = [<span class="number">2217990919</span>, <span class="number">2338725373</span>, <span class="number">2370292207</span>, <span class="number">2463878387</span>, <span class="number">2706073949</span>, <span class="number">2794985117</span>, <span class="number">2804303069</span>, <span class="number">2923072267</span>, <span class="number">2970591037</span>, <span class="number">3207148519</span>, <span class="number">3654864131</span>, <span class="number">3831680819</span>, <span class="number">3939901243</span>, <span class="number">4093178561</span>, <span class="number">4278428893</span>]</span><br><span class="line">n = <span class="number">17290066070594979571009663381214201320459569851358502368651245514213538229969915658064992558167323586895088933922835353804055772638980251328261</span></span><br><span class="line">c = <span class="number">14322038433761655404678393568158537849783589481463521075694802654611048898878605144663750410655734675423328256213114422929994037240752995363595</span></span><br><span class="line">e = <span class="number">65537</span></span><br><span class="line">phi = <span class="number">1</span></span><br><span class="line"><span class="keyword">for</span> p <span class="keyword">in</span> factor:</span><br><span class="line">    phi *= p - <span class="number">1</span></span><br><span class="line">d = inverse(e, phi)</span><br><span class="line">m = <span class="built_in">pow</span>(c, d, n)</span><br><span class="line"><span class="built_in">print</span>(long_to_bytes(m))</span><br><span class="line"><span class="comment"># flag&#123;us4_s1ge_t0_cal_phI&#125;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="CyberChef’s-Secret"><a href="#CyberChef’s-Secret" class="headerlink" title="CyberChef’s Secret"></a>CyberChef’s Secret</h1><p>base系列编码，basecrack一下：</p>
+<p><img src="C:\Users\34476\AppData\Roaming\Typora\typora-user-images\image-20230926224241999.png" alt="image-20230926224241999"></p>
+<p>flag{Base_15_S0_Easy_^_^}</p>
+<h1 id="机密图片"><a href="#机密图片" class="headerlink" title="机密图片"></a>机密图片</h1><p>二维码扫出来是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Welcome to NewStarCTF 2023!</span><br></pre></td></tr></table></figure>
+
+<p>binwalk一下，没有隐藏文件：</p>
+<p><img src="C:\Users\34476\AppData\Roaming\Typora\typora-user-images\image-20230926224903103.png" alt="image-20230926224903103"></p>
+<p>用zsteg，得到隐写信息：</p>
+<p>flag{W3lc0m3_t0_N3wSt4RCTF_2023_7cda3ece}</p>
+<h1 id="流量！鲨鱼！"><a href="#流量！鲨鱼！" class="headerlink" title="流量！鲨鱼！"></a>流量！鲨鱼！</h1><p>流量分析，wireshark</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[truncated]&lt;a href=&quot;http://www.zend.com/&quot;&gt;&lt;img border=&quot;0&quot; src=&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPoAAAAvCAYAAADKH9ehAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAEWJJREFUeNrsXQl0VNUZvjNJSAgEAxHCGsNitSBFxB1l0boUW1pp3VAU</span><br></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\34476\AppData\Roaming\Typora\typora-user-images\image-20231005001332807.png" alt="image-20231005001332807"></p>
+<p>点击追tcp流</p>
+<p>然后他会自动筛选这一组</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tcp.stream eq 62</span><br></pre></td></tr></table></figure>
+
+<p>逐一查看，发现base编码，放到basecrack里面</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Wm14aFozdFhjbWt6TldnMGNtdGZNWE5mZFRVelpuVnNYMkkzTW1FMk1EazFNemRsTm4wSwo=</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">是两次base64</span><br><span class="line"></span><br><span class="line">得到</span><br><span class="line">flag&#123;Wri35h4rk_1s_u53ful_b72a609537e6&#125;</span><br></pre></td></tr></table></figure>
+
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2023/09/25/rsa%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2023/08/12/NSSCTF%E9%A2%98%E5%BA%93WEB/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+
+
+    
+       <!--PC版-->
+        <div id="SOHUCS" ></div>
+        <script charset="utf-8" type="text/javascript" src="https://cy-cdn.kuaizhan.com/upload/changyan.js" ></script>
+        <script type="text/javascript">
+        window.changyan.api.config({
+            appid: 'cywJvGKKO',
+            conf: 'prod_dfd0ec91693832034dcc62943592b045'
+        });
+        </script>   
+     
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+                人生得意须尽欢，莫使金樽空对月.
+                <br>
+            
+            
+                xuan_tu | 
+            
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+    
+
+  </body>
+</html>
